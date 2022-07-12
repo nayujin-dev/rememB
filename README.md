@@ -1,6 +1,6 @@
 # rememB-day-Client
 
-## ❄ Team Member 
+## ❄ Team Member ❄
 |Duyeong Ko<br/>([@duyeong-ko](https://github.com/duyeong-ko))|Yujin Na<br/>([@nayujin-dev](https://github.com/nayujin-dev))
 |:----------:|:----------:|
 |Front-end Developer|Front-end Developer|
