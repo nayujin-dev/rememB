@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import Home from './pages/MyHome/MyHome';
-import YourHome from './pages/YourHome';
 import AnswerBalance from './pages/MyHome/AnswerBalance';
 import SeeBalance from './pages/MyHome/SeeBalance';
+import SelectImg from "./pages/YourHome/Letter/SelectImg";
+import YourHome from "./pages/YourHome/YourHome";
 
 function App() {
   return (
