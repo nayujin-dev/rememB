@@ -1,14 +1,18 @@
 import React from "react";
+import MainTitle from "../components/CommonHome/MainTitle";
+import PartyRoom from "../components/CommonHome/PartyRoom";
 import ToBalance from './../ToBalance';
 import WatchBalance from './../WatchBalance';
 
 const MyHome = () => {
+  // const [who,setWho]=useState('');
   return (
     <div>
-      <h1>마이홈 페이지입니다.</h1>
+      <MainTitle />
+      <PartyRoom />
       <ToBalance />
       <br />
-      <WatchBalance />
+      <WatchBalance who={'나'}/>
     </div>
   );
 };

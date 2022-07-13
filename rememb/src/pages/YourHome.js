@@ -1,13 +1,17 @@
 import React from "react";
 import MainTitle from "../components/CommonHome/MainTitle";
+import PartyRoom from "../components/CommonHome/PartyRoom";
 import ToCeleb from "../components/YourHome/ToCeleb";
+import WatchBalance from './../WatchBalance';
 
 const YourHome = () => {
   return (
     <div>
-      {/* <h1>다른 사람의 메인페이지입니다.</h1> */}
       <MainTitle/>
+      <PartyRoom />
       <ToCeleb/>
+      <br />
+      <WatchBalance who={'멋사'}/>
     </div>
   );
 };
