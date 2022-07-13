@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 const WatchBalance = ({who}) => {
+  const navigate=useNavigate();
   const onClick=()=>{
-    // const [who,setWho]=useState
+    navigate('/myParty/seeBalance');
   }
   return (
     <div>
