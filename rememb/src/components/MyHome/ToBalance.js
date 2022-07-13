@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const ToBalance = () => {
+  const navigate=useNavigate();
   const onClick=()=>{
-    
+    navigate('/myParty/ansBalance');
   }
   return (
     <div>
