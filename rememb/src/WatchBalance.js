@@ -1,12 +1,12 @@
 import React from "react";
 
-const WatchBalance = () => {
+const WatchBalance = ({who}) => {
   const onClick=()=>{
-
+    // const [who,setWho]=useState
   }
   return (
     <div>
-      <button onClick={onClick}>나의 밸런스 게임 보기</button>
+      <button onClick={onClick}>{who}의 밸런스 게임 보기</button>
     </div>
   );
 };
