@@ -12,7 +12,10 @@ function App() {
       <Route path="/myParty/seeBalance" element={<SeeBalance />}></Route>
 
       <Route path="/others" element={<YourHome />}></Route>
+      <Route path="/others/selectimg" element={<SelectImg />}></Route>
+    
     </Routes>
+
   );
 }
 
