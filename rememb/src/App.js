@@ -14,6 +14,7 @@ function App() {
 
       <Route path="/others" element={<YourHome />}></Route>
       <Route path="/others/selectimg" element={<SelectImg />}></Route>
+      
     
     </Routes>
 
