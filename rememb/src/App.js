@@ -4,6 +4,7 @@ import AnswerBalance from './pages/MyHome/AnswerBalance';
 import SeeBalance from './pages/MyHome/SeeBalance';
 import SelectImg from "./pages/YourHome/Letter/SelectImg";
 import YourHome from "./pages/YourHome/YourHome";
+import WriteLetter from "./pages/YourHome/Letter/WriteLetter";
 import SetInfo from "./pages/Etc/SetInfo";
 import RollingPaper from './pages/Etc/RollingPaper';
 import Sample from "./pages/Etc/Sample";
@@ -25,6 +26,7 @@ function App() {
       {/* 남의 페이지 볼 때 */}
       <Route path="/others" element={<YourHome />}></Route>
       <Route path="/others/selectimg" element={<SelectImg />}></Route>
+      <Route path="/others/writeletter" element={<WriteLetter />}></Route>
       
       {/* 기타 페이지 (정보확인, 롤링페이퍼 등) */}
       <Route path="/etc/setinfo" element={<SetInfo />}></Route>
