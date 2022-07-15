@@ -4,6 +4,7 @@ import AnswerBalance from './pages/MyHome/AnswerBalance';
 import SeeBalance from './pages/MyHome/SeeBalance';
 import SelectImg from "./pages/YourHome/Letter/SelectImg";
 import YourHome from "./pages/YourHome/YourHome";
+import WriteLetter from "./pages/YourHome/Letter/WriteLetter";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
 
       <Route path="/others" element={<YourHome />}></Route>
       <Route path="/others/selectimg" element={<SelectImg />}></Route>
-      
+      <Route path="/others/writeletter" element={<WriteLetter />}></Route>
     
     </Routes>
 
