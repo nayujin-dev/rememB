@@ -7,10 +7,16 @@ import YourHome from "./pages/YourHome/YourHome";
 import SetInfo from "./pages/Etc/SetInfo";
 import RollingPaper from './pages/Etc/RollingPaper';
 import Sample from "./pages/Etc/Sample";
+import Tutorial from "./pages/Tutorial/Tutorial";
+import Login from "./pages/Tutorial/Login";
 
 function App() {
   return (
     <Routes>
+      {/* 튜토리얼 */}
+      <Route path="/tutorial" element={<Tutorial />}></Route>
+      <Route path="/login" element={<Login />}></Route>
+
       {/* 내 페이지 볼 때 */}
       <Route path="/myParty" element={<Home />}></Route>
       <Route path="/myParty/ansBalance" element={<AnswerBalance />}></Route>
