@@ -1,20 +1,14 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import KaKaoLogin from 'react-kakao-login';
+import Naver from "./Naver";
 
 const SocialLogin = () => {
-  const navi2=useNavigate();
-  const navi3=useNavigate();
-  const onClick2=()=>{
-    navi2('');
+  const navi=useNavigate();
+  const onClick=()=>{
+    navi('');
   }
-  const onClick3=()=>{
-    navi3('');
-  
-  }
-  useEffect(()=>{
 
-  },[])
   return (
     <div>
       <KaKaoLogin
@@ -25,9 +19,10 @@ const SocialLogin = () => {
         onLogout={console.info}
         className="KakaoLogin"
         // id="kakao"
-      /><br /><br />
-      <button onClick={onClick2}>네이버로 로그인</button><br /><br />
-      <button onClick={onClick3}>인스타그램으로 로그인</button><br /><br />
+      />
+      <Naver/>
+      <button onClick={onClick}>인스타그램으로 로그인</button><br /><br />
+
     </div>
   );
 };
