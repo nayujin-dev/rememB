@@ -1,17 +1,14 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom';
 import Home from './pages/MyHome/MyHome';
 import AnswerBalance from './pages/MyHome/AnswerBalance';
 import SeeBalance from './pages/MyHome/SeeBalance';
-import SelectImg from "./pages/YourHome/Letter/SelectImg";
-import YourHome from "./pages/YourHome/YourHome";
-import WriteLetter from "./pages/YourHome/Letter/WriteLetter";
-import SetInfo from "./pages/Etc/SetInfo";
+import SelectImg from './pages/YourHome/Letter/SelectImg';
+import YourHome from './pages/YourHome/YourHome';
+import WriteLetter from './pages/YourHome/Letter/WriteLetter';
+import SetInfo from './pages/Etc/SetInfo';
 import RollingPaper from './pages/Etc/RollingPaper';
-import Sample from "./pages/Etc/Sample";
-import Tutorial from "./pages/Tutorial/Tutorial";
-import Login from "./pages/Tutorial/Login";
-
-
+import Tutorial from './pages/Tutorial/Tutorial';
+import Login from './pages/Tutorial/Login';
 
 function App() {
   return (
@@ -29,14 +26,11 @@ function App() {
       <Route path="/others" element={<YourHome />}></Route>
       <Route path="/others/selectimg" element={<SelectImg />}></Route>
       <Route path="/others/writeletter" element={<WriteLetter />}></Route>
-      
+
       {/* 기타 페이지 (정보확인, 롤링페이퍼 등) */}
       <Route path="/etc/setinfo" element={<SetInfo />}></Route>
       <Route path="/etc/seeRP" element={<RollingPaper />}></Route>
-      <Route path="/etc/sample" element={<Sample />}></Route>
-
     </Routes>
-
   );
 }
 
