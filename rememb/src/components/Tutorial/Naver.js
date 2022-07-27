@@ -5,12 +5,12 @@ const Naver=()=>{
     const { naver } = window;
 	const NAVER_CLIENT_ID = 'n0uYMSZfV8FBZpE_Qbgc';// 발급 받은 Client ID 입력 
 	const NAVER_CALLBACK_URL = 'http://localhost:3000/myParty/';// 작성했던 Callback URL 입력
-   
+
     const initializeNaverLogin = () => {
         const naverLogin = new naver.LoginWithNaverId({
-          clientId: NAVER_CLIENT_ID,
-          callbackUrl: NAVER_CALLBACK_URL, 
-          callbackHandle: true,
+        clientId: NAVER_CLIENT_ID,
+        callbackUrl: NAVER_CALLBACK_URL, 
+        callbackHandle: true,
           isPopup: false, // popup 형식으로 띄울것인지 설정
           loginButton: { color: 'green', type: 3, height: '50' }, //버튼의 스타일, 타입, 크기를 지정
         });
