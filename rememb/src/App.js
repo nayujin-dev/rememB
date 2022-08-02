@@ -10,6 +10,7 @@ import RollingPaper from './pages/Etc/RollingPaper';
 import Tutorial from './pages/Tutorial/Tutorial';
 import Login from './pages/Tutorial/Login';
 import Sample from './pages/Etc/Sample';
+import Pang from './pages/YourHome/Letter/Pang';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <Route path="/others" element={<YourHome />}></Route>
       <Route path="/others/selectimg" element={<SelectImg />}></Route>
       <Route path="/others/writeletter" element={<WriteLetter />}></Route>
+      <Route path="/others/sendletter" element={<Pang />}></Route>
 
       {/* 기타 페이지 (정보확인, 롤링페이퍼 등) */}
       <Route path="/etc/setinfo" element={<SetInfo />}></Route>
