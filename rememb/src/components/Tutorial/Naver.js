@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
 const Naver = () => {
   const { naver } = window;
   const NAVER_CLIENT_ID = 'n0uYMSZfV8FBZpE_Qbgc'; // 발급 받은 Client ID 입력
@@ -30,24 +29,26 @@ const Naver = () => {
       return;
     }
 
-    const token = location.hash.split('=')[1].split('&')[0];
-    // axios.post(`${serverapi}/user/naver-login`,{
-    //     token
-    // },{
-    //     withCredentials:true
-    // }
-    // ).then((res)=>{
-    //     window.location.replace('/tutorial');
-    // })
-  };
 
-  const userAccessToken = () => {
-    window.location.href.includes('access_token') && getToken();
-  };
-  const getToken = () => {
-    const token = window.location.href.split('=')[1].split('&')[0];
-    console.log(token);
-  };
+        const token = location.hash.split('=')[1].split('&')[0];
+      };
+      
+        
+        const userAccessToken = () => {
+            window.location.href.includes('access_token') && getToken();
+        }
+        const getToken = () => {
+            const token = window.location.href.split('=')[1].split('&')[0];
+            console.log(token);
+        }
+
+        useEffect(() => {
+            initializeNaverLogin();
+            //사실 이니셜라이즈만 의미있긴함.. 나중에 클리닝하자~~
+            userAccessToken();
+        }, []
+        )
+      
 
   useEffect(() => {
     initializeNaverLogin();
