@@ -1,8 +1,5 @@
-import React from "react";
-import MainTitle from "../../components/CommonHome/MainTitle";
-import PartyRoom from "../../components/CommonHome/PartyRoom";
-import MakeParty from "../../components/Tutorial/MakeParty";
-import SocialLogin from "../../components/Tutorial/SocialLogin";
+import React from 'react';
+import SocialLogin from '../../components/Tutorial/SocialLogin';
 
 const Login = () => {
   // const [who,setWho]=useState('');
