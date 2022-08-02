@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import MainTitle from "../../../components/CommonHome/MainTitle";
@@ -31,8 +31,18 @@ const LetterTo=styled.div`
 
 const WriteLetter = ({whichimg}) => {
   const navigate=useNavigate();
+  const [letter,setLetter]=useState('');
+  const [from,setFrom]=useState('');
+  const onNameChange=(event)=>{
+    setFrom(event.target.value);
+  }
   const onBtnClick=()=>{
-    navigate('/others/writeletter',{
+    // console.log(letter);
+    // console.log(from);
+
+    navigate('/others/sendletter',{
+      // state:{from:from, content:letter},
+      state:{img:img},
     });
   };
  
@@ -48,11 +58,13 @@ const WriteLetter = ({whichimg}) => {
             <LetterInput
               // dataPlaceholder="gggggggggggg"
               contentEditable='true'
+              // onChange={onLetterChange}
+              onInput={e=>setLetter(e.currentTarget.textContent)}
               // style={{content:'jddd'}}
               >
             </LetterInput>
             <LetterFrom>
-              From <input style={{border:'none',borderRadius:'10px',padding:'5px',margin:'0 0 0 10px',backgroundColor:'#F2F2F2'}}/>
+              From <input onChange={onNameChange} required style={{border:'none',borderRadius:'10px',padding:'5px',margin:'0 0 0 10px',backgroundColor:'#F2F2F2'}}/>
             </LetterFrom>           
         </Letterback>
         <button 
