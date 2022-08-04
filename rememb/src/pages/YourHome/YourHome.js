@@ -1,17 +1,16 @@
 import React from "react";
-import MainTitle from "../../components/CommonHome/MainTitle";
-import PartyRoom from "../../components/CommonHome/PartyRoom";
 import ToCeleb from "../../components/YourHome/ToCeleb";
 import WatchBalance from '../../components/CommonHome/WatchBalance';
-import { Outlet } from "react-router-dom";
-import Bottom from "../Bottom";
+import Layout from "../../components/CommonHome/Layout";
+import PartyRoom from "../../components/CommonHome/PartyRoom";
 
 const YourHome = () => {
   return (
-    <div>
-      <MainTitle/>
-      <Bottom/>
-    </div>
+    <Layout>
+      <PartyRoom />
+      <ToCeleb />
+      <WatchBalance who={'멋사'}/>
+    </Layout>
   );
 };
 

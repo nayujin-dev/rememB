@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import MainTitle from "../../../components/CommonHome/MainTitle";
+import Layout from "../../../components/CommonHome/Layout";
 
 const Letterback=styled.div`
   margin: auto;
@@ -13,7 +13,7 @@ const Letterback=styled.div`
 `;
 const LetterFrom=styled.div`
   position: absolute;
-  top: 62%;
+  top: 55%;
   right: 8%;
 `;
 const LetterInput=styled.div`
@@ -50,10 +50,9 @@ const WriteLetter = ({whichimg}) => {
     whichimg=location.state.whichimg;
     const img='/img/emoticons/'+whichimg[0]+'/'+whichimg[1]+'.png'
   return (
-    <div>
-        <MainTitle/>
+    <Layout>
         <Letterback>
-        <img style={{float:'left',width:'5rem', height:'5rem', margin:'0 10px 10px 0',padding:'10px',backgroundColor:'#F2F2F2'}} src={img}/>
+        <img alt="선택한 일러스트" style={{float:'left',width:'5rem', height:'5rem', margin:'0 10px 10px 0',padding:'10px',backgroundColor:'#F2F2F2'}} src={img}/>
             <LetterTo>To. 멋사</LetterTo>
             <LetterInput
               // dataPlaceholder="gggggggggggg"
@@ -62,16 +61,16 @@ const WriteLetter = ({whichimg}) => {
               onInput={e=>setLetter(e.currentTarget.textContent)}
               // style={{content:'jddd'}}
               >
-            </LetterInput>
-            <LetterFrom>
+              <LetterFrom>
               From <input onChange={onNameChange} required style={{border:'none',borderRadius:'10px',padding:'5px',margin:'0 0 0 10px',backgroundColor:'#F2F2F2'}}/>
-            </LetterFrom>           
+            </LetterFrom> 
+            </LetterInput>          
         </Letterback>
         <button 
           onClick={onBtnClick}
           style={{border:'none',margin:'auto',display:'block',marginTop:'10px'}}
           >SEND</button>
-    </div>
+    </Layout>
   );
 };
 

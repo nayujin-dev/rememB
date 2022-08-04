@@ -3,22 +3,18 @@ import { useNavigate } from "react-router-dom";
 
 const MenuTab = () => {
   const [name,setName]=useState("멋사");
-  const navi1=useNavigate();
-  const navi2=useNavigate();
-  const navi3=useNavigate();
-  const navi4=useNavigate();
-
+  const navi=useNavigate();
   const onClick1=()=>{
-    navi1('/etc/seeRP');
+    navi('/etc/seeRP');
   }
   const onClick2=()=>{
-    navi2('/myParty/seeBalance');
+    navi('/myParty/seeBalance');
   }
   const onClick3=()=>{
-    navi3('/myParty');
+    navi('/myParty');
   }
   const onClick4=()=>{
-    navi4('/etc/setinfo');
+    navi('/etc/setinfo');
   }
 
   return (
