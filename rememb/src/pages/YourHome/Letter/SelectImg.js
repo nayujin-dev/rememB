@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
-import MainTitle from "../../../components/CommonHome/MainTitle";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Img from "../../../components/YourHome/Img";
+import Layout from "../../../components/CommonHome/Layout";
 
 const SelectImgContainer=styled.div`
   background-color: pink;
@@ -69,7 +69,7 @@ const SelectImg = () => {
     setSelectNum(e);
   }
   const onBtnClick=()=>{
-    if (selectNum==''){
+    if (selectNum===''){
       alert('일러스트를 선택하세요')
     }
     else{
@@ -81,9 +81,7 @@ const SelectImg = () => {
   };
 
     return (
-      <>
-        <MainTitle/>
-        <div style={{width:'100%'}}>
+      <Layout>
           <SelectImgContainer>
             <EachTab onClick={()=>onTabClick(0)}>가구</EachTab>
             <EachTab onClick={()=>onTabClick(1)}>파티용품</EachTab>
@@ -108,8 +106,7 @@ const SelectImg = () => {
           ))}
           </ImgContainer>
           <button onClick={onBtnClick}>NEXT</button>
-        </div>
-      </>
+      </Layout>
     );
   };
   

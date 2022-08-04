@@ -1,14 +1,13 @@
 import React from "react";
-import MainTitle from "../../components/CommonHome/MainTitle";
+import Layout from "../../components/CommonHome/Layout";
 import SevenBalance from "../../components/MyHome/SevenBalance";
 
 const SeeBalance = () => {
   // const [who,setWho]=useState('');
   return (
-    <div>
-      <MainTitle />
+    <Layout>
       <SevenBalance />
-    </div>
+    </Layout>
   );
 };
 
