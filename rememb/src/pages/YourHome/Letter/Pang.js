@@ -1,5 +1,5 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Img=styled.div`
@@ -24,12 +24,16 @@ const PangBack=styled.div`
 `;
 const Pang=({whichimg})=>{
     const location=useLocation();
+    const navi=useNavigate();
     whichimg=location.state.img;
+    useEffect(() => {
+        setTimeout(()=>navi('/others'),2500);
+      }, []);
 
     return(
         <>
             <PangBack>
-                <Img><img style={{width:'80%',padding:'30px'}} src={whichimg} /> </Img>
+                <Img><img alt="선택한 일러스트" style={{width:'80%',padding:'30px'}} src={whichimg} /> </Img>
                 <div>
                     편지가 전송됐어요!<br/>
                     멋사님의 생일이 되면 멋사님께 공개될 예정이에요!
