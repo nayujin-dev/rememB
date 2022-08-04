@@ -8,11 +8,11 @@ import { useLocation } from 'react-router-dom';
 const MyHome = ({ res }) => {
   const location = useLocation();
   /* 아래 부분은 로그인후를 위한거라.. 그냥 url에 /myParty를 입력하면 아래부분때문에 오류남! 그래서 코딩할땐 주석처리하고 진행하면될듯!! */
-  if (!window.location.href.includes('access_token')) {
-    res = location.state.res;
-    console.log(res);
-    // console.log(res);
-  }
+  // if (!window.location.href.includes('access_token')) {
+  //   res = location.state.res;
+  //   console.log(res);
+  //   // console.log(res);
+  // }
 
   const getToken = () => {
     const token = window.location.href.split('=')[1].split('&')[0];

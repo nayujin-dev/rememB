@@ -1,13 +1,11 @@
 import React from "react";
 import CommonNav from "./CommonNav";
-import MainTitle from "./MainTitle";
 
-const Layout=(props)=>{
+const EtcLayout=(props)=>{
 
     return(
         <>
             <CommonNav/>
-            <MainTitle/>
             <main>
                 {props.children}
             </main>
@@ -15,4 +13,4 @@ const Layout=(props)=>{
     );
 }
 
-export default Layout;
+export default EtcLayout;

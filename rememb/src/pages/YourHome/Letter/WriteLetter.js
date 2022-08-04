@@ -18,6 +18,7 @@ const LetterFrom=styled.div`
 `;
 const LetterInput=styled.div`
   border: none;
+  text-align: left;
   height: 30vh;
   max-height: fit-content;
 `;
@@ -57,14 +58,13 @@ const WriteLetter = ({whichimg}) => {
             <LetterInput
               // dataPlaceholder="gggggggggggg"
               contentEditable='true'
-              // onChange={onLetterChange}
               onInput={e=>setLetter(e.currentTarget.textContent)}
               // style={{content:'jddd'}}
               >
-              <LetterFrom>
+            </LetterInput>
+            <LetterFrom>
               From <input onChange={onNameChange} required style={{border:'none',borderRadius:'10px',padding:'5px',margin:'0 0 0 10px',backgroundColor:'#F2F2F2'}}/>
-            </LetterFrom> 
-            </LetterInput>          
+            </LetterFrom>           
         </Letterback>
         <button 
           onClick={onBtnClick}
