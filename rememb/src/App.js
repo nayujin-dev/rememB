@@ -11,7 +11,7 @@ import Tutorial from './pages/Tutorial/Tutorial';
 import Login from './pages/Tutorial/Login';
 import Sample from './pages/Etc/Sample';
 import Pang from './pages/YourHome/Letter/Pang';
-
+import './style.css';
 function App() {
   return (
     <Routes>
