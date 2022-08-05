@@ -5,9 +5,9 @@ const BalanceSave = () => {
     // const [who,setWho]=useState
   }
   return (
-    <div>
+    <>
       <button onClick={onClick}>Save</button>
-    </div>
+    </>
   );
 };
 

@@ -16,9 +16,7 @@ const WatchBalance = ({who}) => {
     navigate('/myParty/seeBalance');
   }
   return (
-    <>
       <Btn onClick={onClick}>{who}의 밸런스 보기</Btn>
-    </>
   );
 };
 
