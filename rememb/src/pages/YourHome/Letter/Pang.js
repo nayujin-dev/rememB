@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
+// import Modal from 'react-modal';
+// import { ReactPortal } from "react";
 const Img=styled.div`
     /* position: relative; */
     margin: auto;
@@ -39,6 +40,35 @@ const Pang=({whichimg})=>{
                     멋사님의 생일이 되면 멋사님께 공개될 예정이에요!
                 </div>
             </PangBack>
+            {/* <ReactPortal elementId="modal-root">
+            <ModalOverlay visible={visible} /> 
+            <ModalWrapper
+                className={className}
+                onClick={maskClosable ? onMaskClick : null}
+                tabIndex="-1"
+                visible={visible}
+            >
+                <ModalInner tabIndex="0" className="modal-inner">
+                    <ModalInner2>
+                        <ImgStyle>
+                            <a href="https://www.pping.kr" rel="noopener noreferrer" target={'_blank'} cursor="pointer">
+                                <img src={img} style={{ width: '100%', height: '100%' }} alt="" />
+                            </a>
+                        </ImgStyle>
+                        {closable && (
+                            <CloseStyle>
+                                <Close className="modal-close" onClick={Dayclose}>
+                                    오늘 하루 닫기
+                                </Close>
+                                <Close className="modal-close" onClick={close}>
+                                    닫기
+                                </Close>
+                            </CloseStyle>
+                        )}
+                    </ModalInner2>
+                </ModalInner>
+            </ModalWrapper>
+        </ReactPortal> */}
         </>
     );
 }

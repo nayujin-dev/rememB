@@ -24,7 +24,7 @@ const CommonNav=() => {
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="/etc/seeRP">롤링페이퍼로 전환하기</Nav.Link>
-                  <Nav.Link href="/myParty/ansBalance">내 밸런스게임 보기</Nav.Link>
+                  <Nav.Link href="/myParty/seeBalance">내 밸런스게임 보기</Nav.Link>
                   <Nav.Link href="/myParty">내 파티룸 가기</Nav.Link>
                   <Nav.Link href="/etc/setinfo">내 정보 설정</Nav.Link>
                 </Nav>
