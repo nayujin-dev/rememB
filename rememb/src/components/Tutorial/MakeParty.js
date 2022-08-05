@@ -7,9 +7,9 @@ const MakeParty = () => {
     navigate('/login');
   }
   return (
-    <div>
+    <>
       <button onClick={onClick}>내 파티룸 만들기</button>
-    </div>
+    </>
   );
 };
 
