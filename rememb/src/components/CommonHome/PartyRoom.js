@@ -2,12 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 const BackImg=styled.div`
-  margin: 10px 30px;
-  padding: 10px;
-  background-image: url('/img/background.png');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  height: 30em;
+  margin: 30px 30px 50px;
+  padding: 30px;
+  width:350px;
+  background-color: #FFEFF3;
+  border-radius: 70px;
+  height: 500px;
+/* background-image: url('/img/background.png'); */
+  /* background-repeat: no-repeat; */
+  /* background-size: 100% 100%; */
 `;
 const PartyRoom = () => {
   return (
