@@ -4,8 +4,16 @@ import { useNavigate } from "react-router-dom";
 import Img from "../../../components/YourHome/Img";
 import Layout from "../../../components/CommonHome/Layout";
 
+const Box=styled.div`
+  padding: 5px;
+  border-radius: 10px;
+  background-color: #FFEFF3;
+`;
 const SelectImgContainer=styled.div`
-  background-color: pink;
+  width: 90%;
+  margin: 5px auto;
+  border-radius: 10px;
+  background-color: white;
   display: flex;
   place-items: center;
   justify-content: space-evenly;
@@ -13,10 +21,14 @@ const SelectImgContainer=styled.div`
 `;
 const EachTab=styled.div`
   display:inline-block;
+  background-color: #FFEFF3;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius:10px;
   vertical-align:middle;
 `;
 const ImgContainer=styled.div`
-  margin: 1rem 0;
+  margin: 15px 0;
   display: flex;
   place-items: center;
   justify-content: space-evenly;
@@ -82,6 +94,7 @@ const SelectImg = () => {
 
     return (
       <Layout>
+        <Box>
           <SelectImgContainer>
             <EachTab onClick={()=>onTabClick(0)}>가구</EachTab>
             <EachTab onClick={()=>onTabClick(1)}>파티용품</EachTab>
@@ -104,8 +117,9 @@ const SelectImg = () => {
             </div>
             
           ))}
-          </ImgContainer>
-          <button onClick={onBtnClick}>NEXT</button>
+          </ImgContainer>  
+        </Box>
+        <button onClick={onBtnClick}>선택</button>
       </Layout>
     );
   };
