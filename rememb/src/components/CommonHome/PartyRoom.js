@@ -2,13 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const BackImg=styled.div`
-  margin: 30px 30px 50px;
-  padding: 30px;
-  width:350px;
+  margin: 7rem 10rem;
+  padding: 7rem;
   background-color: #FFEFF3;
-  border-radius: 70px;
-  height: 500px;
-/* background-image: url('/img/background.png'); */
+  border-radius: 30px;
+  height:50vh;
+/* backgro0und-image: url('/img/background.png'); */
   /* background-repeat: no-repeat; */
   /* background-size: 100% 100%; */
 `;
