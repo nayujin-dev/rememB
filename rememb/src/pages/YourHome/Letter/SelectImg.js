@@ -5,38 +5,58 @@ import Img from "../../../components/YourHome/Img";
 import Layout from "../../../components/CommonHome/Layout";
 
 const Box=styled.div`
-  padding: 5px;
-  border-radius: 10px;
+  margin: 7rem 10rem;
+  padding: 2rem;
   background-color: #FFEFF3;
+  border-radius: 30px;
+  height:50vh;
 `;
 const SelectImgContainer=styled.div`
-  width: 90%;
-  margin: 5px auto;
-  border-radius: 10px;
+  margin: 0.3vh 0.5vh;
+  border-radius: 50px;
   background-color: white;
   display: flex;
   place-items: center;
   justify-content: space-evenly;
   text-align:center;
 `;
-const EachTab=styled.div`
+const EachTab=styled.button`
   display:inline-block;
   background-color: #FFEFF3;
-  padding: 5px 10px;
-  margin: 5px;
-  border-radius:10px;
+  font-size: 4rem;
+  font-weight: 500;
+  padding: 0.5vh 3.5rem;
+  margin: 2rem;
+  border-radius:40px;
+  border: none;
   vertical-align:middle;
+  &:focus {
+   background-color: #FFC1CC;
+   outline: none;
+  };
 `;
 const ImgContainer=styled.div`
-  margin: 15px 0;
-  display: flex;
+  margin: 3vh 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  row-gap: 2vh;
   place-items: center;
-  justify-content: space-evenly;
   text-align:center;
+`;
+const Btn=styled.div`
+  text-align: center;
+  margin: auto;
+  margin-top: 15rem;
+  padding: 2rem 5rem;
+  width: 25rem;
+  font-size: 6rem;
+  border-radius: 80px;
+  background-color: #FFEFF3;
 `;
 
 const SelectImg = () => {
-  const list=[0,1,2];
+  const list=[0,1,2,3,4,5,6,7,8];
   const [whatTab,setWhatTab]=useState(0);
   
 /*  //이미지 파일 세팅
@@ -74,6 +94,8 @@ const SelectImg = () => {
 
   const onTabClick=(e)=>{
     setWhatTab(e);
+    console.log(e);
+    e.preventDefault();
   }
   const onImgClick=(e)=>{
     mylist[e[1]]=!(mylist[e[1]]);
@@ -96,17 +118,16 @@ const SelectImg = () => {
       <Layout>
         <Box>
           <SelectImgContainer>
-            <EachTab onClick={()=>onTabClick(0)}>가구</EachTab>
-            <EachTab onClick={()=>onTabClick(1)}>파티용품</EachTab>
+            <EachTab autoFocus onClick={()=>onTabClick(0)}>가구</EachTab>
+            <EachTab onClick={()=>onTabClick(1)}>음식</EachTab>
             <EachTab onClick={()=>onTabClick(2)}>선물</EachTab>
-            <EachTab onClick={()=>onTabClick(3)}>음식</EachTab>
+            <EachTab onClick={()=>onTabClick(3)}>기타</EachTab>
           </SelectImgContainer>
           <ImgContainer>
           {list.map((index)=>(
             <div
               onClick={()=>{
                 onImgClick([whatTab,index])
-
               }}>
               <Img
                 key={index}
@@ -119,7 +140,7 @@ const SelectImg = () => {
           ))}
           </ImgContainer>  
         </Box>
-        <button onClick={onBtnClick}>선택</button>
+        <Btn onClick={onBtnClick}>선택</Btn>
       </Layout>
     );
   };
