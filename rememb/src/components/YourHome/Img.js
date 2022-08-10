@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 const EachImg=styled.img`
-  width:5rem;
-  height:5rem;
+  width:9vh;
+  height:9vh;
 `;
 const EachBack=styled.div`
-  padding: 5px;
-  border-radius: 10px;
+  padding: 0.7vh;
+  border-radius: 20px;
   background-color:${props=> props.check?'#FFC1CC':'white'};
 `;
 
