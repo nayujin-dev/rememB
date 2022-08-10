@@ -5,10 +5,12 @@ import styled from "styled-components";
 const Btn=styled.div`
   text-align: center;
   margin: auto;
-  margin-top: 20px;
-  width: 200px;
-  background-color: #D9D9D9;
-  font-size: 20px;
+  margin-top: 5rem;
+  padding: 2rem 5rem;
+  width: 55rem;
+  font-size: 5rem;
+  border-radius: 80px;
+  background-color: #FFEFF3;
 `;
 const WatchBalance = ({who}) => {
   const navigate=useNavigate();
