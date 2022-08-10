@@ -4,29 +4,50 @@ import styled from "styled-components";
 import Layout from "../../../components/CommonHome/Layout";
 
 const Letterback=styled.div`
-  margin: auto;
-  background-color: #D9D9D9;
-  width: 90vw;
-  /* min-height: min-content; */
-  height:  50vh;
-  padding: 10px;
+  margin: 7rem 10rem;
+  padding: 5rem;
+  background-color: #FFEFF3;
+  border-radius: 30px;
+  height:50vh;
+  background-color: #FFEFF3;
 `;
-const LetterFrom=styled.div`
+const LetterFrom=styled.input`
+  font-size: 4.5rem;
   position: absolute;
-  top: 55%;
-  right: 8%;
+  top: 62vh;
+  right: 55rem;
+  background-color:#FFC1CC;
+  width: 30rem;
+  padding:1rem 3rem;
+  border:none;
+  outline: none;
+  border-radius:20px;
 `;
 const LetterInput=styled.div`
   border: none;
   text-align: left;
+  outline: none;
   height: 30vh;
+  font-size: 4rem;
   max-height: fit-content;
 `;
 
 const LetterTo=styled.div`
-  font-size: large;
-  font-weight: bold;
-  margin: 13px 10px 10px;
+  font-size: 4.5rem;
+  font-weight: 500;
+`;
+const Btn=styled.button`
+  position: absolute;
+  top: 62vh;
+  right: 15rem;
+  width: 17rem;
+  padding:1rem 3rem;
+  border:none;
+  outline: none;
+  text-align: center;
+  font-size: 4.5rem;
+  border-radius: 80px;
+  background-color:#FFC1CC;
 `;
 
 
@@ -53,7 +74,7 @@ const WriteLetter = ({whichimg}) => {
   return (
     <Layout>
         <Letterback>
-        <img alt="선택한 일러스트" style={{float:'left',width:'5rem', height:'5rem', margin:'0 10px 10px 0',padding:'10px',backgroundColor:'#F2F2F2'}} src={img}/>
+        <img alt="선택한 일러스트" style={{float:'left',width:'20rem', height:'20rem', margin:'0 3rem 0 0',padding:'10px',borderRadius:'20px',backgroundColor:'white'}} src={img}/>
             <LetterTo>To. 멋사</LetterTo>
             <LetterInput
               // dataPlaceholder="gggggggggggg"
@@ -62,14 +83,9 @@ const WriteLetter = ({whichimg}) => {
               // style={{content:'jddd'}}
               >
             </LetterInput>
-            <LetterFrom>
-              From <input onChange={onNameChange} required style={{border:'none',borderRadius:'10px',padding:'5px',margin:'0 0 0 10px',backgroundColor:'#F2F2F2'}}/>
-            </LetterFrom>           
+            <LetterFrom type='text' value='From. ' onChange={onNameChange} />           
         </Letterback>
-        <button 
-          onClick={onBtnClick}
-          style={{border:'none',margin:'auto',display:'block',marginTop:'10px'}}
-          >SEND</button>
+        <Btn onClick={onBtnClick}>전송</Btn>
     </Layout>
   );
 };
