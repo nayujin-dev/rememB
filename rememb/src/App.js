@@ -13,6 +13,7 @@ import Sample from './pages/Etc/Sample';
 import Pang from './pages/YourHome/Letter/Pang';
 import Setting from './pages/Tutorial/Setting';
 import './style.css';
+import './style1.css';
 
 function App() {
   return (
