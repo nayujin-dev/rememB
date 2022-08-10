@@ -2,20 +2,17 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const Who=styled.div`
-  margin-top: 70px;
-  /* font-size:8vw; */
-  font-size: 36px;
-  /* font-size: 8rem; */
+  margin-top: 12rem;
+  font-size: 9rem;
   color: #FE4179;
   font-weight: 700;
   text-align: center;
 `;
 const Dday=styled.div`
-  margin:7px 0 35px;
+  margin:1rem 0 3rem;
   text-align: center;
   font-weight:400;
-  /* font-size: ; */
-  font-size: 20px;
+  font-size: 6rem;
 `;
 const MainTitle = () => {
     const [name,setName]=useState("멋사");

@@ -5,9 +5,9 @@ import styled from "styled-components";
 const Btn=styled.div`
   text-align: center;
   margin: auto;
-  padding: 10px 40px;
-  width: 250px;
-  font-size: 24px;
+  padding: 2rem 5rem;
+  width: 55rem;
+  font-size: 5rem;
   border-radius: 80px;
   background-color: #FFEFF3;
 `;
