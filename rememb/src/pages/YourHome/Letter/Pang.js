@@ -27,9 +27,9 @@ const Pang=({whichimg})=>{
     const location=useLocation();
     const navi=useNavigate();
     whichimg=location.state.img;
-    useEffect(() => {
-        setTimeout(()=>navi('/others'),2500);
-      }, []);
+    // useEffect(() => {
+    //     setTimeout(()=>navi('/others'),2500);
+    //   }, []);
 
     return(
         <>
