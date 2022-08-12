@@ -11,6 +11,9 @@ const Btn=styled.div`
     background-color: #FFEFF3;
     border: none;
     border-radius: 50px;
+    &:active{
+        background-color:#FE4179;
+    }
 `; 
 const BtnImg=styled.img`
     position: absolute;
@@ -21,15 +24,17 @@ const BtnImg=styled.img`
 `;
 
 const ShareBtn=()=>{
-    const onShareClick=()=>{
-        // var url= window.location.href;
-        // var text=document.body.createElement('textarea');
-        // document.body.appendChild(text);
-        // text.value=url;
-        // text.select();
-        // document.execCommand('copy');
-        // console.log(window.location.href);
-        // document.body.removeChild(text);
+    const onShareClick=(e)=>{
+        e.preventDefault();
+        var url= window.location.href;
+        var text=document.createElement('textarea');
+        document.body.appendChild(text);
+        text.value=url;
+        text.select();
+        document.execCommand('copy');
+        console.log(window.location.href);
+        document.body.removeChild(text);
+        window.alert('링크가 복사되었습니다.');
     }
     return (
         <Btn onClick={onShareClick}>
