@@ -22,9 +22,6 @@ const EtcLayout=(props)=>{
             <Today>2022.08.12</Today>
             <Dday>김멋사의 20번째 생일</Dday>
             <CommonNav/>
-            <Btn>
-                <BtnImg src="/img/save.png" style={{width:'6rem'}}/>
-            </Btn>
             <main>
                 {props.children}
             </main>
