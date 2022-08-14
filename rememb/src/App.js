@@ -5,7 +5,6 @@ import SeeBalance from './pages/MyHome/SeeBalance';
 import SelectImg from './pages/YourHome/Letter/SelectImg';
 import YourHome from './pages/YourHome/YourHome';
 import WriteLetter from './pages/YourHome/Letter/WriteLetter';
-import SetInfo from './pages/Etc/SetInfo';
 import RollingPaper from './pages/Etc/RollingPaper';
 import Tutorial from './pages/Tutorial/Tutorial';
 import Login from './pages/Tutorial/Login';
@@ -32,7 +31,6 @@ function App() {
       <Route path="/others/writeletter" element={<WriteLetter />}></Route>
       <Route path="/others/sendletter" element={<Pang />}></Route>
       {/* 기타 페이지 (정보확인, 롤링페이퍼 등) */}
-      <Route path="/etc/setinfo" element={<SetInfo />}></Route>
       <Route path="/etc/seeRP" element={<RollingPaper />}></Route>
       <Route path="/etc/sample" element={<Sample />}></Route>
     </Routes>
