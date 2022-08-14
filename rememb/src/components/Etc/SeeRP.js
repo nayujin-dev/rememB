@@ -77,9 +77,7 @@ const SeeRP = () => {
                 ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ
               </Content>
             </Each>
-          </>
-          
-          
+          </>          
         ))}
       </Paper>
     </>
