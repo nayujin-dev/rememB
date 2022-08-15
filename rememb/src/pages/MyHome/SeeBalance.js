@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../../components/CommonHome/Layout';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -46,6 +47,29 @@ const SeeBalance = ({token}) => {
   const onClick2 = () => {
     // D-6 밸런스게임 페이지로
     navigate('');
+  };
+
+  const getToken = () => {
+    const userData = axios
+      .get(
+        'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/balance/mylist/6/',
+        {
+          headers: {
+            Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjYwNTU3ODMwLCJpYXQiOjE2NjA1NTQ4MzAsImp0aSI6IjJlYzQ2Y2MyN2M0ZDQ3OGY5YzBmNTFlMTliMThlY2RjIiwidXNlcl9pZCI6OX0.M19T7LANH8YLDd1dIsN9PR6KzHFyN2nNTuecJEqAt3k`,
+            'Access-Control-Allow-Origin': `${window.location.href}`,
+            'Access-Control-Allow-Credentials': true,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        console.log(response.data);
+
+        // setBirth(response.birthday);
+        // setEmail(response.email);
+        // setUsername(response.name);
+        // setProvider('naver');
+      });
   };
   return (
     <Layout>
