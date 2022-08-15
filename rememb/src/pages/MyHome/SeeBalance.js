@@ -45,7 +45,7 @@ const Question = styled.div`
   margin-top: 20px;
 `;
 
-const SeeBalance = ({ token }) => {
+const SeeBalance = ({token}) => {
   const navigate = useNavigate();
   const onClick1 = () => {
     // D-7 밸런스게임 페이지로
