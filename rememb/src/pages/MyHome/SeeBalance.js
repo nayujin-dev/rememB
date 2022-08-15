@@ -45,7 +45,7 @@ const Question = styled.div`
   margin-top: 20px;
 `;
 
-const SeeBalance = ({token}) => {
+const SeeBalance = ({ token }) => {
   const navigate = useNavigate();
   const onClick1 = () => {
     // D-7 밸런스게임 페이지로
@@ -57,9 +57,10 @@ const SeeBalance = ({token}) => {
   };
 
   const getToken = () => {
+    console.log('제발수미나');
     const userData = axios
       .get(
-        'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/balance/mylist/6/',
+        'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/balance/mylist/15/',
         {
           headers: {
             Authorization: `Bearer ${token}`,
