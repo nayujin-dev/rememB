@@ -65,7 +65,7 @@ const SeeBalance = ({ token }) => {
           headers: {
             Authorization: `Bearer ${token}`,
             'Access-Control-Allow-Origin': `${window.location.href}`,
-            'Access-Control-Allow-Credentials': false,
+            'Access-Control-Allow-Credentials': true,
           },
         }
       )
@@ -76,6 +76,7 @@ const SeeBalance = ({ token }) => {
   };
   useEffect(() => {
     getToken();
+    console.log(token);
   }, []);
   return (
     <Layout>
