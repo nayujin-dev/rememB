@@ -8,10 +8,14 @@ import { useLocation } from 'react-router-dom';
 
 const MyHome = ({ res }) => {
   const location = useLocation();
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [birth, setBirth] = useState('');
-  const [provider, setProvider] = useState('');
+  const [info,setInfo]=useState('');
+  const [email,setEmail]=useState('');
+  const [username,setUsername]=useState('');
+  const [birth,setBirth]=useState('');
+  const [provider,setProvider]=useState('');
+  const [accessT,setAccessT]=useState('');
+  // const [token,setToken]=useState('');
+  const [access,setAccess]=useState('');
   /* 아래 부분은 로그인후를 위한거라.. 그냥 url에 /myParty를 입력하면 아래부분때문에 오류남! 그래서 코딩할땐 주석처리하고 진행하면될듯!! */
   if (!window.location.href.includes('access_token')) {
     res = location.state.res;
@@ -20,10 +24,29 @@ const MyHome = ({ res }) => {
   }
 
   const getToken = () => {
-    const token = window.location.href.split('=')[1].split('&')[0];
-    const userData = axios
-      .get(
-        'https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/nid/me',
+    const token=window.location.href.split('=')[1].split('&')[0];
+    // console.log(token);
+    // console.log(access);
+    const userData = axios.get(
+      'https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/nid/me',
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Access-Control-Allow-Origin': `${window.location.href}`,
+          'Access-Control-Allow-Credentials': true,
+        },
+      }
+    ).then(response=>{
+      // console.log(userData);
+      // console.log(userData.data);
+      // console.log(userData.data.response);
+      // console.log();
+      // setInfo(response.data.response);
+      // setUsername(info.name);
+      // setBirth(info.birthyear+'-'+info.birthday);
+      // setEmail(info.email);
+      axios.post(
+        'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -32,38 +55,13 @@ const MyHome = ({ res }) => {
           },
         }
       )
-      .then((response) => {
-        axios
-          .post(
-            'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
-            {
-              email: 'happine2s@gmail.com',
-              username: '박소똥',
-              provider: 'naver',
-              birth: '2003-01-05',
-              // token,
-            },
-            {
-              withCredentials: false,
-            }
-          )
-          .then((res) => {
-            window.location.replace('/tutorial');
-            console.log(res);
-            console.log(res.data);
-          })
-          .catch(function (error) {
-            console.log(error);
-            console.log(response.data);
-            console.log(response.data.name);
-            console.log(response.email);
-            console.log(response.birthday);
-          });
-        console.log(response.data);
-        // setBirth(response.birthday);
-        // setEmail(response.email);
-        // setUsername(response.name);
-        // setProvider('naver');
+      .then((res) => {
+        // console.log(res);
+        console.log(res.data);
+        console.log(res.data.results.accessToken);
+        setAccess(res.data.results.accessToken);
+      }).catch(function (error) {
+        console.log(error);
       });
     //CORS에러 뜨는게 당연함 !! 구래서 ARC로 헤더 넣어서 get 요청하면 제대로뜸
   };
@@ -71,12 +69,16 @@ const MyHome = ({ res }) => {
   useEffect(() => {
     window.location.href.includes('access_token') && getToken();
   }, []);
+  useEffect(() => {
+    // setToken(access)
+    setAccessT(access);
+  }, [access]);
   return (
     <ShareLayout>
       <PartyRoom />
       <ToBalance />
       {/*생일 당일이 되면, ToBalancce대신 롤링페이퍼 보기 버튼으로*/}
-      <WatchBalance who={'나'} />
+      <WatchBalance who={'나'} token={accessT} />
     </ShareLayout>
   );
 };
