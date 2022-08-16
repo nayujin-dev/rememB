@@ -34,7 +34,7 @@ const SocialLogin = () => {
   const navigate = useNavigate();
   const socialLoginSuccess = (res) => {
     console.log('소셜 로그인 성공');
-    navigate('/myParty', {
+    navigate('/setting', {
       state: { res: res },
     });
     console.log(res);
