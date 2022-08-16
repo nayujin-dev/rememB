@@ -42,8 +42,12 @@ const SocialLogin = () => {
     //   state: { res: res },
     // });
     console.log(res);
-    const month = res.profile.kakao_account.birth[0]+'-'+res.profile.kakao_account.birth[1];
-    const day = res.profile.kakao_account.birth[2]+'-'+res.profile.kakao_account.birth[3];
+    const b = res.profile.kakao_account.birth.toString();
+    console.log(b);
+
+    const month = b[0]+'-'+b[1];
+    const day = b[2]+'-'+b[3];
+    console.log(day);
 
     axios
       .post(
