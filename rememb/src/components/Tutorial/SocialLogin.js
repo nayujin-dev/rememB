@@ -42,12 +42,12 @@ const SocialLogin = () => {
     //   state: { res: res },
     // });
     console.log(res);
-    const b = res.profile.kakao_account.birth.toString();
-    console.log(b);
-
-    const month = b[0]+'-'+b[1];
-    const day = b[2]+'-'+b[3];
-    console.log(day);
+    // const b = res.profile.kakao_account.birth.toString();
+    // console.log(b);
+// 
+    // const month = b[0]+'-'+b[1];
+    // const day = b[2]+'-'+b[3];
+    // console.log(day);
 
     axios
       .post(
@@ -56,7 +56,8 @@ const SocialLogin = () => {
           email: res.profile.kakao_account.email,
           username: res.profile.kakao_account.profile.nickname,
           provider: 'kakao',
-          birth: '1999-'+month+'-'+day,
+          // birth: '1999-'+month+'-'+day,
+          birth: '1999-03-11'
         },
         {
           withCredentials: false,
