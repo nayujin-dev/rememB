@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import CompoNotYet from '../../components/Balance/CompoNotYet';
 import CompoNew from './../../components/Balance/CompoNew';
 import CompoDid from './../../components/Balance/CompoDid';
+import SampleNav from '../../components/Etc/SampleNav';
 
 const SeeBalance = () => {
   const navigate = useNavigate();
@@ -34,6 +35,8 @@ const SeeBalance = () => {
   }, []);
   return (
     <Layout>
+      {/* <SampleNav /> */}
+
       {/* map써서 컴포넌트들을 다 불러와야할듯
       그래서 그 컴포넌트들이 각각 판단해서 기간 됐으면 내용공개, 안지났으면 블러처리 일케 .. 
       아래는 걍 임시로 해둔거양*/}

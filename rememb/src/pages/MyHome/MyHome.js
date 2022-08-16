@@ -6,14 +6,21 @@ import ShareLayout from '../../components/CommonHome/ShareLayout';
 import { useLocation, useParams } from 'react-router-dom';
 
 const MyHome = ({ accessT }) => {
+  const location = useLocation();
+  const username = location.state.name;
+  const birth = location.state.birth;
+  const textcolor = location.state.textcolor;
+  const backgroundcolor = location.state.backgroundcolor;
   const { id } = useParams();
   console.log(id);
-  const location=useLocation();
-  const username=location.state.name;
-  const birth=location.state.birth;
   return (
-    <ShareLayout user={username} bday={birth}>
-      <PartyRoom user={username} bday={birth}/>
+    <ShareLayout user={username} bday={birth} textcolor={textcolor}>
+      <PartyRoom
+        user={username}
+        bday={birth}
+        textcolor={textcolor}
+        backgroundcolor={backgroundcolor}
+      />
       <ToBalance />
       {/*생일 당일이 되면, ToBalancce대신 롤링페이퍼 보기 버튼으로*/}
       <WatchBalance token={accessT} />
