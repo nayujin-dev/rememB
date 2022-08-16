@@ -34,7 +34,7 @@ const InitialSetting = ({ username, birth }) => {
         <img
           className="setting-head__logo"
           src="/img/emoticons/logo/logo3.png"
-          alt='logo'
+          alt="logo"
         />
         <br />
         <span className="setting-head__text">
@@ -57,6 +57,7 @@ const InitialSetting = ({ username, birth }) => {
         <br />
         <span className="setting-body__text">
           생일
+          {/* (00-00 형식) */}
           <br />
         </span>
         <input

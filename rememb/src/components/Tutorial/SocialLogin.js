@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import KaKaoLogin from 'react-kakao-login';
 import { useNavigate } from 'react-router-dom';
 import Naver from './Naver';
+import axios from 'axios';
 
 const Header = styled.div`
   background-color: #ffeff3;
@@ -32,13 +33,42 @@ const NaverDiv = styled.div`
 
 const SocialLogin = () => {
   const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [birth, setBirth] = useState('');
+  const [accessT, setAccessT] = useState('');
+  const [access, setAccess] = useState('');
   const socialLoginSuccess = (res) => {
     console.log('소셜 로그인 성공');
-    navigate('/setting', {
-      state: { res: res },
-    });
-    console.log(res);
+    // navigate('/setting', {
+    //   state: { res: res },
+    // });
+
+    axios
+      .post(
+        'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
+        {
+          email: res.profile.kakao_account.email,
+          username: res.profile.kakao_account.profile.nickname,
+          provider: 'kakao',
+          birth: res.profile.kakao_account.birthday,
+        },
+        {
+          withCredentials: false,
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+        setUsername(res.profile.kakao_account.profile.nickname);
+        setBirth(res.data.response.birthday);
+        navigate('/setting', {
+          state: { username: username, birth: birth },
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
+  // console.log(res);
 
   const socialLoginFail = (res) => {
     console.log('소셜 로그인 실패');
@@ -73,5 +103,4 @@ const SocialLogin = () => {
     </Div>
   );
 };
-
 export default SocialLogin;
