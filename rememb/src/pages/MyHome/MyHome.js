@@ -3,9 +3,11 @@ import PartyRoom from '../../components/CommonHome/PartyRoom';
 import ToBalance from '../../components/MyHome/ToBalance';
 import WatchBalance from '../../components/CommonHome/WatchBalance';
 import ShareLayout from '../../components/CommonHome/ShareLayout';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 const MyHome = ({ accessT }) => {
+  const { id } = useParams();
+  console.log(id);
   const location=useLocation();
   const username=location.state.name;
   const birth=location.state.birth;

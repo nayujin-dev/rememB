@@ -22,6 +22,7 @@ const MainTitle = ({name, bday}) => {
   const birth=dayjs(today.get('year')+"-"+bday);
   if (today.isBefore(birth)){
     setDday(birth.diff(today,'d'));
+    console.log(dday);
   // } else if (today.isSame(birth)){
   //   setDday(0);
   }else{
