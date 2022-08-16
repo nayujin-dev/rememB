@@ -58,7 +58,7 @@ const Setting = ({res}) => {
         console.log(res.data.results.accessToken);
         setAccess(res.data.results.accessToken);
         setUsername(response.data.response.name);
-        setBirth(response.data.response.birthyear+"-"+response.data.response.birthday);
+        setBirth(response.data.response.birthday);
       }).catch(function (error) {
         console.log(error);
       });

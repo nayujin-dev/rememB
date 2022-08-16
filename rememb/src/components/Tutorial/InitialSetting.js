@@ -49,6 +49,7 @@ const InitialSetting = ({ username, birth }) => {
           <br />
         </span>
         <input
+          required
           className="setting-body__input"
           placeholder={username}
           onChange={onChange1}
@@ -61,6 +62,7 @@ const InitialSetting = ({ username, birth }) => {
         <input
           className="setting-body__input"
           placeholder={birth}
+          required
           onChange={onChange2}
         ></input>
         <br />

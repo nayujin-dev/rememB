@@ -6,8 +6,10 @@ import axios from 'axios';
 import ShareLayout from '../../components/CommonHome/ShareLayout';
 import { useLocation } from 'react-router-dom';
 
-const MyHome = ({ res,username,birth,accessT }) => {
-  
+const MyHome = ({ accessT }) => {
+  const location=useLocation();
+  const username=location.state.username;
+  const birth=location.state.birth;
   return (
     <ShareLayout user={username} bday={birth}>
       <PartyRoom user={username} bday={birth}/>
