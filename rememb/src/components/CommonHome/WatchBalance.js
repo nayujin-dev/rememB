@@ -12,7 +12,7 @@ const Btn=styled.div`
   border-radius: 80px;
   background-color: #FFEFF3;
 `;
-const WatchBalance = ({who, token}) => {
+const WatchBalance = ({token}) => {
   const navigate=useNavigate();
   const onClick=()=>{
     navigate('/myParty/seeBalance',{
@@ -20,7 +20,7 @@ const WatchBalance = ({who, token}) => {
     });
   }
   return (
-      <Btn onClick={onClick}>{who}의 밸런스 보기</Btn>
+      <Btn onClick={onClick}>나의 밸런스 보기</Btn>
   );
 };
 
