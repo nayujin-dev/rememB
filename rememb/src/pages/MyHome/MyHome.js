@@ -10,7 +10,7 @@ const MyHome = ({ accessT }) => {
   const username = location.state.name;
   const birth = location.state.birth;
   const textcolor = location.state.textcolor;
-  const backgroundcolor = backgroundcolor.state.backgroundcolor;
+  const backgroundcolor = location.state.backgroundcolor;
   return (
     <ShareLayout user={username} bday={birth} textcolor={textcolor}>
       <PartyRoom
