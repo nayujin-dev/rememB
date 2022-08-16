@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Who=styled.div`
@@ -17,7 +17,10 @@ const Dday=styled.div`
 const MainTitle = ({name, bday}) => {
     // const [name,setName]=useState("멋사");
     // const [bday,setBday]=useState(3);
-
+    useEffect(() => {
+      console.log(name);
+      console.log(bday);
+    }, [name, bday]);
   return (
     <>
       <Who>{name}의 생일</Who>
