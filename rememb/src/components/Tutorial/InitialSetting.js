@@ -20,6 +20,8 @@ const InitialSetting = ({ username, birth }) => {
       state: {
         name: text,
         birth: date,
+        backgroundcolor: color,
+        textcolor: textcolor,
         // 전달한 페이지 변수: 현재 변수
       },
     });
