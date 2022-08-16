@@ -25,7 +25,7 @@ function App() {
       <Route path="/login" element={<Login />}></Route>
       <Route path="/setting" element={<Setting />}></Route>
       {/* 내 페이지 볼 때 */}
-      <Route path="/myParty" element={<Home />}></Route>
+      <Route path="/myParty/:id" element={<Home />}></Route>
       <Route path="/myParty/ansBalance" element={<AnswerBalance />}></Route>
       <Route path="/myParty/seeBalance" element={<SeeBalance />}></Route>
       <Route path="/lettercontent" element={<LetterContent />}></Route>
