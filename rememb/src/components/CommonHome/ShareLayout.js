@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import CommonNav from "./CommonNav";
 import MainTitle from "./MainTitle";
 import ShareBtn from "./ShareBtn";

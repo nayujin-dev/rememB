@@ -75,10 +75,7 @@ const Setting = ({ res }) => {
   useEffect(() => {
     window.location.href.includes('access_token') && getToken();
   }, []);
-  useEffect(() => {
-    setAccessT(access);
-  }, [access]);
-  // const [who,setWho]=useState('');
+
   return (
     <>
       {username === '' ? (

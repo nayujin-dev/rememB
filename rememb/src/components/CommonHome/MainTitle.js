@@ -28,12 +28,6 @@ const MainTitle = ({name, bday}) => {
     const birth2=dayjs(year+"-"+bday);
     setDday(birth2.diff(today,'d'));
   }
-  // if (today.getMonth-month)>=0 
-
-  //   useEffect(() => {
-  //     console.log(name);
-  //     console.log(bday);
-  //   }, [name, bday]);
   return (
     <>
       <Who>{name}의 생일</Who>
