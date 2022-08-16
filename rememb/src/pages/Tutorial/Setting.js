@@ -85,7 +85,7 @@ const Setting = ({ res }) => {
           style={{ width: '30rem', height: '30rem' }}
         />
       ) : (
-        <InitialSetting username={username} birth={birth} />
+        <InitialSetting username={username} birth={birth} access={access} />
       )}
     </>
   );

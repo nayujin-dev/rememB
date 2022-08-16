@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../../style1.css';
 import styled from 'styled-components';
 
-const InitialSetting = ({ username, birth }) => {
+const InitialSetting = ({ username, birth,access }) => {
   const [color, setColor] = useState('#FFEFF3');
   const [textcolor, setTextcolor] = useState('#FE4179');
   const [text, setText] = useState('김멋사'); // 받아온 사용자 이름
@@ -16,7 +16,7 @@ const InitialSetting = ({ username, birth }) => {
   };
   const navigate = useNavigate();
   const setBtn = () => {
-    navigate('/myParty', {
+    navigate(`/myParty/${access}`, {
       state: {
         name: text,
         birth: date,
