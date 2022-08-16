@@ -9,10 +9,8 @@ import { useLocation } from 'react-router-dom';
 const MyHome = ({ res }) => {
   const location = useLocation();
   // const [info,setInfo]=useState('');
-  const [email,setEmail]=useState('');
   const [username,setUsername]=useState('');
   const [birth,setBirth]=useState('');
-  const [provider,setProvider]=useState('');
   const [accessT,setAccessT]=useState('');
   const [access,setAccess]=useState('');
   /* 아래 부분은 로그인후를 위한거라.. 그냥 url에 /myParty를 입력하면 아래부분때문에 오류남! 그래서 코딩할땐 주석처리하고 진행하면될듯!! */

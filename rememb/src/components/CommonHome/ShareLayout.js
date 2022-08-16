@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CommonNav from "./CommonNav";
 import MainTitle from "./MainTitle";
 import ShareBtn from "./ShareBtn";
 
 const ShareLayout=(props, {name, bday})=>{
-
+    useEffect(() => {
+        
+      }, [name, bday]);
     return(
         <>
             <CommonNav/>
