@@ -1,20 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../style1.css';
 import styled from 'styled-components';
 
-const InitialSetting = () => {
+const InitialSetting = ({ username, birth }) => {
   const [color, setColor] = useState('#FFEFF3');
   const [textcolor, setTextcolor] = useState('#FE4179');
-  const [btnActive, setBtnActive] = useState(false);
+  const [text, setText] = useState('김멋사'); // 받아온 사용자 이름
+  const onChange1 = (e) => {
+    setText(e.target.value);
+  };
+  const [date, setDate] = useState('10/16'); // 받아온 사용자 생일
+  const onChange2 = (e) => {
+    setDate(e.target.value);
+  };
   const navigate = useNavigate();
   const setBtn = () => {
-    navigate('');
+    navigate('/myParty', {
+      state: {
+        name: text,
+        birth: date,
+        // 전달한 페이지 변수: 현재 변수
+      },
+    });
   };
+  useEffect(() => {
+    setText(username);
+    setDate(birth);
+  }, [username, birth]);
   return (
     <>
       <div className="setting-head">
-        <img className="setting-head__logo" src="img/emoticons/logo/logo3.png" />
+        <img
+          className="setting-head__logo"
+          src="img/emoticons/logo/logo3.png"
+        />
         <br />
         <span className="setting-head__text">
           가입이 완료되었어요!
@@ -27,13 +47,21 @@ const InitialSetting = () => {
           이름
           <br />
         </span>
-        <input className="setting-body__input" placeholder="김멋사"></input>
+        <input
+          className="setting-body__input"
+          placeholder="김멋사"
+          onChange={onChange1}
+        ></input>
         <br />
         <span className="setting-body__text">
           생일
           <br />
         </span>
-        <input className="setting-body__input" placeholder="10/16"></input>
+        <input
+          className="setting-body__input"
+          placeholder="10/16"
+          onChange={onChange2}
+        ></input>
         <br />
         <span className="setting-body__text text3">
           파티룸 배경 색상
@@ -92,7 +120,7 @@ const InitialSetting = () => {
         </ButtonContainer>
 
         <div className="setting-body__view">
-          <TextPallete textcolor={textcolor}>김멋사의 생일</TextPallete>
+          <TextPallete textcolor={textcolor}>{text}의 생일</TextPallete>
           <Pallete color={color} />
         </div>
       </div>
