@@ -35,36 +35,17 @@ const Naver = () => {
     if (!location.hash) {
       return;
     }
-
-    const token = location.hash.split('=')[1].split('&')[0];
-  };
-
-  const userAccessToken = () => {
-    window.location.href.includes('access_token') && getToken();
-  };
-  const getToken = () => {
-    const token = window.location.href.split('=')[1].split('&')[0];
-    console.log(token);
   };
 
   useEffect(() => {
     initializeNaverLogin();
     //사실 이니셜라이즈만 의미있긴함.. 나중에 클리닝하자~~
-    userAccessToken();
-  }, []);
-
-  useEffect(() => {
-    initializeNaverLogin();
-    userAccessToken();
   }, []);
 
   return (
-    <>
       <div id="naverIdLogin">
-        <LoginButton src="../../../img/balanceIcon/lock.png" />
-        ee
+        <LoginButton src="../../../img/balanceIcon/lock.png" />       
       </div>
-    </>
   );
 };
 
