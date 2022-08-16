@@ -26,9 +26,10 @@ const MainTitle = ({ name, bday, textcolor }) => {
   // } else if (today.isSame(birth)){
   //   setDday(0);
   }else{
-    const year=today.get('year')+1;
-    const birth2=dayjs(year+"-"+bday);
-    setDday(birth2.diff(today,'d'));
+    // const year=today.get('year')+1;
+    // const birth2=dayjs(year+"-"+bday);
+    // setDday(birth2.diff(today,'d'));
+    console.log(today,'실패');
   }
   // if (today.getMonth-month)>=0 
 
