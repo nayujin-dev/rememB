@@ -33,7 +33,8 @@ const InitialSetting = ({ username, birth }) => {
       <div className="setting-head">
         <img
           className="setting-head__logo"
-          src="img/emoticons/logo/logo3.png"
+          src="/img/emoticons/logo/logo3.png"
+          alt='logo'
         />
         <br />
         <span className="setting-head__text">
@@ -49,7 +50,7 @@ const InitialSetting = ({ username, birth }) => {
         </span>
         <input
           className="setting-body__input"
-          placeholder="김멋사"
+          placeholder={username}
           onChange={onChange1}
         ></input>
         <br />
@@ -59,7 +60,7 @@ const InitialSetting = ({ username, birth }) => {
         </span>
         <input
           className="setting-body__input"
-          placeholder="10/16"
+          placeholder={birth}
           onChange={onChange2}
         ></input>
         <br />
