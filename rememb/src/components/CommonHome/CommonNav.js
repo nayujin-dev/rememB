@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
-const CommonNav = () => {
+const CommonNav = ({ name, bday }) => {
   return (
     <>
       {[false].map((expand) => (
@@ -32,6 +32,9 @@ const CommonNav = () => {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
+                  <div>
+                    {name}이름 {bday}생일
+                  </div>
                   <Nav.Link href="/etc/seeRP">롤링페이퍼로 전환하기</Nav.Link>
                   <Nav.Link href="/myParty/seeBalance">
                     내 밸런스게임 보기
