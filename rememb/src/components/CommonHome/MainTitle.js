@@ -17,19 +17,19 @@ const Dday = styled.div`
 `;
 const MainTitle = ({ name, bday, textcolor }) => {
   // const today=new Date();
-  const [dday, setDday] = useState('');
-  const today = dayjs();
-  const birth = dayjs(today.get('year') + '-' + bday);
-  if (today.isBefore(birth)) {
-    setDday(birth.diff(today, 'd'));
-  } else if (today.isSame(birth)) {
+  const [dday,setDday]=useState('');
+  const today=dayjs();
+  const birth=dayjs(today.get('year')+"-"+bday);
+  if (today.isBefore(birth)){
+    setDday(birth.diff(today,'d'));
+  } else if (today.isSame(birth)){
     setDday(0);
-  } else {
-    const year = today.get('year') + 1;
-    const birth2 = dayjs(year + '-' + bday);
-    setDday(birth2.diff(today, 'd'));
+  }else{
+    const year=today.get('year')+1;
+    const birth2=dayjs(year+"-"+bday);
+    setDday(birth2.diff(today,'d'));
   }
-  // if (today.getMonth-month)>=0
+  // if (today.getMonth-month)>=0 
 
   //   useEffect(() => {
   //     console.log(name);

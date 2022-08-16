@@ -38,10 +38,16 @@ const SocialLogin = () => {
   const [accessT, setAccessT] = useState('');
   const [access, setAccess] = useState('');
   const socialLoginSuccess = (res) => {
-    console.log('소셜 로그인 성공');
     // navigate('/setting', {
     //   state: { res: res },
     // });
+    console.log(res);
+    // const b = res.profile.kakao_account.birth.toString();
+    // console.log(b);
+// 
+    // const month = b[0]+'-'+b[1];
+    // const day = b[2]+'-'+b[3];
+    // console.log(day);
 
     axios
       .post(
@@ -50,7 +56,8 @@ const SocialLogin = () => {
           email: res.profile.kakao_account.email,
           username: res.profile.kakao_account.profile.nickname,
           provider: 'kakao',
-          birth: res.profile.kakao_account.birthday,
+          // birth: '1999-'+month+'-'+day,
+          birth: '1999-03-11'
         },
         {
           withCredentials: false,
