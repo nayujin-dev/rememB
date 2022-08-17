@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../../style1.css';
 import styled from 'styled-components';
 
-const InitialSetting = ({ username, birth,id }) => {
+const InitialSetting = ({ username, birth,id,accesstoken }) => {
   const [color, setColor] = useState('#FFEFF3');
   const [textcolor, setTextcolor] = useState('#FE4179');
   const [text, setText] = useState('김멋사'); // 받아온 사용자 이름
@@ -22,6 +22,7 @@ const InitialSetting = ({ username, birth,id }) => {
         birth: date,
         backgroundcolor: color,
         textcolor: textcolor,
+        token: accesstoken,
         // 전달한 페이지 변수: 현재 변수
       },
     });
