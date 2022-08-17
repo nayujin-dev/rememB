@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const PlzBtn = styled.img`
   width: 5rem;
@@ -18,25 +19,24 @@ const PlzBtn = styled.img`
   padding-right: 5rem; */
 `;
 const TitleText = styled.div`
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: 700;
   line-height: 29px;
   color: #ffad72;
 `;
 const NameText = styled.div`
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: 700;
   line-height: 29px;
   color: #787878;
-  margin: 0px 5px;
+  margin: 3px 10px;
 `;
-
 const BirthText = styled.div`
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: 700;
   line-height: 29px;
   color: #c38778;
-  margin: 0px 5px;
+  margin: 3px 10px;
 `;
 
 const Div0 = styled.div`
@@ -48,35 +48,69 @@ const Div0 = styled.div`
 `;
 const Div1 = styled.div`
   // 텍스트 전체 감싼 div
-  margin-top: 8px;
+  margin-top: 3px;
 `;
 const Div2 = styled.div`
   // 이름 생일 감싼 div
   justify-content: space-between;
   display: inline-flex;
-  margin: auto;
+  margin: 1px 2px;
 `;
 
 const Img = styled.img`
-  width: 10rem;
-  height: 16rem;
+  width: 12rem;
+  height: 18rem;
   margin-right: 20px;
 `;
 
-const Text = styled.div``;
+const LinkDiv = styled.div`
+  margin-top: 15rem;
+`;
+const LinkText = styled.div`
+  font-size: 4.5rem;
+  font-weight: 500;
+  line-height: 29px;
+  color: #6c6c6c;
+  margin-bottom: 2rem;
+`;
+
+const FootText = styled.div`
+  font-size: 3rem;
+  margin-bottom: 30rem;
+  color: #6c6c6c;
+`;
+
+const LogoImg = styled.img`
+  width: 12rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 4rem;
+`;
 
 const CommonNav = ({ id }) => {
-  axios.get(
-    `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyroom/${id}/`,
-    {
-      withCredentials: false,
-    }
-  )
-  .then((response) => {
-    console.log(response);
-  }).catch(function (error) {
-    console.log(error);
-  });
+  const navigate = useNavigate();
+  const onClick1 = () => {
+    navigate('/myParty/seeBalance', {
+      state: { id: id },
+    });
+  };
+  const onClick2 = () => {
+    navigate(`/myParty/${id}`);
+    // undifined라고 뜨는데 왤까 ..
+  };
+  axios
+    .get(
+      `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyroom/${id}/`,
+      {
+          withCredentials:false,
+      }
+    )
+    .then((response) => {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   return (
     <>
       {[false].map((expand) => (
@@ -123,11 +157,17 @@ const CommonNav = ({ id }) => {
                         </Div2>
                       </Div1>
                     </Div0>
+                    <LinkDiv>
+                      <LinkText onClick={onClick1}>내 밸런스게임 보기</LinkText>
+                      <LinkText onClick={onClick2}>내 파티룸 가기</LinkText>
+                    </LinkDiv>
                   </Nav>
                 </Offcanvas.Body>
-                <Text href="#">제발돼주세요</Text>
-                {/* </Nav> */}
-                {/* </Offcanvas.Body> */}
+                <LogoImg src="/img/emoticons/logo/logo1.png" />
+                <FootText>
+                  Copyright ©rememB. <br />
+                  All Rights Reserved.
+                </FootText>
               </Navbar.Offcanvas>
             </Container>
           </Navbar>
