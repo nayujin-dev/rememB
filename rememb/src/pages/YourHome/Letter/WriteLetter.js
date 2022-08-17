@@ -131,7 +131,7 @@ const WriteLetter = ({ whichimg }) => {
 
   axios
     .post(
-      'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/letter/<int:userpk>/send/',
+      'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/letter/11/send/',
       {
         content: '안녕',
         imgfolder_no: 4,
