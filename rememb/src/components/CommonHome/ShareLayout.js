@@ -4,7 +4,6 @@ import MainTitle from './MainTitle';
 import ShareBtn from './ShareBtn';
 
 const ShareLayout = (props) => {
-  console.log(props.user);
 
   return (
     <>

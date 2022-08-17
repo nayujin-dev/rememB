@@ -22,14 +22,14 @@ const MainTitle = ({ name, bday, textcolor }) => {
   const birth=dayjs(today.get('year')+"-"+bday);
   if (today.isBefore(birth)){
     setDday(birth.diff(today,'d'));
-    console.log(dday);
+    // console.log(dday);
   // } else if (today.isSame(birth)){
   //   setDday(0);
   }else{
     // const year=today.get('year')+1;
     // const birth2=dayjs(year+"-"+bday);
     // setDday(birth2.diff(today,'d'));
-    console.log(today,'실패');
+    // console.log(today,'실패');
   }
   // if (today.getMonth-month)>=0 
 

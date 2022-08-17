@@ -61,7 +61,6 @@ const Setting = ({ res }) => {
           )
           .then((res) => {
             console.log(res.data);
-            console.log(res.data.results.accessToken);
             setAccess(res.data.results.accessToken);
             setUsername(response.data.response.name);
             setBirth(response.data.response.birthday);

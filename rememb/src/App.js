@@ -30,7 +30,7 @@ function App() {
       <Route path="/myParty/seeBalance" element={<SeeBalance />}></Route>
       <Route path="/lettercontent" element={<LetterContent />}></Route>
       {/* 남의 페이지 볼 때 */}
-      <Route path="/others" element={<YourHome />}></Route>`
+      <Route path="/others/:id" element={<YourHome />}></Route>`
       <Route path="/others/selectimg" element={<SelectImg />}></Route>
       <Route path="/others/writeletter" element={<WriteLetter />}></Route>
       <Route path="/others/sendletter" element={<Pang />}></Route>
