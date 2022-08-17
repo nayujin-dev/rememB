@@ -65,8 +65,8 @@ const Setting = ({ res }) => {
             setAccess(res.data.results.accessToken);
             setUsername(response.data.response.name);
             setBirth(response.data.response.birthday);
-            setId(response.data.response.id);
-            console.log(response.data.response.id);
+            setId(response.data.results.id);
+            console.log(response.data.results.id);
           })
           .catch(function (error) {
             console.log(error);
