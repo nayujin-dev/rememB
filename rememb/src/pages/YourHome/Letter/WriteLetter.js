@@ -131,7 +131,7 @@ const WriteLetter = ({ whichimg }) => {
 
   axios
     .post(
-      'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/letter/<int:userpk>/send/',
+      'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/letter/13/send/',
       {
         body: {
           content: '안녕',
@@ -146,8 +146,8 @@ const WriteLetter = ({ whichimg }) => {
       }
     )
     .then((res) => {
-      console.log(res);
       console.log('post 성공');
+      console.log(res);
     })
     .catch(function (error) {
       console.log(error);
