@@ -48,7 +48,14 @@ const Line = styled.div`
   transform: rotate(90deg);
 `;
 
-const CompoDid = () => {
+const CompoDid = ({
+  user,
+  question_id,
+  answer_id,
+  qcontent,
+  acontent1,
+  acontent2,
+}) => {
   const navigate = useNavigate();
 
   const onClick1 = () => {
@@ -57,15 +64,19 @@ const CompoDid = () => {
   };
   return (
     <>
-      <Question>선물은 자고로 #1</Question>
+      <Question>{qcontent}</Question>
       <MylistAfter onClick={onClick1}>
         <Answer1>
-          실용적
+          {/* 실용적
           <br />
-          이어야 한다
+          이어야 한다 */}
+          {acontent1}
         </Answer1>
         {/* <Line /> */}
-        <Answer2>예뻐야 한다</Answer2>
+        <Answer2>
+          {/* 예뻐야 한다 */}
+          {acontent2}
+        </Answer2>
       </MylistAfter>
     </>
   );
