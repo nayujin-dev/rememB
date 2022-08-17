@@ -40,6 +40,7 @@ const Div = styled.div`
   z-index: 99;
 `;
 const PartyRoom = ({ name, bday, textcolor, id,backgroundcolor,token }) => {
+  const [isDday,setIsDday]=useState(false);
   useEffect(()=>{
     getParty();
   },[]);
@@ -54,6 +55,10 @@ const PartyRoom = ({ name, bday, textcolor, id,backgroundcolor,token }) => {
         // console.log(userData.data.response);
         console.log(response);
         console.log(response.data);
+        console.log(response.data);
+        if (response.data.left_birth<=0){
+          setIsDday(true);
+        }
         // setInfo(response.data.response);
         // setUsername(info.name);
         // setBirth(info.birthyear+'-'+info.birthday);
@@ -67,7 +72,11 @@ const PartyRoom = ({ name, bday, textcolor, id,backgroundcolor,token }) => {
   const navi = useNavigate();
   // const [img,setImg]=useState();
   const onImgClick = (e) => {
-    navi('/lettercontent', { state: { img: e } });
+    if (isDday) {
+      navi('/lettercontent', { state: { img: e } });
+    } else{
+      alert('아직 생일이 되지 않았어요! 생일 당일부터 공개됩니다.');
+    }
   };
   const gift = [
     '/img/emoticons/1/1.png',

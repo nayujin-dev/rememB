@@ -70,7 +70,7 @@ const CommonNav = ({ id }) => {
     `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyroom/${id}/`,
   )
   .then((response) => {
-    console.log(response.data);
+    console.log(response);
   }).catch(function (error) {
     console.log(error);
   });
