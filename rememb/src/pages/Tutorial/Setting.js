@@ -66,6 +66,7 @@ const Setting = ({ res }) => {
             setUsername(response.data.response.name);
             setBirth(response.data.response.birthday);
             setId(response.data.response.id);
+            console.log(response.data.response.id);
           })
           .catch(function (error) {
             console.log(error);
