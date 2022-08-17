@@ -30,6 +30,8 @@ const InitialSetting = ({ username, birth,id,accesstoken }) => {
   useEffect(() => {
     setText(username);
     setDate(birth);
+    console.log(id);
+    console.log(accesstoken);
   }, [username, birth]);
   return (
     <>
