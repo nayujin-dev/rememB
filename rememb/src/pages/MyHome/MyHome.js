@@ -14,7 +14,7 @@ const MyHome = ({ accessT }) => {
   const token=location.state.token;
   const { id } = useParams();
   return (
-    <ShareLayout user={username} bday={birth} textcolor={textcolor}>
+    <ShareLayout user={username} bday={birth} textcolor={textcolor} id={id}>
       <PartyRoom
         user={username}
         id={id}

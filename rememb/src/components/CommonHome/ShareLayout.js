@@ -13,7 +13,7 @@ const ShareLayout = (props) => {
         bday={props.bday}
         textcolor={props.textcolor}
       />
-      <ShareBtn />
+      <ShareBtn id={props.id} />
       <main>{props.children}</main>
     </>
   );
