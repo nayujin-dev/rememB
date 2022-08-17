@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import Layout from '../../components/CommonHome/Layout';
 import axios from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 import CompoNotYet from '../../components/Balance/CompoNotYet';
 import CompoNew from './../../components/Balance/CompoNew';
 import CompoDid from './../../components/Balance/CompoDid';
