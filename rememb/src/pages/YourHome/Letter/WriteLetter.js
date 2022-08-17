@@ -133,21 +133,19 @@ const WriteLetter = ({ whichimg }) => {
     .post(
       'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/letter/<int:userpk>/send/',
       {
-        body: {
-          content: '안녕',
-          imgfolder_no: 4,
-          img_no: 3,
-          position_x: 1,
-          position_y: 4,
-        },
+        content: '안녕',
+        imgfolder_no: 4,
+        img_no: 3,
+        position_x: 1,
+        position_y: 4,
       },
       {
         withCredentials: false,
       }
     )
     .then((res) => {
-      console.log(res);
       console.log('post 성공');
+      console.log(res);
     })
     .catch(function (error) {
       console.log(error);
