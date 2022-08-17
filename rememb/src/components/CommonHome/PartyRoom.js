@@ -59,6 +59,8 @@ const PartyRoom = ({ name, bday, textcolor, id,backgroundcolor,token }) => {
         console.log(response);
         console.log(response.data);
         console.log(response.data);
+        // setDday(response.data.left_birth);
+
         if (response.data.left_birth<=0){
           setIsDday(true);
         }

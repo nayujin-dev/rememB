@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const PlzBtn = styled.img`
   width: 5rem;
@@ -88,6 +89,8 @@ const LogoImg = styled.img`
 `;
 
 const CommonNav = ({ id }) => {
+  const [dday,setDday]=useState('');
+  const [name,setName]=useState('');
   const navigate = useNavigate();
   const onClick1 = () => {
     navigate('/myParty/seeBalance', {
@@ -107,6 +110,8 @@ const CommonNav = ({ id }) => {
     )
     .then((response) => {
       console.log(response);
+      setName(response.data.username);
+      setDday(response.data.left_birth);
     })
     .catch(function (error) {
       console.log(error);
