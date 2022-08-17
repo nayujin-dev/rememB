@@ -32,7 +32,7 @@ const Setting = ({ res }) => {
       .then((response) => {
         // console.log(userData);
         // console.log(userData.data);
-        console.log(userData.data.response);
+        console.log(response.data.response);
         // console.log();
         // setInfo(response.data.response);
         // setUsername(info.name);
