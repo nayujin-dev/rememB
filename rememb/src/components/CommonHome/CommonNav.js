@@ -68,6 +68,9 @@ const Text = styled.div``;
 const CommonNav = ({ id }) => {
   axios.get(
     `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyroom/${id}/`,
+    {
+      withCredentials: false,
+    }
   )
   .then((response) => {
     console.log(response);
