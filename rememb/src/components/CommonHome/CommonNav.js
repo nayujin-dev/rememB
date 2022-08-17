@@ -87,7 +87,7 @@ const LogoImg = styled.img`
   margin-bottom: 4rem;
 `;
 
-const CommonNav = ({ id }) => {
+const CommonNav = ({ id, name, bday }) => {
   const navigate = useNavigate();
   const onClick1 = () => {
     navigate('/myParty/seeBalance', {
@@ -149,8 +149,9 @@ const CommonNav = ({ id }) => {
                       <Div1>
                         <TitleText>나의 정보</TitleText>
                         <Div2>
-                          <NameText>김멋사</NameText>
-                          <BirthText>10/16</BirthText>
+                          {/* 일단 대충 해놨습니다 */}
+                          <NameText>김멋사{name}</NameText>
+                          <BirthText>10/16{bday}</BirthText>
                         </Div2>
                       </Div1>
                     </Div0>

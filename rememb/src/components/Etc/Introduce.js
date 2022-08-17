@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const LogoImg = styled.img`
   margin-top: 5rem;
@@ -26,11 +27,12 @@ const MidText = styled.div`
 `;
 
 const SmallText = styled.div`
-  font-size: 3rem;
-  font-weight: 500;
+  font-size: 3.5rem;
+  font-weight: 400;
   line-height: 29px;
   color: #787878;
   line-height: 20px;
+  margin-bottom: 5rem;
 `;
 
 const InfoText = styled.div`
@@ -49,14 +51,29 @@ const Div1 = styled.div`
   display: inline-flex;
 `;
 
-const Btn = styled.div``;
+const Btn = styled.div`
+  width: 60rem;
+  border-radius: 20px;
+  background-color: #ffc1d0;
+  height: 8rem;
+  margin: auto;
+  margin-top: 10rem;
+  font-size: 4rem;
+  font-weight: 500;
+  line-height: 29px;
+  color: #787878;
+`;
 
 const Introduce = () => {
+  const navigate = useNavigate();
+  const onClick = () => {
+    navigate('/tutorial');
+  };
   return (
     <>
       <h1
         style={{
-          fontSize: '7rem',
+          fontSize: '7.5rem',
           color: '#3A3A3A',
           fontStyle: 'normal',
           fontWeight: '700',
@@ -77,7 +94,7 @@ const Introduce = () => {
       </SmallText>
       <MidText>Team</MidText>
       <SmallText>
-        멋쟁이사자처럼 10기
+        숙명여자대학교 멋쟁이사자처럼 10기
         <br />
         team <span style={{ color: 'black' }}>rememB</span>
       </SmallText>
@@ -107,6 +124,7 @@ const Introduce = () => {
           박소윤
         </InfoText>
       </Div1>
+      <Btn onClick={onClick}>rememB 사이트 구경하기</Btn>
     </>
   );
 };
