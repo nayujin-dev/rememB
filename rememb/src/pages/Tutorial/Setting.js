@@ -80,11 +80,16 @@ const Setting = ({ res }) => {
   return (
     <>
       {username === '' ? (
-        <img
-          src="/img/pangLogo.png"
-          alt="loading"
-          style={{ width: '30rem', height: '30rem' }}
+        <>
+           <img
+            src="/img/pangLogo.png"
+            alt="loading"
+            style={{ width: '30rem', height: '30rem', textAlign:'center', justifyContent:'center'}}
         />
+        <div style={{fontsize:'6rem', textAlign:'center'}}>
+          로딩 중입니다
+        </div>
+        </>
       ) : (
         <InitialSetting username={username} birth={birth} accesstoken={access} id={id}/>
       )}
