@@ -5,7 +5,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import CompoNotYet from '../../components/Balance/CompoNotYet';
 import CompoNew from './../../components/Balance/CompoNew';
 import CompoDid from './../../components/Balance/CompoDid';
-import SampleNav from '../../components/Etc/SampleNav';
 
 const SeeBalance = () => {
   const navigate = useNavigate();
