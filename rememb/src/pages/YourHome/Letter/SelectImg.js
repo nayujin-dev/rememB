@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import Img from "../../../components/YourHome/Img";
 import Layout from "../../../components/CommonHome/Layout";
 
@@ -58,7 +58,8 @@ const Btn=styled.div`
 const SelectImg = () => {
   const list=[0,1,2,3,4,5,6,7,8];
   const [whatTab,setWhatTab]=useState(0);
-  
+  const location=useLocation();
+  const id=location.state.id;
 /*  //이미지 파일 세팅
     //return 문에서 map쓸때 key값을 유니크하게 주고싶었는데..
     아래 코드 이용하면 뭔가 될거같아서 일단 주석처리해놈 ㅎㅎ
@@ -108,7 +109,7 @@ const SelectImg = () => {
     }
     else{
        navigate('/others/writeletter',{
-        state:{whichimg:selectNum},
+        state:{whichimg:selectNum,id:id},
       });
     }
  

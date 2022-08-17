@@ -116,22 +116,9 @@ const WriteLetter = ({ whichimg }) => {
     }
   };
   const onBtnClick = () => {
-    // console.log(letter);
-    // console.log(from);
-
-    navigate('/others/sendletter', {
-      // state:{from:from, content:letter},
-      state: { img: img },
-    });
-  };
-
-  const location = useLocation();
-  whichimg = location.state.whichimg;
-  const img = '/img/emoticons/' + whichimg[0] + '/' + whichimg[1] + '.png';
-
-  axios
+    axios
     .post(
-      'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/letter/13/send/',
+      `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/letter/${id}/send/`,
       {
         body: {
           content: '안녕',
@@ -152,6 +139,18 @@ const WriteLetter = ({ whichimg }) => {
     .catch(function (error) {
       console.log(error);
     });
+    navigate('/others/sendletter', {
+      // state:{from:from, content:letter},
+      state: { img: img },
+    });
+  };
+
+  const location = useLocation();
+  whichimg = location.state.whichimg;
+  const id=location.state.id;
+  const img = '/img/emoticons/' + whichimg[0] + '/' + whichimg[1] + '.png';
+
+
   return (
     <Layout>
       <Letterback>

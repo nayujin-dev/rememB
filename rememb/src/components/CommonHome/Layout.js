@@ -6,8 +6,8 @@ const Layout=(props)=>{
 
     return(
         <>
-            <CommonNav/>
-            <MainTitle/>
+            <CommonNav id={props.id}/>
+            <MainTitle id={props.id}/>
             <main>
                 {props.children}
             </main>

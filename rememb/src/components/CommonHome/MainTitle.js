@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import dayjs from 'dayjs';
-
+import axios from 'axios';
 const Who = styled.div`
   margin-top: 12rem;
   font-size: 9rem;
@@ -15,28 +14,21 @@ const Dday = styled.div`
   font-weight: 400;
   font-size: 6rem;
 `;
-const MainTitle = ({ name, bday, textcolor }) => {
+const MainTitle = ({ id, textcolor }) => {
   // const today=new Date();
   const [dday,setDday]=useState('');
-  const today=dayjs();
-  const birth=dayjs(today.get('year')+"-"+bday);
-  if (today.isBefore(birth)){
-    setDday(birth.diff(today,'d'));
-    // console.log(dday);
-  // } else if (today.isSame(birth)){
-  //   setDday(0);
-  }else{
-    // const year=today.get('year')+1;
-    // const birth2=dayjs(year+"-"+bday);
-    // setDday(birth2.diff(today,'d'));
-    // console.log(today,'실패');
-  }
-  // if (today.getMonth-month)>=0 
-
-  //   useEffect(() => {
-  //     console.log(name);
-  //     console.log(bday);
-  //   }, [name, bday]);
+  const [name,setName]=useState('');
+  axios.get(
+    `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyroom/${id}/`,
+  )
+  .then((response) => {
+    console.log(response.data);
+    setName(response.data.response.username);
+    setDday(response.data.response.left_birth);
+  }).catch(function (error) {
+    console.log(error);
+  });
+  
   return (
     <>
       <Who textcolor={textcolor}>{name}의 생일</Who>

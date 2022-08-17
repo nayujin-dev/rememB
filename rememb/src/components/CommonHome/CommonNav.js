@@ -1,3 +1,4 @@
+import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -64,7 +65,15 @@ const Img = styled.img`
 
 const Text = styled.div``;
 
-const CommonNav = ({ name, bday }) => {
+const CommonNav = ({ id }) => {
+  axios.get(
+    `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyroom/${id}/`,
+  )
+  .then((response) => {
+    console.log(response.data);
+  }).catch(function (error) {
+    console.log(error);
+  });
   return (
     <>
       {[false].map((expand) => (

@@ -46,7 +46,7 @@ const PartyRoom = ({ name, bday, textcolor, id,backgroundcolor,token }) => {
   const getParty = () => {
     const userData = axios
       .get(
-        `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyRoom/${id}/`,
+        `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyroom/${id}/`,
       )
       .then((response) => {
         // console.log(userData);

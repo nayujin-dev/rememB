@@ -11,10 +11,10 @@ const Btn=styled.div`
   border-radius: 80px;
   background-color: #FFEFF3;
 `;
-const ToCeleb = () => {
+const ToCeleb = ({id}) => {
   const navigate=useNavigate();
   const onClick=()=>{
-    navigate('/others/selectimg');
+    navigate('/others/selectimg',{state:{id:id}});
   }
   return (
     <>
