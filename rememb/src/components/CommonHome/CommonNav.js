@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const PlzBtn = styled.img`
   width: 5rem;
@@ -87,7 +88,13 @@ const LogoImg = styled.img`
   margin-bottom: 4rem;
 `;
 
+<<<<<<< HEAD
 const CommonNav = ({ id, name, bday }) => {
+=======
+const CommonNav = ({ id }) => {
+  const [dday,setDday]=useState('');
+  const [name,setName]=useState('');
+>>>>>>> develop
   const navigate = useNavigate();
   const onClick1 = () => {
     navigate('/myParty/seeBalance', {
@@ -100,10 +107,15 @@ const CommonNav = ({ id, name, bday }) => {
   };
   axios
     .get(
-      `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyroom/${id}/`
+      `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyroom/${id}/`,
+      // {
+      //     withCredentials:false,
+      // }
     )
     .then((response) => {
       console.log(response);
+      setName(response.data.username);
+      setDday(response.data.left_birth);
     })
     .catch(function (error) {
       console.log(error);
