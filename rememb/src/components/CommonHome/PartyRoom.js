@@ -47,13 +47,6 @@ const PartyRoom = ({ name, bday, textcolor, id,backgroundcolor,token }) => {
     const userData = axios
       .get(
         `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyRoom/${id}/`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Access-Control-Allow-Origin': `${window.location.href}`,
-            'Access-Control-Allow-Credentials': true,
-          },
-        }
       )
       .then((response) => {
         // console.log(userData);

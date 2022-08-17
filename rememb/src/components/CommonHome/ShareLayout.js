@@ -4,7 +4,6 @@ import MainTitle from './MainTitle';
 import ShareBtn from './ShareBtn';
 
 const ShareLayout = (props) => {
-  console.log(props.user);
 
   return (
     <>
@@ -14,7 +13,7 @@ const ShareLayout = (props) => {
         bday={props.bday}
         textcolor={props.textcolor}
       />
-      <ShareBtn />
+      <ShareBtn id={props.id} />
       <main>{props.children}</main>
     </>
   );
