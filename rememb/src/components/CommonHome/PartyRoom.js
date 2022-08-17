@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
 import Slider from 'react-slick';
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
 const BackImg = styled.div`
   margin: 7rem 10rem;
   padding: 7rem;
@@ -39,7 +39,38 @@ const Div = styled.div`
   top: 45%;
   z-index: 99;
 `;
-const PartyRoom = ({ name, bday, textcolor, backgroundcolor }) => {
+const PartyRoom = ({ name, bday, textcolor, id,backgroundcolor,token }) => {
+  useEffect(()=>{
+    getParty();
+  },[]);
+  const getParty = () => {
+    const userData = axios
+      .get(
+        `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyRoom/${id}/`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Access-Control-Allow-Origin': `${window.location.href}`,
+            'Access-Control-Allow-Credentials': true,
+          },
+        }
+      )
+      .then((response) => {
+        // console.log(userData);
+        // console.log(userData.data);
+        // console.log(userData.data.response);
+        console.log(response);
+        console.log(response.data);
+        // setInfo(response.data.response);
+        // setUsername(info.name);
+        // setBirth(info.birthyear+'-'+info.birthday);
+        // setEmail(info.email);
+        
+      }).catch(function (error) {
+        console.log(error);
+      });;
+  };
+  
   const navi = useNavigate();
   // const [img,setImg]=useState();
   const onImgClick = (e) => {

@@ -8,7 +8,7 @@ const Setting = ({ res }) => {
   // const [info,setInfo]=useState('');
   const [username, setUsername] = useState('');
   const [birth, setBirth] = useState('');
-  const [accessT, setAccessT] = useState('');
+  const [id, setId] = useState('');
   const [access, setAccess] = useState('');
   /* 아래 부분은 로그인후를 위한거라.. 그냥 url에 /myParty를 입력하면 아래부분때문에 오류남! 그래서 코딩할땐 주석처리하고 진행하면될듯!! */
   if (!window.location.href.includes('access_token')) {
@@ -65,6 +65,7 @@ const Setting = ({ res }) => {
             setAccess(res.data.results.accessToken);
             setUsername(response.data.response.name);
             setBirth(response.data.response.birthday);
+            setId(response.data.response.id);
           })
           .catch(function (error) {
             console.log(error);
@@ -85,7 +86,7 @@ const Setting = ({ res }) => {
           style={{ width: '30rem', height: '30rem' }}
         />
       ) : (
-        <InitialSetting username={username} birth={birth} id={access} />
+        <InitialSetting username={username} birth={birth} accesstoken={access} id={id}/>
       )}
     </>
   );
