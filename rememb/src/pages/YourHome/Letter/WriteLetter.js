@@ -135,8 +135,10 @@ const WriteLetter = ({ whichimg }) => {
       {
         body: {
           content: '안녕',
-          imgfolder_no: '4',
-          img_no: '3',
+          imgfolder_no: 4,
+          img_no: 3,
+          position_x: 1,
+          position_y: 4,
         },
       },
       {
