@@ -13,7 +13,15 @@ const BackImg = styled.div`
   border-radius: 30px;
   height: 50vh;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 15rem);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  /* grid-template: repeat(4) / repeat(4);
+  grid-auto-flow: column;
+  grid-template-rows: 4;
+  grid-template-columns: 4;
+  grid-row-start: 1;
+  grid-column-start: 1; */
+  /* grid-template-columns: repeat(auto-fill, 15rem); */
   grid-gap: 5vh 1rem;
 
   align-items: center; /* 수직 가운데 정렬 */
@@ -39,25 +47,23 @@ const Div = styled.div`
   top: 45%;
   z-index: 99;
 `;
-const PartyRoom = ({ id,token }) => {
-  const [isDday,setIsDday]=useState(false);
-  const [letterId,setLetterId]=useState([]);
-  const [color,setColor]=useState('#FFEFF3')
-  const[showlist,setShowlist]=useState(false);
-  useEffect(()=>{
+const PartyRoom = ({ id, token }) => {
+  const [isDday, setIsDday] = useState(false);
+  const [letterId, setLetterId] = useState([]);
+  const [color, setColor] = useState('#FFEFF3');
+  const [showlist, setShowlist] = useState(false);
+  useEffect(() => {
     getParty();
-  },[]);
+  }, []);
   const getParty = () => {
     axios
-      .get(
-        `http://43.200.193.74:8000/partyroom/${id}/`,
-      )
+      .get(`http://43.200.193.74:8000/partyroom/${id}/`)
       .then((response) => {
         console.log(response.data.letters);
         // console.log(response.data);
         setColor(response.data.background);
         setLetterId(response.data.letters);
-        
+
         setShowlist(true);
         console.log(letterId);
         console.log(letterId[0]);
@@ -66,25 +72,27 @@ const PartyRoom = ({ id,token }) => {
 
         // }
         // ))
-        if (response.data.left_birth<=0){
+        if (response.data.left_birth <= 0) {
           setIsDday(true);
         }
         // setInfo(response.data.response);
         // setUsername(info.name);
         // setBirth(info.birthyear+'-'+info.birthday);
         // setEmail(info.email);
-        
-      }).catch(function (error) {
+      })
+      .catch(function (error) {
         console.log(error);
       });
   };
-  
+
   const navi = useNavigate();
   // const [img,setImg]=useState();
   const onImgClick = (e) => {
     if (isDday) {
-      navi(`/lettercontent/${id}/${e.target.value}`, { state: { token: token, letterpk:e.target.value,id:id } });
-    } else{
+      navi(`/lettercontent/${id}/${e.target.value}`, {
+        state: { token: token, letterpk: e.target.value, id: id },
+      });
+    } else {
       alert('아직 생일이 되지 않았어요! 생일 당일부터 공개됩니다.');
     }
   };
@@ -143,59 +151,91 @@ const PartyRoom = ({ id,token }) => {
   return (
     <Slider style={{ position: 'relative' }} {...settings}>
       <>
-      <BackImg backgroundcolor={color}>
-          {showlist&&
+        <BackImg backgroundcolor={color}>
+          {showlist &&
             letterId.map((letter) => (
-            <>
-              <Each onClick={() => onImgClick(letter.id)}>
-                <Img src={"/img/emoticons/"+letter.imgfolder_no+"/"+letter.img_no+".png"} alt="letterId" />
-                <span>{letter.letter_from}</span>
-              </Each>
-            </>
-          ))
-          }
+              <>
+                <Each onClick={() => onImgClick(letter.id)}>
+                  <Img
+                    src={
+                      '/img/emoticons/' +
+                      letter.imgfolder_no +
+                      '/' +
+                      letter.img_no +
+                      '.png'
+                    }
+                    alt="letterId"
+                  />
+                  <span>{letter.letter_from}</span>
+                </Each>
+              </>
+            ))}
         </BackImg>
       </>
       <>
         <BackImg backgroundcolor={color}>
-          {showlist&&
+          {showlist &&
             letterId.map((letter) => (
-            <>
-              <Each onClick={() => onImgClick(letter.id)}>
-                <Img src={"/img/emoticons/"+letter.imgfolder_no+"/"+letter.img_no+".png"} alt="letterId" />
-                <span>{letter.letter_from}</span>
-              </Each>
-            </>
-          ))
-          }
+              <>
+                <Each onClick={() => onImgClick(letter.id)}>
+                  <Img
+                    src={
+                      '/img/emoticons/' +
+                      letter.imgfolder_no +
+                      '/' +
+                      letter.img_no +
+                      '.png'
+                    }
+                    alt="letterId"
+                  />
+                  <span>{letter.letter_from}</span>
+                </Each>
+              </>
+            ))}
         </BackImg>
       </>
       <>
         <BackImg backgroundcolor={color}>
-          {showlist&&
+          {showlist &&
             letterId.map((letter) => (
-            <>
-              <Each onClick={() => onImgClick(letter.id)}>
-                <Img src={"/img/emoticons/"+letter.imgfolder_no+"/"+letter.img_no+".png"} alt="letterId" />
-                <span>{letter.letter_from}</span>
-              </Each>
-            </>
-          ))
-          }
+              <>
+                <Each onClick={() => onImgClick(letter.id)}>
+                  <Img
+                    src={
+                      '/img/emoticons/' +
+                      letter.imgfolder_no +
+                      '/' +
+                      letter.img_no +
+                      '.png'
+                    }
+                    alt="letterId"
+                  />
+                  <span>{letter.letter_from}</span>
+                </Each>
+              </>
+            ))}
         </BackImg>
       </>
       <>
         <BackImg backgroundcolor={color}>
-          {showlist&&
+          {showlist &&
             letterId.map((letter) => (
-            <>
-              <Each onClick={() => onImgClick(letter.id)}>
-                <Img src={"/img/emoticons/"+letter.imgfolder_no+"/"+letter.img_no+".png"} alt="letterId" />
-                <span>{letter.letter_from}</span>
-              </Each>
-            </>
-          ))
-          }
+              <>
+                <Each onClick={() => onImgClick(letter.id)}>
+                  <Img
+                    src={
+                      '/img/emoticons/' +
+                      letter.imgfolder_no +
+                      '/' +
+                      letter.img_no +
+                      '.png'
+                    }
+                    alt="letterId"
+                  />
+                  <span>{letter.letter_from}</span>
+                </Each>
+              </>
+            ))}
         </BackImg>
       </>
     </Slider>

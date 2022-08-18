@@ -10,20 +10,17 @@ import Compo from '../../components/Balance/Compo';
 
 const SeeBalance = () => {
   const navigate = useNavigate();
-  const [list,setList]=useState([]);
-  const loca=useLocation();
-  const id=loca.state.id;
-  const token=loca.state.token;
+  const [list, setList] = useState([]);
+  const loca = useLocation();
+  const id = loca.state.id;
+  const token = loca.state.token;
   const getToken = () => {
     axios
-      .get(
-        `http://43.200.193.74:8000/balance/mylist/${id}/`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      .get(`http://43.200.193.74:8000/balance/mylist/${id}/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         setList(response.data);
         console.log(response);
@@ -52,7 +49,7 @@ const SeeBalance = () => {
       });
   };
   useEffect(() => {
-    id!==""&&getToken();
+    id !== '' && getToken();
   }, [id]);
 
   return (

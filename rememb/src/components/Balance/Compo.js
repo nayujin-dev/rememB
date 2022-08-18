@@ -112,7 +112,7 @@ const Compo = ({ id, token }) => {
   const navigate = useNavigate();
   axios
     .get(
-      `http://43.200.193.74:8000/balance/mylist/<int:userpk>`
+      `http://43.200.193.74:8000/balance/mylist/${id}`
       // {
       //     withCredentials:false,
       // }
@@ -133,9 +133,7 @@ const Compo = ({ id, token }) => {
     .catch(function (error) {
       console.log(error);
     });
-  return {
-    // CompoNotYet();
-  };
+  return {};
 };
 
 function CompoDid() {
@@ -150,17 +148,16 @@ function CompoDid() {
   const [qcontent, setQcontent] = useState('');
   const [acontent1, setAcontent1] = useState('');
   const [acontent2, setAcontent2] = useState('');
-  return (
-    <>
-      <Question>{qcontent}</Question>
-      <MylistAfter
-      // onClick={onClick1}
-      >
-        <AnswerDid1>{acontent1}</AnswerDid1>
-        <AnswerDid2>{acontent2}</AnswerDid2>
-      </MylistAfter>
-    </>
-  );
+
+  <>
+    <Question>{qcontent}</Question>
+    <MylistAfter
+    // onClick={onClick1}
+    >
+      <AnswerDid1>{acontent1}</AnswerDid1>
+      <AnswerDid2>{acontent2}</AnswerDid2>
+    </MylistAfter>
+  </>;
 }
 
 function CompoNew() {
@@ -187,14 +184,13 @@ function CompoNotYet() {
   const [qcontent, setQcontent] = useState('');
   const [acontent1, setAcontent1] = useState('');
   const [acontent2, setAcontent2] = useState('');
-  return (
-    <>
-      <Question>D-{date} 공개</Question>
-      <MylistBefore>
-        <Img src="../../../img/balanceIcon/lock.png" />
-      </MylistBefore>
-    </>
-  );
+
+  <>
+    <Question>D-{date} 공개</Question>
+    <MylistBefore>
+      <Img src="../../../img/balanceIcon/lock.png" />
+    </MylistBefore>
+  </>;
 }
 
 export default Compo;
