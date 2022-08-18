@@ -109,7 +109,7 @@ const Compo = ({ id,isDone, token, question_id, a1content,a2content,content }) =
   // const[d7,setD7]=useState([]);
   // const[d7,setD7]=useState([]);
   // const [check, setCheck] = useState('0');
-  const [secret,setSecret]=useState(isDone);
+  // const [secret,setSecret]=useState(isDone);
   const navigate = useNavigate();
   // axios
   //   .get(
@@ -143,13 +143,13 @@ const Compo = ({ id,isDone, token, question_id, a1content,a2content,content }) =
   return(
    <>
       <Question>{content}</Question>
-      {isDone>=0?(
+      {isDone-question_id>=0?(
         <>
           <MylistAfter onClick={onClick1}>
             <AnswerDid1>{a1content}</AnswerDid1>
             <AnswerDid2>{a2content}</AnswerDid2>
           </MylistAfter>
-          {setSecret(secret-question_id)}
+          {/* {isDone(secret-question_id)} */}
         </>
       ):(
         <MylistAfter onClick={onClick2}

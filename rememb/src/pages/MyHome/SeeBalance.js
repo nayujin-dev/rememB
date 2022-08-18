@@ -11,7 +11,7 @@ import Compo from '../../components/Balance/Compo';
 const SeeBalance = () => {
   const navigate = useNavigate();
   const [list, setList] = useState([]);
-  const [done, setDone]=useState();
+  const [done, setDone]=useState(0);
   const [doneList, setDoneList]=useState([]);
   const loca = useLocation();
   const id = loca.state.id;
