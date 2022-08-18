@@ -31,18 +31,19 @@ const DivPre = styled.div`
   position: absolute;
   left: 0rem;
   top: 45%;
-  z-letter: 99;
+  z-index: 99;
 `;
 const Div = styled.div`
   position: absolute;
   right: 10rem;
   top: 45%;
-  z-letter: 99;
+  z-index: 99;
 `;
 const PartyRoom = ({ id,token }) => {
   const [isDday,setIsDday]=useState(false);
-  const [letterId,setLetterId]=useState(false);
+  const [letterId,setLetterId]=useState([]);
   const [color,setColor]=useState('#FFEFF3')
+  const[showlist,setShowlist]=useState(false);
   useEffect(()=>{
     getParty();
   },[]);
@@ -56,6 +57,7 @@ const PartyRoom = ({ id,token }) => {
         // console.log(response.data);
         setColor(response.data.background);
         setLetterId(response.data.letters);
+        setShowlist(true);
         // response.data.letters.map((letter) => (
         // for (var i=0; i<letterId.length; i++){
 
@@ -138,51 +140,59 @@ const PartyRoom = ({ id,token }) => {
   return (
     <Slider style={{ position: 'relative' }} {...settings}>
       <>
-        <BackImg backgroundcolor={color}>
-          {letterId.map((letter) => (
+      <BackImg backgroundcolor={color}>
+          {setShowlist&&
+            gift.map((letter) => (
             <>
               <Each onClick={() => onImgClick(letter[1][0])}>
                 <Img src={"/img/emoticons/"+letter[1][2]+"/"+letter[1][1]+".png"} alt="gift" />
                 <span>{letter[1][3]}</span>
               </Each>
             </>
-          ))}
+          ))
+          }
         </BackImg>
       </>
       <>
         <BackImg backgroundcolor={color}>
-          {gift.map((letter) => (
+          {setShowlist&&
+            gift.map((letter) => (
             <>
               <Each onClick={() => onImgClick(letter[1][0])}>
                 <Img src={"/img/emoticons/"+letter[1][2]+"/"+letter[1][1]+".png"} alt="gift" />
                 <span>{letter[1][3]}</span>
               </Each>
             </>
-          ))}
+          ))
+          }
         </BackImg>
       </>
       <>
-        <BackImg>
-          {gift.map((letter) => (
+        <BackImg backgroundcolor={color}>
+          {setShowlist&&
+            gift.map((letter) => (
             <>
               <Each onClick={() => onImgClick(letter[1][0])}>
-              <Img src={"/img/emoticons/"+letter[1][2]+"/"+letter[1][1]+".png"} alt="gift" />
+                <Img src={"/img/emoticons/"+letter[1][2]+"/"+letter[1][1]+".png"} alt="gift" />
                 <span>{letter[1][3]}</span>
               </Each>
             </>
-          ))}
+          ))
+          }
         </BackImg>
       </>
       <>
-        <BackImg>
-          {gift.map((letter) => (
+        <BackImg backgroundcolor={color}>
+          {setShowlist&&
+            gift.map((letter) => (
             <>
               <Each onClick={() => onImgClick(letter[1][0])}>
-              <Img src={"/img/emoticons/"+letter[1][2]+"/"+letter[1][1]+".png"} alt="gift" />
+                <Img src={"/img/emoticons/"+letter[1][2]+"/"+letter[1][1]+".png"} alt="gift" />
                 <span>{letter[1][3]}</span>
               </Each>
             </>
-          ))}
+          ))
+          }
         </BackImg>
       </>
     </Slider>
