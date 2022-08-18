@@ -88,56 +88,58 @@ const LogoImg = styled.img`
   margin-bottom: 4rem;
 `;
 
-const CommonNav = ({ id,token }) => {
-    const [dday, setDday] = useState('');
-    const [name, setName] = useState('');
-    const [isLoggedin,setIsLoggedin]=useState(false);
-    const navigate = useNavigate();
-    const isLogin=()=>{
-      if (token===""){
-        setIsLoggedin(false);
-      }else{
-        getUser();
-        setIsLoggedin(true);
-      }
+const CommonNav = ({ id, token }) => {
+  const [dday, setDday] = useState('');
+  const [name, setName] = useState('');
+  const [isLoggedin, setIsLoggedin] = useState(false);
+  const navigate = useNavigate();
+  const isLogin = () => {
+    if (token === '') {
+      setIsLoggedin(false);
+    } else {
+      getUser();
+      setIsLoggedin(true);
     }
-    const getUser=()=>{
-      axios
-      .get(
-        `http://43.200.193.74:8000/user/mypage/${id}/`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+  };
+  const getUser = () => {
+    axios
+      .get(`http://43.200.193.74:8000/user/mypage/${id}/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         console.log(response);
         setName(response.data.username);
         setDday(response.data.birth);
+        // var workList= data.split('.');
+        // var workList= (data||'').split('.');
         const mam = dday.split('-')[1] + '/' + dday.split('-')[2];
+        // const dad = (dday || '/').split('-');
+        // const waw = dad.substr(4, 7);
+        const wow = mam.substr(4, 7);
         setDday(mam);
       })
       .catch(function (error) {
         console.log(error);
       });
-    }
-    const onClick1 = () => {
-      navigate('/myParty/seeBalance', {
-        state: { id: id,token:token },
-      });
-    };
-    const onClick2 = () => {
-      navigate(`/myParty/${id}`,{state:{token:token}});
-      console.log(id);
-      // undifined라고 뜨는데 왤까 ..
-    };
-    useEffect(()=>{
-      isLogin();
-    },[]);
-    return (
-      <>
-      {isLoggedin &&  
+  };
+  const onClick1 = () => {
+    navigate('/myParty/seeBalance', {
+      state: { id: id, token: token },
+    });
+  };
+  const onClick2 = () => {
+    navigate(`/myParty/${id}`, { state: { token: token } });
+    console.log(id);
+    // undifined라고 뜨는데 왤까 ..
+  };
+  useEffect(() => {
+    isLogin();
+  }, []);
+  return (
+    <>
+      {isLoggedin &&
         [false].map((expand) => (
           <>
             <PlzBtn src="/img/navbutton.png" />
@@ -200,10 +202,8 @@ const CommonNav = ({ id,token }) => {
               </Container>
             </Navbar>
           </>
-        ))
-      }
-      </>
-    );
-
+        ))}
+    </>
+  );
 };
 export default CommonNav;
