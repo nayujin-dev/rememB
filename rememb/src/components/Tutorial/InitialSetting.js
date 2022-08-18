@@ -17,14 +17,14 @@ const InitialSetting = ({ username, email,social }) => {
   };
   const [date, setDate] = useState(''); // 받아온 사용자 생일
   const onChange2 = (e) => {
-    setDate(e.target.value);
+    setDate(e.target.value.toString());
+    console.log(typeof(date));
   };
   const navigate = useNavigate();
   const setBtn = () => {
     if (date.length<=3){
       alert('숫자 네자리 형식으로 입력해주세요');
     }else{
-      setDate(""+date);
       axios
         .post(
           'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
