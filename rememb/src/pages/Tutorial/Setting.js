@@ -14,7 +14,7 @@ const Setting = () => {
     if (!window.location.href.includes('access_token')) {
       const res = location.state.res;
       setUsername(res.profile.kakao_account.profile.nickname);
-      setBirth(res.data.response.birthday);
+      setBirth(res.profile.kakao_account.birthday);
       setEmail(res.profile.kakao_account.email);
       setSocial('kakao');
     }
@@ -22,7 +22,7 @@ const Setting = () => {
 
   const getToken = () => {
     const token = window.location.href.split('=')[1].split('&')[0];
-    const userData = axios
+    axios
       .get(
         'https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/nid/me',
         {
