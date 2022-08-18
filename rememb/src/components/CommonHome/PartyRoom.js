@@ -49,7 +49,7 @@ const PartyRoom = ({ id,token }) => {
   const getParty = () => {
     const userData = axios
       .get(
-        `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyroom/${id}/`,
+        `http://43.200.193.74:8000/partyroom/${id}/`,
         // {
         //   withCredentials: false,
         // }

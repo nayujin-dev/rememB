@@ -16,7 +16,7 @@ const SeeBalance = ({ id, token }) => {
   const getToken = () => {
     const userData = axios
       .get(
-        'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/balance/mylist/15/',
+        'http://43.200.193.74:8000/balance/mylist/15/',
         {
           headers: {
             // Authorization: `Bearer ${token}`,

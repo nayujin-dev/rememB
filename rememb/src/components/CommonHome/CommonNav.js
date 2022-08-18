@@ -105,7 +105,7 @@ const CommonNav = ({ id,token }) => {
     useEffect(()=>{
       axios
       .get(
-        `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/mypage/${id}/`,
+        `http://43.200.193.74:8000/user/mypage/${id}/`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

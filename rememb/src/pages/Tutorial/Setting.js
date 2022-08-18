@@ -22,7 +22,7 @@ const Setting = () => {
     const token = window.location.href.split('=')[1].split('&')[0];
     axios
       .get(
-        'https://cors-anywhere.herokuapp.com/https://openapi.naver.com/v1/nid/me',
+        'https://openapi.naver.com/v1/nid/me',
         {
           headers: {
             Authorization: `Bearer ${token}`,

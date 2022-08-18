@@ -112,7 +112,7 @@ const Compo = ({ id, token }) => {
   const navigate = useNavigate();
   axios
     .get(
-      `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/balance/mylist/<int:userpk>`
+      `http://43.200.193.74:8000/balance/mylist/<int:userpk>`
       // {
       //     withCredentials:false,
       // }

@@ -25,7 +25,7 @@ const InitialSetting = ({ username, email,social }) => {
     }else{
       axios
         .post(
-          'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
+          'http://43.200.193.74:8000/user/signin/',
           {
             email: email,
             username: text,

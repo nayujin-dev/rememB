@@ -21,7 +21,7 @@ const MainTitle = ({ id }) => {
   const [Tcolor,setTColor]=useState('#FE4179');
   useEffect(()=>{
     axios.get(
-      `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyroom/${id}/`,
+      `http://43.200.193.74:8000/partyroom/${id}/`,
       // {
       //   withCredentials: false,
       // }

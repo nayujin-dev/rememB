@@ -55,7 +55,7 @@ const LetterContent=()=>{
     }
     useEffect(()=>{
         axios.get(
-          `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/letter/${letterpk}/`,
+          `http://43.200.193.74:8000/letter/${letterpk}/`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -80,7 +80,7 @@ const LetterContent=()=>{
       },[]);
       useEffect(()=>{
         axios.get(
-          `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyroom/${id}/`,
+          `http://43.200.193.74:8000/partyroom/${id}/`,
           // {
           //   withCredentials: false,
           // }
