@@ -88,26 +88,26 @@ const PartyRoom = ({ id,token }) => {
       alert('아직 생일이 되지 않았어요! 생일 당일부터 공개됩니다.');
     }
   };
-  const letterId = [
-    '/img/emoticons/1/1.png',
-    '/img/emoticons/1/2.png',
-    '/img/emoticons/1/3.png',
-    '/img/emoticons/2/1.png',
-    '/img/emoticons/2/2.png',
-    '/img/emoticons/2/3.png',
-    '/img/emoticons/3/1.png',
-    '/img/emoticons/3/2.png',
-    '/img/emoticons/3/3.png',
-    '/img/emoticons/0/0.png',
-    '/img/emoticons/0/1.png',
-    '/img/emoticons/0/2.png',
-    '/img/emoticons/3/1.png',
-    '/img/emoticons/3/2.png',
-    '/img/emoticons/3/3.png',
-    '/img/emoticons/3/1.png',
-    '/img/emoticons/3/2.png',
-    '/img/emoticons/3/3.png',
-  ];
+  // const letterId = [
+  //   '/img/emoticons/1/1.png',
+  //   '/img/emoticons/1/2.png',
+  //   '/img/emoticons/1/3.png',
+  //   '/img/emoticons/2/1.png',
+  //   '/img/emoticons/2/2.png',
+  //   '/img/emoticons/2/3.png',
+  //   '/img/emoticons/3/1.png',
+  //   '/img/emoticons/3/2.png',
+  //   '/img/emoticons/3/3.png',
+  //   '/img/emoticons/0/0.png',
+  //   '/img/emoticons/0/1.png',
+  //   '/img/emoticons/0/2.png',
+  //   '/img/emoticons/3/1.png',
+  //   '/img/emoticons/3/2.png',
+  //   '/img/emoticons/3/3.png',
+  //   '/img/emoticons/3/1.png',
+  //   '/img/emoticons/3/2.png',
+  //   '/img/emoticons/3/3.png',
+  // ];
   const settings = {
     dots: false,
     infinite: true,
