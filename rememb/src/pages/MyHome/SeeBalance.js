@@ -14,6 +14,7 @@ const SeeBalance = () => {
   const loca = useLocation();
   const id = loca.state.id;
   const token = loca.state.token;
+  const qnalist=[];
   const getToken = () => {
     axios
       .get(`http://43.200.193.74:8000/balance/mylist/${id}/`, {
@@ -53,8 +54,8 @@ const SeeBalance = () => {
   }, [id]);
 
   return (
-    <Layout>
-      <Compo />
+    <Layout id={id} token={token}>
+      {/* <Compo id={id}/> */}{list}
     </Layout>
   );
 };

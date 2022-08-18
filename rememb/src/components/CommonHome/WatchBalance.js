@@ -19,7 +19,7 @@ const WatchBalance = ({ id, token }) => {
       state: { id: id, token: token },
     });
   };
-  return <Btn onClick={onClick}>나의 밸런스 보기</Btn>;
+  return <Btn onClick={onClick}>생일 밸런스 보기</Btn>;
 };
 
 export default WatchBalance;

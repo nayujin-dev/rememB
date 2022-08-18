@@ -136,61 +136,61 @@ const Compo = ({ id, token }) => {
   return {};
 };
 
-function CompoDid() {
-  // 이거 navigate 해야되는데! 에러떠서! 일단 놔둠
-  // const navigate = useNavigate();
-  // const onClick1 = () => {
-  //   navigate('');
-  // };
-  // const onClick2 = () => {
-  //   navigate('');
-  // };
-  const [qcontent, setQcontent] = useState('');
-  const [acontent1, setAcontent1] = useState('');
-  const [acontent2, setAcontent2] = useState('');
+// function CompoDid() {
+//   // 이거 navigate 해야되는데! 에러떠서! 일단 놔둠
+//   // const navigate = useNavigate();
+//   // const onClick1 = () => {
+//   //   navigate('');
+//   // };
+//   // const onClick2 = () => {
+//   //   navigate('');
+//   // };
+//   const [qcontent, setQcontent] = useState('');
+//   const [acontent1, setAcontent1] = useState('');
+//   const [acontent2, setAcontent2] = useState('');
 
-  <>
-    <Question>{qcontent}</Question>
-    <MylistAfter
-    // onClick={onClick1}
-    >
-      <AnswerDid1>{acontent1}</AnswerDid1>
-      <AnswerDid2>{acontent2}</AnswerDid2>
-    </MylistAfter>
-  </>;
-}
+//   <>
+//     <Question>{qcontent}</Question>
+//     <MylistAfter
+//     // onClick={onClick1}
+//     >
+//       <AnswerDid1>{acontent1}</AnswerDid1>
+//       <AnswerDid2>{acontent2}</AnswerDid2>
+//     </MylistAfter>
+//   </>;
+// }
 
-function CompoNew() {
-  const [left, setLeft] = useState(false);
-  const [qcontent, setQcontent] = useState('');
-  const [acontent1, setAcontent1] = useState('');
-  const [acontent2, setAcontent2] = useState('');
-  return (
-    <>
-      <Question>{qcontent}</Question>
-      <MylistAfter
-      // onClick={onClick2}
-      >
-        {/* left값 false일 때 대답 안한거 = 색 변화 없음 */}
-        <AnswerNew1 left={false}>{acontent1}</AnswerNew1>
-        <AnswerNew2>{acontent2}</AnswerNew2>
-      </MylistAfter>
-    </>
-  );
-}
+// function CompoNew() {
+//   const [left, setLeft] = useState(false);
+//   const [qcontent, setQcontent] = useState('');
+//   const [acontent1, setAcontent1] = useState('');
+//   const [acontent2, setAcontent2] = useState('');
+//   return (
+//     <>
+//       <Question>{qcontent}</Question>
+//       <MylistAfter
+//       // onClick={onClick2}
+//       >
+//         {/* left값 false일 때 대답 안한거 = 색 변화 없음 */}
+//         <AnswerNew1 left={false}>{acontent1}</AnswerNew1>
+//         <AnswerNew2>{acontent2}</AnswerNew2>
+//       </MylistAfter>
+//     </>
+//   );
+// }
 
-function CompoNotYet() {
-  const [date, setDate] = useState('0');
-  const [qcontent, setQcontent] = useState('');
-  const [acontent1, setAcontent1] = useState('');
-  const [acontent2, setAcontent2] = useState('');
+// function CompoNotYet() {
+//   const [date, setDate] = useState('0');
+//   const [qcontent, setQcontent] = useState('');
+//   const [acontent1, setAcontent1] = useState('');
+//   const [acontent2, setAcontent2] = useState('');
 
-  <>
-    <Question>D-{date} 공개</Question>
-    <MylistBefore>
-      <Img src="../../../img/balanceIcon/lock.png" />
-    </MylistBefore>
-  </>;
-}
+//   <>
+//     <Question>D-{date} 공개</Question>
+//     <MylistBefore>
+//       <Img src="../../../img/balanceIcon/lock.png" />
+//     </MylistBefore>
+//   </>;
+// }
 
 export default Compo;
