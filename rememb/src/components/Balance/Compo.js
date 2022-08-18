@@ -94,7 +94,7 @@ const MylistBefore = styled.div`
   border-radius: 30px;
 `;
 
-const Compo = ({ id,isDone, token, question_id, a1content,a2content,content }) => {
+const Compo = ({ id,isDone, token, left,question_id, a1content,a2content,content }) => {
   // const [user, setUser] = useState('3');
   // const [question_id, setQuestion_id] = useState('1');
   // const [answer_id, setAnswer_id] = useState('2');
@@ -134,30 +134,50 @@ const Compo = ({ id,isDone, token, question_id, a1content,a2content,content }) =
   //   .catch(function (error) {
   //     console.log(error);
   //   });
-  const onClick1 = () => {
-    navigate('');
-  };  
-  const onClick2 = () => {
-    navigate('');
+  // const onClick1 = () => {
+  //   navigate('');
+  // };  
+  const onClick = () => {
+    navigate(`/myParty/ansBalance/${question_id}`,{
+      state:{
+        id:id,
+        token:token,
+        q:question_id,
+        content:content,
+        a1content:a1content,
+        a2content:a2content,
+      }
+    });
   };
   return(
    <>
-      <Question>{content}</Question>
       {isDone-question_id>=0?(
         <>
-          <MylistAfter onClick={onClick1}>
+          <Question>{content}</Question>
+          <MylistAfter>
             <AnswerDid1>{a1content}</AnswerDid1>
             <AnswerDid2>{a2content}</AnswerDid2>
           </MylistAfter>
           {/* {isDone(secret-question_id)} */}
         </>
       ):(
-        <MylistAfter onClick={onClick2}
-          >
-{/* //         left값 false일 때 대답 안한거 = 색 변화 없음 */}
-         <AnswerNew1 left={false}>{a1content}</AnswerNew1>
-         <AnswerNew2>{a2content}</AnswerNew2>
-       </MylistAfter>
+        left? (
+          <>
+            <Question>{content}</Question>
+            <MylistAfter onClick={onClick}>
+  {/* //         left값 false일 때 대답 안한거 = 색 변화 없음 */}
+              <AnswerNew1 left={false}>{a1content}</AnswerNew1>
+              <AnswerNew2>{a2content}</AnswerNew2>
+            </MylistAfter>
+          </>
+        ):(
+          <>
+            <Question>D-{8-question_id} 공개</Question>
+            <MylistBefore>
+              <Img src="../../../img/balanceIcon/lock.png" />
+            </MylistBefore>
+          </>
+        )
       )}
     </>
   );

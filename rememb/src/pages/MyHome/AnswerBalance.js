@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../../components/CommonHome/Layout';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const BalCon = styled.div`
   margin: auto;
@@ -56,8 +57,15 @@ const Warn = styled.div`
   color: #545454;
 `;
 const AnswerBalance = () => {
+  const loca=useLocation();
+  const id=loca.state.id;
+  const token=loca.state.token;
+  const content=loca.state.content;
+  const leftq=loca.state.a1content;
+  const rightq=loca.state.a2content;
+  const question_id=loca.state.q;
   const navi = useNavigate();
-  const [myA, setMyA] = useState('');
+  const [myA, setMyA] = useState();
   const [left, setLeft] = useState(false);
   const [right, setRight] = useState(false);
   const [leftCheck, setLeftCheck] = useState('/img/check.png');
@@ -66,6 +74,7 @@ const AnswerBalance = () => {
     setMyA(1);
     setLeftCheck('/img/pinkcheck.png');
     setRightCheck('/img/check.png');
+    setMyA(question_id*2-1);
     setLeft(true);
     setRight(false);
   };
@@ -73,29 +82,53 @@ const AnswerBalance = () => {
     setMyA(2);
     setLeftCheck('/img/check.png');
     setRightCheck('/img/pinkcheck.png');
+    setMyA(question_id*2);
     setLeft(false);
     setRight(true);
   };
   const onClick = () => {
     alert('저장되었습니다');
-    // navi('/myParty/seeBalance');
+    axios
+        .post(
+          `http://43.200.193.74:8000/balance/game/${question_id}/`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+          {
+            user: id,
+            answer_id: myA,
+            question_id: question_id,
+          },
+          {
+            withCredentials: false,
+          }
+        )
+        .then((res) => {
+          console.log(res);
+          navi(`/myParty/seeBalance/${id}`,{state:{id:id,token:token}});
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
   };
   return (
     <Layout>
       <BalCon>
-        <BalQ>케이크는?</BalQ>
+        <BalQ>{content}</BalQ>
         <BalA>
           <Answer onClick={onLeftClick} back={left}>
             <Check src={leftCheck} />
             <Img src="/img/balanceIcon/6-1 1.png" />
             <br />
-            맛이 중요
+            {leftq}
           </Answer>
           <Answer onClick={onRightClick} back={right}>
             <Check src={rightCheck} />
             <Img src="/img/balanceIcon/6-2 1.png" />
             <br />
-            디자인이 중요
+            {rightq}
           </Answer>
         </BalA>
       </BalCon>

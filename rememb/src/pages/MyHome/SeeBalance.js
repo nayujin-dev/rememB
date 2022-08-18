@@ -13,6 +13,7 @@ const SeeBalance = () => {
   const [list, setList] = useState([]);
   const [done, setDone]=useState(0);
   const [doneList, setDoneList]=useState([]);
+  const [left,setLeft]=useState(0);
   const loca = useLocation();
   const id = loca.state.id;
   const token = loca.state.token;
@@ -71,6 +72,7 @@ const SeeBalance = () => {
           <Compo
             isDone={done}
             id={id}
+            left={question.id>=left}
             question_id={question.id}
             content={question.question_content}
             a1content={question.a1content}

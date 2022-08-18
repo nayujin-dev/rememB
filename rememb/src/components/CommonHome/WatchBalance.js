@@ -15,7 +15,7 @@ const Btn = styled.div`
 const WatchBalance = ({ id, token }) => {
   const navigate = useNavigate();
   const onClick = () => {
-    navigate('/myParty/seeBalance', {
+    navigate(`/myParty/seeBalance/${id}`, {
       state: { id: id, token: token },
     });
   };

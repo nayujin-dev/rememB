@@ -26,8 +26,8 @@ function App() {
       <Route path="/setting" element={<Setting />}></Route>
       {/* 내 페이지 볼 때 */}
       <Route path="/myParty/:id" element={<Home />}></Route>
-      <Route path="/myParty/ansBalance" element={<AnswerBalance />}></Route>
-      <Route path="/myParty/seeBalance" element={<SeeBalance />}></Route>
+      <Route path="/myParty/ansBalance/:qid" element={<AnswerBalance />}></Route>
+      <Route path="/myParty/seeBalance/:id" element={<SeeBalance />}></Route>
       <Route path="/lettercontent/:id/:letterid" element={<LetterContent />}></Route>
       {/* 남의 페이지 볼 때 */}
       <Route path="/others/:id" element={<YourHome />}></Route>`
