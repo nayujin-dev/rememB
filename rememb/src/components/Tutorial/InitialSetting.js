@@ -43,7 +43,7 @@ const InitialSetting = ({ username, email,social }) => {
           navigate(`/myParty/${res.data.results.id}`, {
             state: {
               id:res.data.results.id,
-              token: res.data.results.accesstoken,
+              token: res.data.results.accessToken,
               // 전달한 페이지 변수: 현재 변수
             },
           });
