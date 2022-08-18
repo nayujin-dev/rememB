@@ -15,7 +15,7 @@ const InitialSetting = ({ username, email,social }) => {
   const onChange1 = (e) => {
     setText(e.target.value);
   };
-  const [date, setDate] = useState('MMDD'); // 받아온 사용자 생일
+  const [date, setDate] = useState(''); // 받아온 사용자 생일
   const onChange2 = (e) => {
     setDate(e.target.value);
   };
@@ -24,42 +24,40 @@ const InitialSetting = ({ username, email,social }) => {
     if (date.length<=3){
       alert('숫자 네자리 형식으로 입력해주세요');
     }else{
-      setDate(date.toString());
-    };
-    axios
-    .post(
-      'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
-      {
-        email: email,
-        username: text,
-        provider: social,
-        birth: date,
-        background: servercolor,
-        text: serverTcolor,
-      },
-      {
-        withCredentials: false,
-      }
-    )
-    .then((res) => {
-      console.log(res);
-      setId(res.data.results.id);
-      setAccess(res.data.results.accesstoken);
-      navigate(`/myParty/${id}`, {
-        state: {
-          id:id,
-          token: access,
-          // 전달한 페이지 변수: 현재 변수
-        },
-      });
-    })
-    .catch(function (error) {
-      console.log(error);
-      console.log(id);
-      console.log(serverTcolor);
-      console.log(text);
-      console.log(social);
-    });
+      setDate(""+date);
+      axios
+        .post(
+          'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
+          {
+            email: email,
+            username: text,
+            provider: social,
+            birth: date,
+            background: servercolor,
+            text: serverTcolor,
+          },
+          {
+            withCredentials: false,
+          }
+        )
+        .then((res) => {
+          console.log(res);
+          setId(res.data.results.id);
+          setAccess(res.data.results.accesstoken);
+          navigate(`/myParty/${id}`, {
+            state: {
+              id:id,
+              token: access,
+              // 전달한 페이지 변수: 현재 변수
+            },
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+          console.log(date);
+        });
+      };
+    
   };
   useEffect(() => {
     setText(username);
@@ -98,7 +96,7 @@ const InitialSetting = ({ username, email,social }) => {
         </span>
         <input
           className="setting-body__input"
-          placeholder={date}
+          placeholder='MMDD'
           required
           type='number'
           onChange={onChange2}
