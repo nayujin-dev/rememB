@@ -18,7 +18,7 @@ const MyHome = () => {
       />
       <ToRolling id={id} token={token}/>
       {/*생일 당일이 되면, ToBalancce대신 롤링페이퍼 보기 버튼으로*/}
-      <WatchBalance token={token} />
+      <WatchBalance id={id} token={token} />
     </ShareLayout>
   );
 };

@@ -8,22 +8,25 @@ import CompoDid from './../../components/Balance/CompoDid';
 import { useState } from 'react';
 import Compo from '../../components/Balance/Compo';
 
-const SeeBalance = ({ id, token }) => {
+const SeeBalance = () => {
   const navigate = useNavigate();
-  const { state } = useLocation();
-  // const token = location.state.token;
-
+  const [list,setList]=useState([]);
+  const loca=useLocation();
+  const id=loca.state.id;
+  const token=loca.state.token;
   const getToken = () => {
-    const userData = axios
+    axios
       .get(
-        'http://43.200.193.74:8000/balance/mylist/15/',
+        `http://43.200.193.74:8000/balance/mylist/${id}/`,
         {
           headers: {
-            // Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       )
       .then((response) => {
+        setList(response.data);
+        console.log(list);
         // const [check, setCheck] = useState('0');
         // console.log(response.data);
         // for (var i = 0; i < list.length; i++) {
@@ -47,10 +50,10 @@ const SeeBalance = ({ id, token }) => {
         // }
       });
   };
-  // useEffect(() => {
-  //   getToken();
-  //   console.log(token);
-  // }, []);
+  useEffect(() => {
+    getToken();
+    console.log(token);
+  }, [token]);
 
   return (
     <Layout>
