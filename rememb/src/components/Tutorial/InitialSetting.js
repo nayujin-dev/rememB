@@ -29,8 +29,8 @@ const InitialSetting = ({ username, birth, email,social }) => {
         username: text,
         provider: social,
         birth: date,
-        background:servercolor,
-        text:serverTcolor,
+        background: servercolor,
+        text: serverTcolor,
       },
       {
         withCredentials: false,
@@ -52,7 +52,7 @@ const InitialSetting = ({ username, birth, email,social }) => {
       console.log(error);
       console.log(id);
       console.log(serverTcolor);
-      console.log(email);
+      console.log(text);
       console.log(social);
     });
   };
