@@ -1,4 +1,4 @@
-import React, { Dispatch, useRef, useState } from 'react';
+import React, { Dispatch, useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Layout from '../../../components/CommonHome/Layout';
@@ -80,6 +80,17 @@ const Max = styled.span`
 `;
 
 const WriteLetter = () => {
+  const [name,setName]=useState('');
+  useEffect(()=>{
+    axios.get(
+      `http://43.200.193.74:8000/partyroom/${id}/`,
+    )
+    .then((response) => {
+      setName(response.data.username);
+    }).catch(function (error) {
+      console.log(error);
+    });
+  },[]);
   const navigate = useNavigate();
   const [max, setMax] = useState(0);
   const [from, setFrom] = useState('');
@@ -89,7 +100,6 @@ const WriteLetter = () => {
   const img = '/img/emoticons/' + whichimg[0] + '/' + whichimg[1] + '.png';
   const onNameChange = (event) => {
     setFrom(event.target.value);
-    console.log(from);
   };
   const [editable, setEditable] = useState(true);
   const ref = useRef(<LetterInput />);
@@ -130,6 +140,7 @@ const WriteLetter = () => {
         img_no: whichimg[1],
         position_x: 1,
         position_y: 4,
+        letter_from:from,
       },
       {
         withCredentials: false,
@@ -164,7 +175,7 @@ const WriteLetter = () => {
           }}
           src={img}
         />
-        <LetterTo>To. 멋사</LetterTo>
+        <LetterTo>To. {name}</LetterTo>
         <LetterInput
           onClick={onClickInput}
           ref={ref}
