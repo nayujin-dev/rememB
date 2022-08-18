@@ -115,8 +115,8 @@ const CommonNav = ({ id,token }) => {
         console.log(response);
         setName(response.data.username);
         setDday(response.data.birth);
-        const day= dday.split('-')[1]+dday.split('-')[2];
-        setDday(day);
+        const mam = dday.split('-')[1] + '/' + dday.split('-')[2];
+        setDday(mam);
       })
       .catch(function (error) {
         console.log(error);
