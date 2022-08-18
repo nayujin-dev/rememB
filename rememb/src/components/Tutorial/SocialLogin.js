@@ -35,8 +35,6 @@ const SocialLogin = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [birth, setBirth] = useState('');
-  const [accessT, setAccessT] = useState('');
-  const [access, setAccess] = useState('');
   const socialLoginSuccess = (res) => {
     // navigate('/setting', {
     //   state: { res: res },
