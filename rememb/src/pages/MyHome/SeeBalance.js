@@ -54,7 +54,11 @@ const SeeBalance = ({ id, token }) => {
   //   console.log(token);
   // }, []);
 
-  return <Layout>{/* <Compo /> */}</Layout>;
+  return (
+    <Layout>
+      <Compo />
+    </Layout>
+  );
 };
 
 export default SeeBalance;
