@@ -39,8 +39,10 @@ const Div = styled.div`
   top: 45%;
   z-index: 99;
 `;
-const PartyRoom = ({ name, bday, textcolor, id,backgroundcolor,token }) => {
+const PartyRoom = ({ id,token }) => {
   const [isDday,setIsDday]=useState(false);
+  const [letterId,setLetterId]=useState(false);
+  const [color,setColor]=useState('#FFEFF3')
   useEffect(()=>{
     getParty();
   },[]);
@@ -58,9 +60,13 @@ const PartyRoom = ({ name, bday, textcolor, id,backgroundcolor,token }) => {
         // console.log(userData.data.response);
         console.log(response);
         console.log(response.data);
-        console.log(response.data);
-        // setDday(response.data.left_birth);
+        setColor(response.data.background);
+        setLetterId(response.data.letters);
+        // response.data.letters.map((index) => (
+        // for (var i=0; i<letterId.length; i++){
 
+        // }
+        // ))
         if (response.data.left_birth<=0){
           setIsDday(true);
         }
@@ -78,7 +84,7 @@ const PartyRoom = ({ name, bday, textcolor, id,backgroundcolor,token }) => {
   // const [img,setImg]=useState();
   const onImgClick = (e) => {
     if (isDday) {
-      navi('/lettercontent', { state: { img: e } });
+      navi(`/lettercontent/${id}/1`, { state: { token: token, letterpk:1,id:id } });
     } else{
       alert('아직 생일이 되지 않았어요! 생일 당일부터 공개됩니다.');
     }
@@ -138,7 +144,7 @@ const PartyRoom = ({ name, bday, textcolor, id,backgroundcolor,token }) => {
   return (
     <Slider style={{ position: 'relative' }} {...settings}>
       <>
-        <BackImg backgroundcolor={backgroundcolor}>
+        <BackImg backgroundcolor={color}>
           {gift.map((index) => (
             <>
               <Each onClick={() => onImgClick(index)}>
@@ -150,7 +156,7 @@ const PartyRoom = ({ name, bday, textcolor, id,backgroundcolor,token }) => {
         </BackImg>
       </>
       <>
-        <BackImg backgroundcolor={backgroundcolor}>
+        <BackImg backgroundcolor={color}>
           {gift.map((index) => (
             <>
               <Each onClick={() => onImgClick(index)}>

@@ -10,7 +10,7 @@ const Btn=styled.div`
   width: 55rem;
   font-size: 5rem;
   border-radius: 80px;
-  background-color: #FFEFF3;
+  background-color: linear-gradient(90deg, rgba(243,203,228,1) 0%, rgba(253,203,198,1) 100%);
 `;
 const WatchBalance = ({token}) => {
   const navigate=useNavigate();

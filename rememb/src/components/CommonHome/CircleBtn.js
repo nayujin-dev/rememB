@@ -7,7 +7,7 @@ export const Btn=styled.div`
     right: 10rem;
     width: 9rem;
     height: 9rem;
-    background-color: linear-gradient(90deg, rgba(243,203,228,1) 0%, rgba(253,203,198,1) 100%);
+    background-color: #FFEFF3;
     border: none;
     border-radius: 50px;
     &:active{
