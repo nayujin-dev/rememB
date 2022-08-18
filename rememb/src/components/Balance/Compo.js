@@ -94,13 +94,13 @@ const MylistBefore = styled.div`
   border-radius: 30px;
 `;
 
-const Compo = ({ id, token }) => {
-  const [user, setUser] = useState('3');
-  const [question_id, setQuestion_id] = useState('1');
-  const [answer_id, setAnswer_id] = useState('2');
-  const [qcontent, setQcontent] = useState('될까용?');
-  const [acontent1, setAcontent1] = useState('돼용');
-  const [acontent2, setAcontent2] = useState('안돼용');
+const Compo = ({ id, token, question_id, acontent1,acontent2,content }) => {
+  // const [user, setUser] = useState('3');
+  // const [question_id, setQuestion_id] = useState('1');
+  // const [answer_id, setAnswer_id] = useState('2');
+  // const [qcontent, setQcontent] = useState('될까용?');
+  // const [acontent1, setAcontent1] = useState('돼용');
+  // const [acontent2, setAcontent2] = useState('안돼용');
   // const[d7,setD7]=useState([]);
   // const[d7,setD7]=useState([]);
   // const[d7,setD7]=useState([]);
@@ -108,32 +108,43 @@ const Compo = ({ id, token }) => {
   // const[d7,setD7]=useState([]);
   // const[d7,setD7]=useState([]);
   // const[d7,setD7]=useState([]);
-  const [check, setCheck] = useState('0');
+  // const [check, setCheck] = useState('0');
   const navigate = useNavigate();
-  axios
-    .get(
-      `http://43.200.193.74:8000/balance/mylist/${id}`
-      // {
-      //     withCredentials:false,
-      // }
-    )
-    .then((response) => {
-      console.log(response);
-      // setD7(response.data[0]);
-      // setD6(response.data[1]);
-      // setD7(response.data[0]);
-      // setD7(response.data[0]);
-      setUser(response.data.user);
-      setQuestion_id(response.data.question_id);
-      setAnswer_id(response.data.answer_id);
-      setQcontent(response.data.qcontent);
-      setAcontent1(response.data.acontent1);
-      setAcontent2(response.data.acontent2);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  return {};
+  // axios
+  //   .get(
+  //     `http://43.200.193.74:8000/balance/mylist/${id}`
+  //     // {
+  //     //     withCredentials:false,
+  //     // }
+  //   )
+  //   .then((response) => {
+  //     console.log(response);
+  //     // setD7(response.data[0]);
+  //     // setD6(response.data[1]);
+  //     // setD7(response.data[0]);
+  //     // setD7(response.data[0]);
+  //     setUser(response.data.user);
+  //     setQuestion_id(response.data.question_id);
+  //     setAnswer_id(response.data.answer_id);
+  //     setQcontent(response.data.qcontent);
+  //     setAcontent1(response.data.acontent1);
+  //     setAcontent2(response.data.acontent2);
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+  const onClick1 = () => {
+    navigate('');
+  };
+  return(
+   <>
+      <Question>{content}</Question>
+      <MylistAfter onClick={onClick1}>
+        <AnswerDid1>{acontent1}</AnswerDid1>
+        <AnswerDid2>{acontent2}</AnswerDid2>
+      </MylistAfter>
+    </>
+  );
 };
 
 // function CompoDid() {
