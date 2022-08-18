@@ -104,12 +104,16 @@ const Introduce = () => {
       <TeamImg src="/img/team/소윤.png" />
       <Div1>
         <InfoText>
-          FE, PM
+          FE,
+          <br />
+          PM
           <br />
           나유진
         </InfoText>
         <InfoText>
-          FE, DESIGNER
+          FE,
+          <br />
+          DESIGNER
           <br />
           고두영
         </InfoText>
