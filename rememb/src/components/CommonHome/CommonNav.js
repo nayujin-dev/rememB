@@ -100,6 +100,7 @@ const CommonNav = ({ id,token }) => {
     };
     const onClick2 = () => {
       navigate(`/myParty/${id}`);
+      console.log(id);
       // undifined라고 뜨는데 왤까 ..
     };
     useEffect(()=>{
@@ -115,7 +116,9 @@ const CommonNav = ({ id,token }) => {
       .then((response) => {
         console.log(response);
         setName(response.data.username);
-        setDday(response.data.left_birth);
+        setDday(response.data.birth);
+  // const token = window.location.href.split('=')[1].split('&')[0];
+        setDday(dday.split('-')[1]+'/'+dday.split('-')[2]);
       })
       .catch(function (error) {
         console.log(error);
@@ -163,8 +166,8 @@ const CommonNav = ({ id,token }) => {
                           <TitleText>나의 정보</TitleText>
                           <Div2>
                             {/* 일단 대충 해놨습니다 */}
-                            <NameText>김멋사{name}</NameText>
-                            <BirthText>10/16{dday}</BirthText>
+                            <NameText>{name}</NameText>
+                            <BirthText>{dday}</BirthText>
                           </Div2>
                         </Div1>
                       </Div0>
