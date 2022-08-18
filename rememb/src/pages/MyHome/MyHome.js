@@ -9,6 +9,7 @@ const MyHome = () => {
   const location = useLocation();
   const token=location.state.token;
   const { id } = useParams();
+  console.log(id);
   return (
     <ShareLayout id={id}>
       <PartyRoom
