@@ -69,7 +69,7 @@ const NoteText = styled.div`
   font-size: 3rem;
   font-weight: 500;
   line-height: 20px;
-  color: #ff7474;
+  color: #fe4179;
 `;
 
 const Introduce = () => {
@@ -98,13 +98,15 @@ const Introduce = () => {
         <br />
         추억하게 만들 수 있는 서비스
         <br />
-        <span style={{ color: '#836BAA' }}>마음을 전하는 rememBirthday</span>
+        <span style={{ color: '#FE4179', fontWeight: '700' }}>
+          마음을 전하는 rememBirthday
+        </span>
       </SmallText>
       <MidText>Team</MidText>
       <SmallText>
         숙명여자대학교 멋쟁이사자처럼 10기
         <br />
-        team <span style={{ color: 'black' }}>rememB</span>
+        team <span style={{ color: 'black', fontWeight: '700' }}>rememB</span>
       </SmallText>
       <TeamImg src="/img/team/유진.png" />
       <TeamImg src="/img/team/두영.png" />
@@ -138,8 +140,8 @@ const Introduce = () => {
       </Div1>
       <Btn onClick={onClick}>rememB 사이트 구경하기</Btn>
       <NoteText>
-        Note. 서비스를 100% 즐기고 싶다면 <br /> 가입 시 생일을 '오늘' 날짜로
-        설정해주세요!
+        Tip. 서비스를 100% 즐기고 싶다면 <br /> 가입 시 생일을 '오늘' 날짜로
+        설정해보세요!
       </NoteText>
     </>
   );

@@ -57,13 +57,13 @@ const Warn = styled.div`
   color: #545454;
 `;
 const AnswerBalance = () => {
-  const loca=useLocation();
-  const id=loca.state.id;
-  const token=loca.state.token;
-  const content=loca.state.content;
-  const leftq=loca.state.a1content;
-  const rightq=loca.state.a2content;
-  const question_id=loca.state.q;
+  const loca = useLocation();
+  const id = loca.state.id;
+  const token = loca.state.token;
+  const content = loca.state.content;
+  const leftq = loca.state.a1content;
+  const rightq = loca.state.a2content;
+  const question_id = loca.state.q;
   const navi = useNavigate();
   const [myA, setMyA] = useState();
   const [left, setLeft] = useState(false);
@@ -74,7 +74,7 @@ const AnswerBalance = () => {
     setMyA(1);
     setLeftCheck('/img/pinkcheck.png');
     setRightCheck('/img/check.png');
-    setMyA(question_id*2-1);
+    setMyA(question_id * 2 - 1);
     setLeft(true);
     setRight(false);
   };
@@ -82,33 +82,33 @@ const AnswerBalance = () => {
     setMyA(2);
     setLeftCheck('/img/check.png');
     setRightCheck('/img/pinkcheck.png');
-    setMyA(question_id*2);
+    setMyA(question_id * 2);
     setLeft(false);
     setRight(true);
   };
   const onClick = () => {
     alert('저장되었습니다');
     axios
-        .post(
-          `http://43.200.193.74:8000/balance/game/${question_id}/`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+      .post(
+        `http://43.200.193.74:8000/balance/game/${question_id}/`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-          {
-            user: id,
-            answer_id: myA,
-            question_id: question_id,
-          },
-        )
-        .then((res) => {
-          console.log(res);
-          navi(`/myParty/seeBalance/${id}`,{state:{id:id,token:token}});
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        },
+        {
+          user: id,
+          answer_id: myA,
+          question_id: question_id,
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        navi(`/myParty/seeBalance/${id}`, { state: { id: id, token: token } });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
   return (
     <Layout id={id} token={token}>
@@ -117,6 +117,7 @@ const AnswerBalance = () => {
         <BalA>
           <Answer onClick={onLeftClick} back={left}>
             <Check src={leftCheck} />
+            {/* question id가 바뀔때마다 이미지 변경 */}
             <Img src="/img/balanceIcon/6-1 1.png" />
             <br />
             {leftq}

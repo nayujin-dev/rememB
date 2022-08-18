@@ -163,7 +163,7 @@ const Compo = ({
       {question_id - isDone >= 0 ? (
         <>
           <Question>{content}</Question>
-          <MylistAfter>
+          <MylistAfter onClick={onClick}>
             <AnswerDid1>{a1content}</AnswerDid1>
             <AnswerDid2>{a2content}</AnswerDid2>
           </MylistAfter>
