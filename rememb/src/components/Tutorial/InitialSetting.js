@@ -37,16 +37,16 @@ const InitialSetting = ({ username, birth, email,social }) => {
       }
     )
     .then((res) => {
-      console.log(res.data);
-      setId(res.data.results.id);
-      setAccess(res.data.results.accesstoken);
-      navigate(`/myParty/${id}`, {
-        state: {
-          id:id,
-          token: access,
-          // 전달한 페이지 변수: 현재 변수
-        },
-      });
+      console.log(res);
+      // setId(res.data.results.id);
+      // setAccess(res.data.results.accesstoken);
+      // navigate(`/myParty/${id}`, {
+      //   state: {
+      //     id:id,
+      //     token: access,
+      //     // 전달한 페이지 변수: 현재 변수
+      //   },
+      // });
     })
     .catch(function (error) {
       console.log(error);
