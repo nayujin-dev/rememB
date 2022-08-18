@@ -118,7 +118,6 @@ const WriteLetter = ({ whichimg }) => {
   };
   const onBtnClick = () => {
     axios
-<<<<<<< HEAD
       .post(
         `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/letter/${id}/send/`,
         {
@@ -139,28 +138,27 @@ const WriteLetter = ({ whichimg }) => {
       .catch(function (error) {
         console.log(error);
       });
-=======
-    .post(
-      `http://43.200.193.74:8000/letter/${id}/send/`,
-      {
-        content: '안녕',
-        imgfolder_no: 4,
-        img_no: 3,
-        position_x: 1,
-        position_y: 4,
-      },
-      {
-        withCredentials: false,
-      }
-    )
-    .then((res) => {
-      console.log('post 성공');
-      console.log(res);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
->>>>>>> develop
+    axios
+      .post(
+        `http://43.200.193.74:8000/letter/${id}/send/`,
+        {
+          content: '안녕',
+          imgfolder_no: 4,
+          img_no: 3,
+          position_x: 1,
+          position_y: 4,
+        },
+        {
+          withCredentials: false,
+        }
+      )
+      .then((res) => {
+        console.log('post 성공');
+        console.log(res);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     navigate('/others/sendletter', {
       // state:{from:from, content:letter},
       state: { img: img },

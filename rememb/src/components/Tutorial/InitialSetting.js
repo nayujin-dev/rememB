@@ -42,18 +42,8 @@ const InitialSetting = ({ username, email, social }) => {
           console.log(res);
           navigate(`/myParty/${res.data.results.id}`, {
             state: {
-<<<<<<< Updated upstream
-              id:res.data.results.id,
-              token: res.data.results.accessToken,
-=======
-<<<<<<< HEAD
               id: res.data.results.id,
-              token: res.data.results.accesstoken,
-=======
-              id:res.data.results.id,
               token: res.data.results.accessToken,
->>>>>>> develop
->>>>>>> Stashed changes
               // 전달한 페이지 변수: 현재 변수
             },
           });
