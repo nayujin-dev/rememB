@@ -5,8 +5,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const InitialSetting = ({ username, email,social }) => {
-  const [id, setId] = useState('');
-  const [access, setAccess] = useState('');
   const [color, setColor] = useState('#FFEFF3');
   const [textcolor, setTextcolor] = useState('#FE4179');
   const [servercolor, setServercolor] = useState('lp');
@@ -42,12 +40,10 @@ const InitialSetting = ({ username, email,social }) => {
         )
         .then((res) => {
           console.log(res);
-          setId(res.data.results.id);
-          setAccess(res.data.results.accesstoken);
-          navigate(`/myParty/${id}`, {
+          navigate(`/myParty/${res.data.results.id}`, {
             state: {
-              id:id,
-              token: access,
+              id:res.data.results.id,
+              token: res.data.results.accesstoken,
               // 전달한 페이지 변수: 현재 변수
             },
           });
