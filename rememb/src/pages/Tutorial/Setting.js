@@ -32,7 +32,7 @@ const Setting = ({ res }) => {
       .then((response) => {
         // console.log(userData);
         // console.log(userData.data);
-        console.log(response.data.response);
+        // console.log(userData.data.response);
         // console.log();
         // setInfo(response.data.response);
         // setUsername(info.name);
@@ -43,7 +43,7 @@ const Setting = ({ res }) => {
             'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
             {
               email: response.data.response.email,
-              username: '나는 테스트',
+              username: response.data.response.name,
               provider: 'naver',
               birth:
                 response.data.response.birthyear +

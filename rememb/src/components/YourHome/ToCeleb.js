@@ -14,7 +14,7 @@ const Btn=styled.div`
 const ToCeleb = ({id}) => {
   const navigate=useNavigate();
   const onClick=()=>{
-    navigate('/others/selectimg',{state:{id:id}});
+    navigate(`/others/selectimg/${id}`,{state:{id:id}});
   }
   return (
     <>

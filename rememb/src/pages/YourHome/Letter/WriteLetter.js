@@ -152,7 +152,7 @@ const WriteLetter = ({ whichimg }) => {
 
 
   return (
-    <Layout>
+    <Layout id={id}>
       <Letterback>
         <img
           alt="선택한 일러스트"
