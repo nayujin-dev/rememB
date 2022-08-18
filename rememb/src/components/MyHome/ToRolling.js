@@ -9,7 +9,7 @@ const Btn=styled.div`
   width: 55rem;
   font-size: 5rem;
   border-radius: 80px;
-  background-color: linear-gradient(90deg, rgba(243,203,228,1) 0%, rgba(253,203,198,1) 100%);
+  background-color: linear-gradient(to right, #F3D6EA, #FCD5D0);
 `;
 const ToBalance = ({id,token}) => {
   const navigate=useNavigate();
