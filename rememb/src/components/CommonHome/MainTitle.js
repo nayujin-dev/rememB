@@ -19,6 +19,7 @@ const MainTitle = ({ id }) => {
   const [dday,setDday]=useState('');
   const [name,setName]=useState('');
   const [Tcolor,setTColor]=useState('#FE4179');
+
   useEffect(()=>{
     axios.get(
       `http://43.200.193.74:8000/partyroom/${id}/`,
@@ -30,7 +31,11 @@ const MainTitle = ({ id }) => {
       console.log(response.data);
       setName(response.data.username);
       setTColor(response.data.text);
-      setDday(response.data.left_birth);
+      if (response.data.left_birth==0){
+        setDday('DAY');
+      }else{
+        setDday(response.data.left_birth);        
+      }
     }).catch(function (error) {
       console.log(error);
     });
