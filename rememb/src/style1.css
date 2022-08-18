@@ -45,14 +45,15 @@
 
 .setting-foot__btn {
   text-align: center;
-  width: 80px;
-  height: 35px;
+  width: 70px;
+  height: 31px;
   border-radius: 30px;
   margin-top: 3rem;
   margin-right: auto;
   margin-bottom: 10rem;
   margin-left: auto;
-  background-color: #FFEFF3;
+  /* background-color: #FFEFF3; */
+  background: linear-gradient(to right, #F3D6EA, #FCD5D0);
   padding-top: 1.5rem;
 }
 

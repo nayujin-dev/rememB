@@ -95,12 +95,12 @@ const MylistBefore = styled.div`
 `;
 
 const Compo = ({ id, token }) => {
-  const [user, setUser] = useState('');
-  const [question_id, setQuestion_id] = useState('');
-  const [answer_id, setAnswer_id] = useState('');
-  const [qcontent, setQcontent] = useState('');
-  const [acontent1, setAcontent1] = useState('');
-  const [acontent2, setAcontent2] = useState('');
+  const [user, setUser] = useState('3');
+  const [question_id, setQuestion_id] = useState('1');
+  const [answer_id, setAnswer_id] = useState('2');
+  const [qcontent, setQcontent] = useState('될까용?');
+  const [acontent1, setAcontent1] = useState('돼용');
+  const [acontent2, setAcontent2] = useState('안돼용');
   // const[d7,setD7]=useState([]);
   // const[d7,setD7]=useState([]);
   // const[d7,setD7]=useState([]);
@@ -133,7 +133,9 @@ const Compo = ({ id, token }) => {
     .catch(function (error) {
       console.log(error);
     });
-  return <></>;
+  return {
+    // CompoNotYet();
+  };
 };
 
 function CompoDid() {

@@ -54,7 +54,8 @@ const Btn = styled.div`
   text-align: center;
   font-size: 4.5rem;
   border-radius: 80px;
-  background-color: #ffc1cc;
+  /* background-color: #ffc1cc; */
+  background: linear-gradient(to right, #f3d6ea, #fcd5d0);
 `;
 const From = styled(Btn)`
   left: 3rem;
@@ -117,6 +118,28 @@ const WriteLetter = ({ whichimg }) => {
   };
   const onBtnClick = () => {
     axios
+<<<<<<< HEAD
+      .post(
+        `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/letter/${id}/send/`,
+        {
+          content: '안녕',
+          imgfolder_no: 4,
+          img_no: 3,
+          position_x: 1,
+          position_y: 4,
+        },
+        {
+          withCredentials: false,
+        }
+      )
+      .then((res) => {
+        console.log('post 성공');
+        console.log(res);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+=======
     .post(
       `http://43.200.193.74:8000/letter/${id}/send/`,
       {
@@ -137,6 +160,7 @@ const WriteLetter = ({ whichimg }) => {
     .catch(function (error) {
       console.log(error);
     });
+>>>>>>> develop
     navigate('/others/sendletter', {
       // state:{from:from, content:letter},
       state: { img: img },
@@ -145,9 +169,8 @@ const WriteLetter = ({ whichimg }) => {
 
   const location = useLocation();
   whichimg = location.state.whichimg;
-  const id=location.state.id;
+  const id = location.state.id;
   const img = '/img/emoticons/' + whichimg[0] + '/' + whichimg[1] + '.png';
-
 
   return (
     <Layout id={id}>
