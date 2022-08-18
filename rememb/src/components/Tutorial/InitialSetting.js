@@ -4,7 +4,7 @@ import '../../style1.css';
 import styled from 'styled-components';
 import axios from 'axios';
 
-const InitialSetting = ({ username, birth, email,social }) => {
+const InitialSetting = ({ username, email,social }) => {
   const [id, setId] = useState('');
   const [access, setAccess] = useState('');
   const [color, setColor] = useState('#FFEFF3');
@@ -15,12 +15,17 @@ const InitialSetting = ({ username, birth, email,social }) => {
   const onChange1 = (e) => {
     setText(e.target.value);
   };
-  const [date, setDate] = useState('10/16'); // 받아온 사용자 생일
+  const [date, setDate] = useState('MMDD'); // 받아온 사용자 생일
   const onChange2 = (e) => {
     setDate(e.target.value);
   };
   const navigate = useNavigate();
   const setBtn = () => {
+    if (date.length<=3){
+      alert('숫자 네자리 형식으로 입력해주세요');
+    }else{
+      setDate(date.toString());
+    };
     axios
     .post(
       'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
@@ -38,15 +43,15 @@ const InitialSetting = ({ username, birth, email,social }) => {
     )
     .then((res) => {
       console.log(res);
-      // setId(res.data.results.id);
-      // setAccess(res.data.results.accesstoken);
-      // navigate(`/myParty/${id}`, {
-      //   state: {
-      //     id:id,
-      //     token: access,
-      //     // 전달한 페이지 변수: 현재 변수
-      //   },
-      // });
+      setId(res.data.results.id);
+      setAccess(res.data.results.accesstoken);
+      navigate(`/myParty/${id}`, {
+        state: {
+          id:id,
+          token: access,
+          // 전달한 페이지 변수: 현재 변수
+        },
+      });
     })
     .catch(function (error) {
       console.log(error);
@@ -58,8 +63,7 @@ const InitialSetting = ({ username, birth, email,social }) => {
   };
   useEffect(() => {
     setText(username);
-    setDate(birth);
-  }, [username, birth]);
+  }, [username,]);
   return (
     <>
       <div className="setting-head">
@@ -96,6 +100,7 @@ const InitialSetting = ({ username, birth, email,social }) => {
           className="setting-body__input"
           placeholder={birth}
           required
+          type='number'
           onChange={onChange2}
         ></input>
         <br />
