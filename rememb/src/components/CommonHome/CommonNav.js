@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const PlzBtn = styled.img`
   width: 5rem;
@@ -102,7 +102,8 @@ const CommonNav = ({ id,token }) => {
       navigate(`/myParty/${id}`);
       // undifined라고 뜨는데 왤까 ..
     };
-    axios
+    useEffect(()=>{
+      axios
       .get(
         `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/mypage/${id}/`,
         {
@@ -121,6 +122,7 @@ const CommonNav = ({ id,token }) => {
       .catch(function (error) {
         console.log(error);
       });
+    },[]);
     return (
       <>
         {[false].map((expand) => (
