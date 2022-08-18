@@ -98,7 +98,7 @@ const InitialSetting = ({ username, email,social }) => {
         </span>
         <input
           className="setting-body__input"
-          placeholder={birth}
+          placeholder={date}
           required
           type='number'
           onChange={onChange2}
