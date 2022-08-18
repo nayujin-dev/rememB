@@ -53,11 +53,13 @@ const PartyRoom = ({ id,token }) => {
         `http://43.200.193.74:8000/partyroom/${id}/`,
       )
       .then((response) => {
-        console.log(response);
+        console.log(response.data.letters);
         // console.log(response.data);
         setColor(response.data.background);
         setLetterId(response.data.letters);
         setShowlist(true);
+        console.log(letterId);
+        console.log(letterId[0]);
         // response.data.letters.map((letter) => (
         // for (var i=0; i<letterId.length; i++){
 
