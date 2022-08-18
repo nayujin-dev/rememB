@@ -49,11 +49,6 @@ const Setting = ({ res }) => {
                 response.data.response.birthyear +
                 '-' +
                 response.data.response.birthday,
-              // email:email,
-              // username: username,
-              // provider:'naver',
-              // birth:birth
-              // token,
             },
             {
               withCredentials: false,
