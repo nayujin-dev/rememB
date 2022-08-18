@@ -57,6 +57,7 @@ const PartyRoom = ({ id,token }) => {
         // console.log(response.data);
         setColor(response.data.background);
         setLetterId(response.data.letters);
+        
         setShowlist(true);
         console.log(letterId);
         console.log(letterId[0]);
@@ -87,7 +88,7 @@ const PartyRoom = ({ id,token }) => {
       alert('아직 생일이 되지 않았어요! 생일 당일부터 공개됩니다.');
     }
   };
-  const gift = [
+  const letterId = [
     '/img/emoticons/1/1.png',
     '/img/emoticons/1/2.png',
     '/img/emoticons/1/3.png',
@@ -143,11 +144,11 @@ const PartyRoom = ({ id,token }) => {
     <Slider style={{ position: 'relative' }} {...settings}>
       <>
       <BackImg backgroundcolor={color}>
-          {setShowlist&&
-            gift.map((letter) => (
+          {showlist&&
+            letterId.map((letter) => (
             <>
               <Each onClick={() => onImgClick(letter.id)}>
-                <Img src={"/img/emoticons/"+letter.imgfolder_no+"/"+letter.img_no+".png"} alt="gift" />
+                <Img src={"/img/emoticons/"+letter.imgfolder_no+"/"+letter.img_no+".png"} alt="letterId" />
                 <span>{letter.letter_from}</span>
               </Each>
             </>
@@ -157,11 +158,11 @@ const PartyRoom = ({ id,token }) => {
       </>
       <>
         <BackImg backgroundcolor={color}>
-          {setShowlist&&
-            gift.map((letter) => (
+          {showlist&&
+            letterId.map((letter) => (
             <>
               <Each onClick={() => onImgClick(letter.id)}>
-                <Img src={"/img/emoticons/"+letter.imgfolder_no+"/"+letter.img_no+".png"} alt="gift" />
+                <Img src={"/img/emoticons/"+letter.imgfolder_no+"/"+letter.img_no+".png"} alt="letterId" />
                 <span>{letter.letter_from}</span>
               </Each>
             </>
@@ -171,11 +172,11 @@ const PartyRoom = ({ id,token }) => {
       </>
       <>
         <BackImg backgroundcolor={color}>
-          {setShowlist&&
-            gift.map((letter) => (
+          {showlist&&
+            letterId.map((letter) => (
             <>
               <Each onClick={() => onImgClick(letter.id)}>
-                <Img src={"/img/emoticons/"+letter.imgfolder_no+"/"+letter.img_no+".png"} alt="gift" />
+                <Img src={"/img/emoticons/"+letter.imgfolder_no+"/"+letter.img_no+".png"} alt="letterId" />
                 <span>{letter.letter_from}</span>
               </Each>
             </>
@@ -185,11 +186,11 @@ const PartyRoom = ({ id,token }) => {
       </>
       <>
         <BackImg backgroundcolor={color}>
-          {setShowlist&&
-            gift.map((letter) => (
+          {showlist&&
+            letterId.map((letter) => (
             <>
               <Each onClick={() => onImgClick(letter.id)}>
-                <Img src={"/img/emoticons/"+letter.imgfolder_no+"/"+letter.img_no+".png"} alt="gift" />
+                <Img src={"/img/emoticons/"+letter.imgfolder_no+"/"+letter.img_no+".png"} alt="letterId" />
                 <span>{letter.letter_from}</span>
               </Each>
             </>
