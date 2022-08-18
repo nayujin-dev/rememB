@@ -144,9 +144,9 @@ const PartyRoom = ({ id,token }) => {
           {setShowlist&&
             gift.map((letter) => (
             <>
-              <Each onClick={() => onImgClick(letter[1][0])}>
-                <Img src={"/img/emoticons/"+letter[1][2]+"/"+letter[1][1]+".png"} alt="gift" />
-                <span>{letter[1][3]}</span>
+              <Each onClick={() => onImgClick(letter[0])}>
+                <Img src={"/img/emoticons/"+letter[2]+"/"+letter[1]+".png"} alt="gift" />
+                <span>{letter[3]}</span>
               </Each>
             </>
           ))
@@ -158,9 +158,9 @@ const PartyRoom = ({ id,token }) => {
           {setShowlist&&
             gift.map((letter) => (
             <>
-              <Each onClick={() => onImgClick(letter[1][0])}>
-                <Img src={"/img/emoticons/"+letter[1][2]+"/"+letter[1][1]+".png"} alt="gift" />
-                <span>{letter[1][3]}</span>
+              <Each onClick={() => onImgClick(letter[0])}>
+                <Img src={"/img/emoticons/"+letter[2]+"/"+letter[1]+".png"} alt="gift" />
+                <span>{letter[3]}</span>
               </Each>
             </>
           ))
@@ -172,9 +172,9 @@ const PartyRoom = ({ id,token }) => {
           {setShowlist&&
             gift.map((letter) => (
             <>
-              <Each onClick={() => onImgClick(letter[1][0])}>
-                <Img src={"/img/emoticons/"+letter[1][2]+"/"+letter[1][1]+".png"} alt="gift" />
-                <span>{letter[1][3]}</span>
+              <Each onClick={() => onImgClick(letter[0])}>
+                <Img src={"/img/emoticons/"+letter[2]+"/"+letter[1]+".png"} alt="gift" />
+                <span>{letter[3]}</span>
               </Each>
             </>
           ))
@@ -186,9 +186,9 @@ const PartyRoom = ({ id,token }) => {
           {setShowlist&&
             gift.map((letter) => (
             <>
-              <Each onClick={() => onImgClick(letter[1][0])}>
-                <Img src={"/img/emoticons/"+letter[1][2]+"/"+letter[1][1]+".png"} alt="gift" />
-                <span>{letter[1][3]}</span>
+              <Each onClick={() => onImgClick(letter[0])}>
+                <Img src={"/img/emoticons/"+letter[2]+"/"+letter[1]+".png"} alt="gift" />
+                <span>{letter[3]}</span>
               </Each>
             </>
           ))
