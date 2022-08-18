@@ -26,6 +26,8 @@ const Setting = () => {
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            'Access-Control-Allow-Origin': `${window.location.href}`,
+            'Access-Control-Allow-Credentials': true,
           },
         }
       )
