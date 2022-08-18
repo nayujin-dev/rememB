@@ -9,7 +9,7 @@ const Btn=styled.div`
   width: 55rem;
   font-size: 5rem;
   border-radius: 80px;
-  background-color: linear-gradient(to right, #F3D6EA, #FCD5D0);
+  background-color: linear-gradient(to right,  "#F3D6EA", "#FCD5D0");
 `;
 const ToCeleb = ({id}) => {
   const navigate=useNavigate();

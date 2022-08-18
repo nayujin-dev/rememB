@@ -21,7 +21,7 @@ const EtcLayout=(props)=>{
         <>
             <Today>2022.08.12</Today>
             <Dday id={props.id}>김멋사의 20번째 생일</Dday>
-            <CommonNav id={props.id}/>
+            <CommonNav id={props.id} token={props.token}/>
             <main>
                 {props.children}
             </main>

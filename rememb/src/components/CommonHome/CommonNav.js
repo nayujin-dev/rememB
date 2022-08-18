@@ -88,7 +88,7 @@ const LogoImg = styled.img`
   margin-bottom: 4rem;
 `;
 
-const CommonNav = ({ id }) => {
+const CommonNav = ({ id,token }) => {
     const [dday, setDday] = useState('');
     const [name, setName] = useState('');
 
@@ -104,10 +104,14 @@ const CommonNav = ({ id }) => {
     };
     axios
       .get(
-        `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/mypage/${id}/`
-        // {
-        //     withCredentials:false,
-        // }
+        `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/mypage/${id}/`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            'Access-Control-Allow-Origin': `${window.location.href}`,
+            'Access-Control-Allow-Credentials': true,
+          },
+        }
       )
       .then((response) => {
         console.log(response);

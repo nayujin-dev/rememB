@@ -7,7 +7,7 @@ const ShareLayout = (props) => {
 
   return (
     <>
-      <CommonNav id={props.id} />
+      <CommonNav id={props.id} token={props.token} />
       <MainTitle
         id={props.id}
         textcolor={props.textcolor}

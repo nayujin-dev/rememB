@@ -120,13 +120,11 @@ const WriteLetter = ({ whichimg }) => {
     .post(
       `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/letter/${id}/send/`,
       {
-        body: {
-          content: '안녕',
-          imgfolder_no: 4,
-          img_no: 3,
-          position_x: 1,
-          position_y: 4,
-        },
+        content: '안녕',
+        imgfolder_no: 4,
+        img_no: 3,
+        position_x: 1,
+        position_y: 4,
       },
       {
         withCredentials: false,

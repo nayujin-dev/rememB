@@ -11,7 +11,7 @@ const MyHome = () => {
   const { id } = useParams();
   console.log(id);
   return (
-    <ShareLayout id={id}>
+    <ShareLayout id={id} token={token}>
       <PartyRoom
         id={id}
         token={token}
