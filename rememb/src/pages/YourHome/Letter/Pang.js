@@ -55,11 +55,11 @@ const Info = styled.div`
   left: 20rem;
   font-size: 3.5rem;
 `;
-const Pang = ({ whichimg }) => {
+const Pang = () => {
   const location = useLocation();
   const id = location.state.id;
   const navi = useNavigate();
-  whichimg = location.state.img;
+  const whichimg = location.state.img;
   // useEffect(() => {
   //     setTimeout(()=>navi('/others'),2500);
   //   }, []);

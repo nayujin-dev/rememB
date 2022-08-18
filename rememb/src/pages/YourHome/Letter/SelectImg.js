@@ -67,7 +67,7 @@ const BtnText = styled.div`
 
 const SelectImg = () => {
   const list = [0, 1, 2, 3, 4, 5, 6, 7, 8];
-  const [whatTab, setWhatTab] = useState(0);
+  const [whatTab, setWhatTab] = useState(1);
   const location = useLocation();
   const id = location.state.id;
   /*  //이미지 파일 세팅
@@ -106,10 +106,9 @@ const SelectImg = () => {
   const onTabClick = (e) => {
     setWhatTab(e);
     console.log(e);
-    e.preventDefault();
-  };
-  const onImgClick = (e) => {
-    mylist[e[1]] = !mylist[e[1]];
+  }
+  const onImgClick=(e)=>{
+    mylist[e[1]]=!(mylist[e[1]]);
     setChlist(mylist);
     setSelectNum(e);
   };
@@ -127,12 +126,12 @@ const SelectImg = () => {
     <Layout id={id}>
       <Box>
         <SelectImgContainer>
-          <EachTab autoFocus onClick={() => onTabClick(0)}>
+          <EachTab autoFocus onClick={() => onTabClick(1)}>
             가구
           </EachTab>
-          <EachTab onClick={() => onTabClick(1)}>음식</EachTab>
-          <EachTab onClick={() => onTabClick(2)}>선물</EachTab>
-          <EachTab onClick={() => onTabClick(3)}>기타</EachTab>
+          <EachTab onClick={() => onTabClick(2)}>음식</EachTab>
+          <EachTab onClick={() => onTabClick(3)}>선물</EachTab>
+          <EachTab onClick={() => onTabClick(4)}>기타</EachTab>
         </SelectImgContainer>
         <ImgContainer>
           {list.map((index) => (

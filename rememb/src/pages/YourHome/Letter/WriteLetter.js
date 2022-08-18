@@ -1,4 +1,4 @@
-import React, { Dispatch, useRef, useState } from 'react';
+import React, { Dispatch, useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Layout from '../../../components/CommonHome/Layout';
@@ -79,13 +79,27 @@ const Max = styled.span`
   /* border-radius: 10px; */
 `;
 
-const WriteLetter = ({ whichimg }) => {
+const WriteLetter = () => {
+  const [name,setName]=useState('');
+  useEffect(()=>{
+    axios.get(
+      `http://43.200.193.74:8000/partyroom/${id}/`,
+    )
+    .then((response) => {
+      setName(response.data.username);
+    }).catch(function (error) {
+      console.log(error);
+    });
+  },[]);
   const navigate = useNavigate();
   const [max, setMax] = useState(0);
   const [from, setFrom] = useState('');
+  const location = useLocation();
+  const whichimg = location.state.whichimg;
+  const id=location.state.id;
+  const img = '/img/emoticons/' + whichimg[0] + '/' + whichimg[1] + '.png';
   const onNameChange = (event) => {
     setFrom(event.target.value);
-    console.log(from);
   };
   const [editable, setEditable] = useState(true);
   const ref = useRef(<LetterInput />);
@@ -118,57 +132,32 @@ const WriteLetter = ({ whichimg }) => {
   };
   const onBtnClick = () => {
     axios
-      .post(
-        `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/letter/${id}/send/`,
-        {
-          content: '안녕',
-          imgfolder_no: 4,
-          img_no: 3,
-          position_x: 1,
-          position_y: 4,
-        },
-        {
-          withCredentials: false,
-        }
-      )
-      .then((res) => {
-        console.log('post 성공');
-        console.log(res);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    axios
-      .post(
-        `http://43.200.193.74:8000/letter/${id}/send/`,
-        {
-          content: '안녕',
-          imgfolder_no: 4,
-          img_no: 3,
-          position_x: 1,
-          position_y: 4,
-        },
-        {
-          withCredentials: false,
-        }
-      )
-      .then((res) => {
-        console.log('post 성공');
-        console.log(res);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    .post(
+      `http://43.200.193.74:8000/letter/${id}/send/`,
+      {
+        content: newValue,
+        imgfolder_no: whichimg[0],
+        img_no: whichimg[1],
+        position_x: 1,
+        position_y: 4,
+        letter_from:from,
+      },
+      {
+        withCredentials: false,
+      }
+    )
+    .then((res) => {
+      console.log('post 성공');
+      console.log(res);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
     navigate('/others/sendletter', {
       // state:{from:from, content:letter},
-      state: { img: img },
+      state: { img: img,id:id },
     });
   };
-
-  const location = useLocation();
-  whichimg = location.state.whichimg;
-  const id = location.state.id;
-  const img = '/img/emoticons/' + whichimg[0] + '/' + whichimg[1] + '.png';
 
   return (
     <Layout id={id}>
@@ -186,7 +175,7 @@ const WriteLetter = ({ whichimg }) => {
           }}
           src={img}
         />
-        <LetterTo>To. 멋사</LetterTo>
+        <LetterTo>To. {name}</LetterTo>
         <LetterInput
           onClick={onClickInput}
           ref={ref}
