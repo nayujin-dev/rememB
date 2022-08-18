@@ -4,7 +4,7 @@ import '../../style1.css';
 import styled from 'styled-components';
 import axios from 'axios';
 
-const InitialSetting = ({ username, email,social }) => {
+const InitialSetting = ({ username, email, social }) => {
   const [color, setColor] = useState('#FFEFF3');
   const [textcolor, setTextcolor] = useState('#FE4179');
   const [servercolor, setServercolor] = useState('lp');
@@ -16,13 +16,13 @@ const InitialSetting = ({ username, email,social }) => {
   const [date, setDate] = useState(''); // 받아온 사용자 생일
   const onChange2 = (e) => {
     setDate(e.target.value.toString());
-    console.log(typeof(date));
+    console.log(typeof date);
   };
   const navigate = useNavigate();
   const setBtn = () => {
-    if (date.length<=3){
+    if (date.length <= 3) {
       alert('숫자 네자리 형식으로 입력해주세요');
-    }else{
+    } else {
       axios
         .post(
           'http://43.200.193.74:8000/user/signin/',
@@ -42,7 +42,7 @@ const InitialSetting = ({ username, email,social }) => {
           console.log(res);
           navigate(`/myParty/${res.data.results.id}`, {
             state: {
-              id:res.data.results.id,
+              id: res.data.results.id,
               token: res.data.results.accessToken,
               // 전달한 페이지 변수: 현재 변수
             },
@@ -55,8 +55,7 @@ const InitialSetting = ({ username, email,social }) => {
           console.log(email);
           console.log(social);
         });
-      };
-    
+    }
   };
   useEffect(() => {
     setText(username);
@@ -95,9 +94,9 @@ const InitialSetting = ({ username, email,social }) => {
         </span>
         <input
           className="setting-body__input"
-          placeholder='MMDD'
+          placeholder="MMDD"
           required
-          type='number'
+          type="number"
           onChange={onChange2}
         ></input>
         <br />
@@ -129,7 +128,6 @@ const InitialSetting = ({ username, email,social }) => {
               setTextcolor('#FE7B1D');
               setServercolor('or');
               setServerTcolor('or');
-
             }}
           />
           <YellowButton
@@ -138,7 +136,6 @@ const InitialSetting = ({ username, email,social }) => {
               setTextcolor('#6C6C6C');
               setServercolor('y');
               setServerTcolor('y');
-
             }}
           />
           <GreenButton
@@ -147,7 +144,6 @@ const InitialSetting = ({ username, email,social }) => {
               setTextcolor('#42B494');
               setServercolor('g');
               setServerTcolor('g');
-
             }}
           />
           <BlueButton
@@ -156,7 +152,6 @@ const InitialSetting = ({ username, email,social }) => {
               setTextcolor('#1786DB');
               setServercolor('lb');
               setServerTcolor('lb');
-
             }}
           />
           <DarkBlueButton
@@ -165,7 +160,6 @@ const InitialSetting = ({ username, email,social }) => {
               setTextcolor('#3753C0');
               setServercolor('b');
               setServerTcolor('b');
-
             }}
           />
           <PurpleButton
@@ -174,7 +168,6 @@ const InitialSetting = ({ username, email,social }) => {
               setTextcolor('#7341C3');
               setServercolor('pu');
               setServerTcolor('pu');
-
             }}
           />
         </ButtonContainer>
@@ -206,7 +199,6 @@ const Button = styled.button`
   height: 10rem;
   border-radius: 30px;
   border: 1.5px solid #787878;
-
   &.active {
     border-width: 3px;
   }

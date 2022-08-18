@@ -54,14 +54,14 @@ const Div1 = styled.div`
 const Btn = styled.div`
   width: 60rem;
   border-radius: 20px;
-  background-color: #ffc1d0;
+  /* background-color: #ffc1d0; */
+  background: linear-gradient(to right, #f3d6ea, #fcd5d0);
   height: 8rem;
   margin: auto;
   margin-top: 10rem;
   font-size: 4rem;
   font-weight: 500;
   line-height: 29px;
-  color: #787878;
 `;
 
 const Introduce = () => {

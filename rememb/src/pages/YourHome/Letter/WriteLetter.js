@@ -54,7 +54,8 @@ const Btn = styled.div`
   text-align: center;
   font-size: 4.5rem;
   border-radius: 80px;
-  background-color: #ffc1cc;
+  /* background-color: #ffc1cc; */
+  background: linear-gradient(to right, #f3d6ea, #fcd5d0);
 `;
 const From = styled(Btn)`
   left: 3rem;
