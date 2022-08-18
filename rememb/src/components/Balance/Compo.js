@@ -94,7 +94,16 @@ const MylistBefore = styled.div`
   border-radius: 30px;
 `;
 
-const Compo = ({ id,isDone, token, dayleft,question_id, a1content,a2content,content }) => {
+const Compo = ({
+  id,
+  isDone,
+  token,
+  dayleft,
+  question_id,
+  a1content,
+  a2content,
+  content,
+}) => {
   // const [user, setUser] = useState('3');
   // const [question_id, setQuestion_id] = useState('1');
   // const [answer_id, setAnswer_id] = useState('2');
@@ -136,22 +145,22 @@ const Compo = ({ id,isDone, token, dayleft,question_id, a1content,a2content,cont
   //   });
   // const onClick1 = () => {
   //   navigate('');
-  // };  
+  // };
   const onClick = () => {
-    navigate(`/myParty/ansBalance/${question_id}`,{
-      state:{
-        id:id,
-        token:token,
-        q:question_id,
-        content:content,
-        a1content:a1content,
-        a2content:a2content,
-      }
+    navigate(`/myParty/ansBalance/${question_id}`, {
+      state: {
+        id: id,
+        token: token,
+        q: question_id,
+        content: content,
+        a1content: a1content,
+        a2content: a2content,
+      },
     });
   };
-  return(
-   <>
-      {question_id-isDone>=0?(
+  return (
+    <>
+      {question_id - isDone >= 0 ? (
         <>
           <Question>{content}</Question>
           <MylistAfter>
@@ -160,24 +169,22 @@ const Compo = ({ id,isDone, token, dayleft,question_id, a1content,a2content,cont
           </MylistAfter>
           {/* {isDone(secret-question_id)} */}
         </>
-      ):(
-        dayleft-question_id<=0? (
-          <>
-            <Question>{content}</Question>
-            <MylistAfter onClick={onClick}>
-  {/* //         left값 false일 때 대답 안한거 = 색 변화 없음 */}
-              <AnswerNew1 left={false}>{a1content}</AnswerNew1>
-              <AnswerNew2>{a2content}</AnswerNew2>
-            </MylistAfter>
-          </>
-        ):(
-          <>
-            <Question>D-{8-question_id} 공개</Question>
-            <MylistBefore>
-              <Img src="../../../img/balanceIcon/lock.png" />
-            </MylistBefore>
-          </>
-        )
+      ) : dayleft - question_id <= 0 ? (
+        <>
+          <Question>{content}</Question>
+          <MylistAfter onClick={onClick}>
+            {/* //         left값 false일 때 대답 안한거 = 색 변화 없음 */}
+            <AnswerNew1 left={false}>{a1content}</AnswerNew1>
+            <AnswerNew2>{a2content}</AnswerNew2>
+          </MylistAfter>
+        </>
+      ) : (
+        <>
+          <Question>D-{8 - question_id} 공개</Question>
+          <MylistBefore>
+            <Img src="../../../img/balanceIcon/lock.png" />
+          </MylistBefore>
+        </>
       )}
     </>
   );
