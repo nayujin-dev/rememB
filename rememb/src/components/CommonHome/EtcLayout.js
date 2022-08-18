@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CommonNav from "./CommonNav";
 import styled from "styled-components";
-import { Btn, BtnImg } from "./CircleBtn";
+import axios from "axios";
 const Today=styled.div`
   margin-top: 12rem;
   font-size: 9rem;
@@ -16,11 +16,28 @@ const Dday=styled.div`
   font-size: 6rem;
 `;
 const EtcLayout=(props)=>{
-
+  let today=new Date();
+  const [name,setName]=useState('');
+  useEffect(()=>{
+    axios.get(
+      `http://43.200.193.74:8000/partyroom/${props.id}/`,
+      {
+        headers: {
+          Authorization: `Bearer ${props.token}`,
+        },
+      }
+    )
+    .then((response) => {
+      console.log(response.data);
+      setName(response.data.username);
+    }).catch(function (error) {
+      console.log(error);
+    });
+  },[]);
     return(
         <>
-            <Today>2022.08.12</Today>
-            <Dday id={props.id}>김멋사의 20번째 생일</Dday>
+            <Today>{today.toLocaleDateString()}</Today>
+            <Dday id={props.id}>✨{name}의 생일✨</Dday>
             <CommonNav id={props.id} token={props.token}/>
             <main>
                 {props.children}

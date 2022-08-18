@@ -43,6 +43,7 @@ const LetterContent=()=>{
     const id=location.state.id;
     const letterpk=location.state.letterpk;
     const [content,setContent]=useState('');
+    const [from,setFrom]=useState('');
     const [imgfolder,setImgfolder]=useState('');
     const [imgN,setImgN]=useState('');
     const [color,setColor]=useState('#FE4179');
@@ -61,15 +62,13 @@ const LetterContent=()=>{
               Authorization: `Bearer ${token}`,
             },
           }
-          // {
-          //   withCredentials: false,
-          // }
         )
         .then((response) => {
           console.log(response.data);
           setContent(response.data.content);
           setImgfolder(response.data.imgfolder_no);
           setImgN(response.data.img_no);
+          setFrom(response.data.letter_from);
         //   setTColor(response.data.text);
         //   setDday(response.data.left_birth);
         }).catch(function (error) {
@@ -79,13 +78,14 @@ const LetterContent=()=>{
       useEffect(()=>{
         axios.get(
           `http://43.200.193.74:8000/partyroom/${id}/`,
-          // {
-          //   withCredentials: false,
-          // }
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         )
         .then((response) => {
-          console.log(response.data);
-        //   setName(response.data.username);
+          // setName(response.data.username);
           setColor(response.data.background);
         //   setDday(response.data.left_birth);
         }).catch(function (error) {
@@ -94,13 +94,13 @@ const LetterContent=()=>{
       },[id]);
 
     return(
-        <EtcLayout id={id}>
+        <EtcLayout id={id} token={token}>
             <Letterback color={color}>
                 <img alt="선택한 일러스트" style={{float:'left',width:'20rem', height:'20rem', margin:'0 3rem 0 0',padding:'10px',borderRadius:'20px',backgroundColor:'white'}} src={img}/>
                 <Content>
                     {content}
                 </Content>
-                <From>From. 유진</From>           
+                <From>From. {from}</From>           
             </Letterback>
             <Btn onClick={onBtnClick} style={{top:'72vh',left:'80rem'}}>
                 <BtnImg src="/img/home.png" alt="homeBtn"/>

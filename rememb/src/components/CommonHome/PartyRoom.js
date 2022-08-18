@@ -63,10 +63,7 @@ const PartyRoom = ({ id, token }) => {
         // console.log(response.data);
         setColor(response.data.background);
         setLetterId(response.data.letters);
-
         setShowlist(true);
-        console.log(letterId);
-        console.log(letterId[0]);
         // response.data.letters.map((letter) => (
         // for (var i=0; i<letterId.length; i++){
 
@@ -75,12 +72,8 @@ const PartyRoom = ({ id, token }) => {
         if (response.data.left_birth <= 0) {
           setIsDday(true);
         }
-        // setInfo(response.data.response);
-        // setUsername(info.name);
-        // setBirth(info.birthyear+'-'+info.birthday);
-        // setEmail(info.email);
-      })
-      .catch(function (error) {
+        
+      }).catch(function (error) {
         console.log(error);
       });
   };
@@ -89,33 +82,11 @@ const PartyRoom = ({ id, token }) => {
   // const [img,setImg]=useState();
   const onImgClick = (e) => {
     if (isDday) {
-      navi(`/lettercontent/${id}/${e.target.value}`, {
-        state: { token: token, letterpk: e.target.value, id: id },
-      });
-    } else {
+      navi(`/lettercontent/${id}/${e}`, { state: { token: token, letterpk:e,id:id } });
+    } else{
       alert('아직 생일이 되지 않았어요! 생일 당일부터 공개됩니다.');
     }
   };
-  // const letterId = [
-  //   '/img/emoticons/1/1.png',
-  //   '/img/emoticons/1/2.png',
-  //   '/img/emoticons/1/3.png',
-  //   '/img/emoticons/2/1.png',
-  //   '/img/emoticons/2/2.png',
-  //   '/img/emoticons/2/3.png',
-  //   '/img/emoticons/3/1.png',
-  //   '/img/emoticons/3/2.png',
-  //   '/img/emoticons/3/3.png',
-  //   '/img/emoticons/0/0.png',
-  //   '/img/emoticons/0/1.png',
-  //   '/img/emoticons/0/2.png',
-  //   '/img/emoticons/3/1.png',
-  //   '/img/emoticons/3/2.png',
-  //   '/img/emoticons/3/3.png',
-  //   '/img/emoticons/3/1.png',
-  //   '/img/emoticons/3/2.png',
-  //   '/img/emoticons/3/3.png',
-  // ];
   const settings = {
     dots: false,
     infinite: true,
