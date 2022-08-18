@@ -88,109 +88,102 @@ const LogoImg = styled.img`
   margin-bottom: 4rem;
 `;
 
-const CommonNav = ({ id,token }) => {
-    const [dday, setDday] = useState('');
-    const [name, setName] = useState('');
+const CommonNav = ({ id, token }) => {
+  const [dday, setDday] = useState('');
+  const [name, setName] = useState('');
 
-    const navigate = useNavigate();
-    const onClick1 = () => {
-      navigate('/myParty/seeBalance', {
-        state: { id: id,token:token },
-      });
-    };
-    const onClick2 = () => {
-      navigate(`/myParty/${id}`,{state:{token:token}});
-      console.log(id);
-      // undifined라고 뜨는데 왤까 ..
-    };
-    useEffect(()=>{
-      axios
-      .get(
-        `http://43.200.193.74:8000/user/mypage/${id}/`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+  const navigate = useNavigate();
+  const onClick1 = () => {
+    navigate('/myParty/seeBalance', {
+      state: { id: id, token: token },
+    });
+  };
+  const onClick2 = () => {
+    navigate(`/myParty/${id}`, { state: { token: token } });
+    console.log(id);
+    // undifined라고 뜨는데 왤까 ..
+  };
+  useEffect(() => {
+    axios
+      .get(`http://43.200.193.74:8000/user/mypage/${id}/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         console.log(response);
         setName(response.data.username);
         setDday(response.data.birth);
-        const day= dday.split('-')[1]+dday.split('-')[2];
-        setDday(day);
+        const mam = dday.split('-')[1] + '/' + dday.split('-')[2];
+        setDday(mam);
       })
       .catch(function (error) {
         console.log(error);
       });
-    },[]);
-    return (
-      <>
-        {[false].map((expand) => (
-          <>
-            <PlzBtn src="/img/navbutton.png" />
-            <Navbar
-              key={expand}
-              expand={expand}
-              className="mb-3"
-              style={{
-                position: 'absolute',
-                top: '15rem',
-                right: '12rem',
-                width: '3rem',
-                height: '3rem',
-                backgroundColor: '#FFC1CC',
-              }}
-            >
-              <Container fluid style={{ color: '#black' }}>
-                <Navbar.Brand href="#"></Navbar.Brand>
-                <Navbar.Toggle
-                  aria-controls={`offcanvasNavbar-expand-${expand}`}
-                />
-                <Navbar.Offcanvas
-                  // 글자
-                  id={`offcanvasNavbar-expand-${expand}`}
-                  aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-                  placement="end"
-                >
-                  <Offcanvas.Header closeButton>
-                    <Offcanvas.Title
-                      id={`offcanvasNavbarLabel-expand-${expand}`}
-                    ></Offcanvas.Title>
-                  </Offcanvas.Header>
-                  <Offcanvas.Body>
-                    <Nav className="justify-content-end flex-grow-1 pe-3">
-                      <Div0>
-                        <Img src="/img/Blion.png" />
-                        <Div1>
-                          <TitleText>나의 정보</TitleText>
-                          <Div2>
-                            {/* 일단 대충 해놨습니다 */}
-                            <NameText>{name}</NameText>
-                            <BirthText>{dday}</BirthText>
-                          </Div2>
-                        </Div1>
-                      </Div0>
-                      <LinkDiv>
-                        <LinkText onClick={onClick1}>
-                          내 밸런스게임 보기
-                        </LinkText>
-                        <LinkText onClick={onClick2}>내 파티룸 가기</LinkText>
-                      </LinkDiv>
-                    </Nav>
-                  </Offcanvas.Body>
-                  <LogoImg src="/img/emoticons/logo/logo1.png" />
-                  <FootText>
-                    Copyright ©rememB. <br />
-                    All Rights Reserved.
-                  </FootText>
-                </Navbar.Offcanvas>
-              </Container>
-            </Navbar>
-          </>
-        ))}
-      </>
-    );
-
+  }, []);
+  return (
+    <>
+      {[false].map((expand) => (
+        <>
+          <PlzBtn src="/img/navbutton.png" />
+          <Navbar
+            key={expand}
+            expand={expand}
+            className="mb-3"
+            style={{
+              position: 'absolute',
+              top: '15rem',
+              right: '12rem',
+              width: '3rem',
+              height: '3rem',
+              backgroundColor: '#FFC1CC',
+            }}
+          >
+            <Container fluid style={{ color: '#black' }}>
+              <Navbar.Brand href="#"></Navbar.Brand>
+              <Navbar.Toggle
+                aria-controls={`offcanvasNavbar-expand-${expand}`}
+              />
+              <Navbar.Offcanvas
+                // 글자
+                id={`offcanvasNavbar-expand-${expand}`}
+                aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+                placement="end"
+              >
+                <Offcanvas.Header closeButton>
+                  <Offcanvas.Title
+                    id={`offcanvasNavbarLabel-expand-${expand}`}
+                  ></Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                  <Nav className="justify-content-end flex-grow-1 pe-3">
+                    <Div0>
+                      <Img src="/img/Blion.png" />
+                      <Div1>
+                        <TitleText>나의 정보</TitleText>
+                        <Div2>
+                          <NameText>{name}</NameText>
+                          <BirthText>{dday}</BirthText>
+                        </Div2>
+                      </Div1>
+                    </Div0>
+                    <LinkDiv>
+                      <LinkText onClick={onClick1}>내 밸런스게임 보기</LinkText>
+                      <LinkText onClick={onClick2}>내 파티룸 가기</LinkText>
+                    </LinkDiv>
+                  </Nav>
+                </Offcanvas.Body>
+                <LogoImg src="/img/emoticons/logo/logo1.png" />
+                <FootText>
+                  Copyright ©rememB. <br />
+                  All Rights Reserved.
+                </FootText>
+              </Navbar.Offcanvas>
+            </Container>
+          </Navbar>
+        </>
+      ))}
+    </>
+  );
 };
 export default CommonNav;
