@@ -96,7 +96,6 @@ const SelectImg = () => {
   const onTabClick=(e)=>{
     setWhatTab(e);
     console.log(e);
-    e.preventDefault();
   }
   const onImgClick=(e)=>{
     mylist[e[1]]=!(mylist[e[1]]);

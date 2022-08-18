@@ -78,10 +78,14 @@ const Max = styled.span`
   /* border-radius: 10px; */
 `;
 
-const WriteLetter = ({ whichimg }) => {
+const WriteLetter = () => {
   const navigate = useNavigate();
   const [max, setMax] = useState(0);
   const [from, setFrom] = useState('');
+  const location = useLocation();
+  const whichimg = location.state.whichimg;
+  const id=location.state.id;
+  const img = '/img/emoticons/' + whichimg[0] + '/' + whichimg[1] + '.png';
   const onNameChange = (event) => {
     setFrom(event.target.value);
     console.log(from);
@@ -120,9 +124,9 @@ const WriteLetter = ({ whichimg }) => {
     .post(
       `http://43.200.193.74:8000/letter/${id}/send/`,
       {
-        content: '안녕',
-        imgfolder_no: 4,
-        img_no: 3,
+        content: newValue,
+        imgfolder_no: whichimg[0],
+        img_no: whichimg[1],
         position_x: 1,
         position_y: 4,
       },
@@ -139,15 +143,9 @@ const WriteLetter = ({ whichimg }) => {
     });
     navigate('/others/sendletter', {
       // state:{from:from, content:letter},
-      state: { img: img },
+      state: { img: img,id:id },
     });
   };
-
-  const location = useLocation();
-  whichimg = location.state.whichimg;
-  const id=location.state.id;
-  const img = '/img/emoticons/' + whichimg[0] + '/' + whichimg[1] + '.png';
-
 
   return (
     <Layout id={id}>

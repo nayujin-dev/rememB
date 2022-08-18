@@ -91,19 +91,17 @@ const LogoImg = styled.img`
 const CommonNav = ({ id,token }) => {
     const [dday, setDday] = useState('');
     const [name, setName] = useState('');
-
+    const [isLoggedin,setIsLoggedin]=useState(false);
     const navigate = useNavigate();
-    const onClick1 = () => {
-      navigate('/myParty/seeBalance', {
-        state: { id: id,token:token },
-      });
-    };
-    const onClick2 = () => {
-      navigate(`/myParty/${id}`,{state:{token:token}});
-      console.log(id);
-      // undifined라고 뜨는데 왤까 ..
-    };
-    useEffect(()=>{
+    const isLogin=()=>{
+      if (token===""){
+        setIsLoggedin(false);
+      }else{
+        getUser();
+        setIsLoggedin(true);
+      }
+    }
+    const getUser=()=>{
       axios
       .get(
         `http://43.200.193.74:8000/user/mypage/${id}/`,
@@ -123,10 +121,24 @@ const CommonNav = ({ id,token }) => {
       .catch(function (error) {
         console.log(error);
       });
+    }
+    const onClick1 = () => {
+      navigate('/myParty/seeBalance', {
+        state: { id: id,token:token },
+      });
+    };
+    const onClick2 = () => {
+      navigate(`/myParty/${id}`,{state:{token:token}});
+      console.log(id);
+      // undifined라고 뜨는데 왤까 ..
+    };
+    useEffect(()=>{
+      isLogin();
     },[]);
     return (
       <>
-        {[false].map((expand) => (
+      {isLoggedin &&  
+        [false].map((expand) => (
           <>
             <PlzBtn src="/img/navbutton.png" />
             <Navbar
@@ -188,7 +200,8 @@ const CommonNav = ({ id,token }) => {
               </Container>
             </Navbar>
           </>
-        ))}
+        ))
+      }
       </>
     );
 
