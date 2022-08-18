@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import KaKaoLogin from 'react-kakao-login';
 import { useNavigate } from 'react-router-dom';
 import Naver from './Naver';
-import axios from 'axios';
 
 const Header = styled.div`
   background-color: #ffeff3;
@@ -36,45 +35,11 @@ const SocialLogin = () => {
   const [username, setUsername] = useState('');
   const [birth, setBirth] = useState('');
   const socialLoginSuccess = (res) => {
-    // navigate('/setting', {
-    //   state: { res: res },
-    // });
+    navigate('/setting', {
+      state: { res: res },
+    });
     console.log(res);
-    // const b = res.profile.kakao_account.birth.toString();
-    // console.log(b);
-// 
-    // const month = b[0]+'-'+b[1];
-    // const day = b[2]+'-'+b[3];
-    // console.log(day);
-
-    axios
-      .post(
-        'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
-        {
-          email: res.profile.kakao_account.email,
-          username: res.profile.kakao_account.profile.nickname,
-          provider: 'kakao',
-          // birth: '1999-'+month+'-'+day,
-          birth: '1999-03-11'
-        },
-        {
-          withCredentials: false,
-        }
-      )
-      .then((response) => {
-        console.log(response.data);
-        setUsername(res.profile.kakao_account.profile.nickname);
-        setBirth(res.data.response.birthday);
-        navigate('/setting', {
-          state: { username: username, birth: birth },
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   };
-  // console.log(res);
-
   const socialLoginFail = (res) => {
     console.log('소셜 로그인 실패');
     console.log(res);
@@ -99,7 +64,6 @@ const SocialLogin = () => {
         // id="kakao"
         getProfile={true}
       />
-      {/* <Kakao /> */}
       <NaverDiv>
         <Naver />
         <br />

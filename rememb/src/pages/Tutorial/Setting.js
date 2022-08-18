@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import InitialSetting from '../../components/Tutorial/InitialSetting';
-// import '../../style1.css';
 import axios from 'axios';
-const Setting = ({ res }) => {
+
+const Setting = () => {
   const location = useLocation();
-  // const [info,setInfo]=useState('');
+  const [social, setSocial] = useState('');
   const [username, setUsername] = useState('');
   const [birth, setBirth] = useState('');
   const [email, setEmail] = useState('');
-  /* 아래 부분은 로그인후를 위한거라.. 그냥 url에 /myParty를 입력하면 아래부분때문에 오류남! 그래서 코딩할땐 주석처리하고 진행하면될듯!! */
-  if (!window.location.href.includes('access_token')) {
-    setUsername(location.state.username);
-    setBirth(location.state.birth);
-  }
+
+  const kakao = () => {
+    if (!window.location.href.includes('access_token')) {
+      const res = location.state.res;
+      setUsername(res.profile.kakao_account.profile.nickname);
+      setBirth(res.data.response.birthday);
+      setEmail(res.profile.kakao_account.email);
+      setSocial('kakao');
+    }
+  };
 
   const getToken = () => {
     const token = window.location.href.split('=')[1].split('&')[0];
@@ -33,34 +38,38 @@ const Setting = ({ res }) => {
         setBirth(response.data.response.birthday);
         setEmail(response.data.response.email);
         console.log(response);
-        // console.log();
-        // setInfo(response.data.response);
-        // setUsername(info.name);
-        // setBirth(info.birthyear+'-'+info.birthday);
-        // setEmail(info.email);
-
+        setSocial('naver');
       });
   };
 
   useEffect(() => {
-    window.location.href.includes('access_token') && getToken();
+    window.location.href.includes('access_token') ? getToken() : kakao();
   }, []);
-
   return (
     <>
       {username === '' ? (
-        <div style={{position:'absolute', top:'20vh',left: '50%', transform: 'translateX(-50%)'}}>
-           <img
+        <div
+          style={{
+            position: 'absolute',
+            top: '20vh',
+            left: '50%',
+            transform: 'translateX(-50%)',
+          }}
+        >
+          <img
             src="/img/pangLogo.png"
             alt="loading"
-            style={{ width: '30rem', height: '30rem', textAlign:'center'}}
-        />
-        <div style={{fontsize:'9rem'}}>
-          로딩 중입니다
-        </div>
+            style={{ width: '30rem', height: '30rem', textAlign: 'center' }}
+          />
+          <div style={{ fontsize: '9rem' }}>로딩 중입니다</div>
         </div>
       ) : (
-        <InitialSetting username={username} birth={birth} email={email} social='naver'/>
+        <InitialSetting
+          username={username}
+          birth={birth}
+          email={email}
+          social={social}
+        />
       )}
     </>
   );
