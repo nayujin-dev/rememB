@@ -64,6 +64,14 @@ const Btn = styled.div`
   line-height: 29px;
 `;
 
+const NoteText = styled.div`
+  margin-top: 10px;
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 20px;
+  color: #ff7474;
+`;
+
 const Introduce = () => {
   const navigate = useNavigate();
   const onClick = () => {
@@ -129,6 +137,10 @@ const Introduce = () => {
         </InfoText>
       </Div1>
       <Btn onClick={onClick}>rememB 사이트 구경하기</Btn>
+      <NoteText>
+        Note. 서비스를 100% 즐기고 싶다면 <br /> 가입 시 생일을 '오늘' 날짜로
+        설정해주세요!
+      </NoteText>
     </>
   );
 };
