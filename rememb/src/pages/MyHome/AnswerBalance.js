@@ -101,9 +101,6 @@ const AnswerBalance = () => {
             answer_id: myA,
             question_id: question_id,
           },
-          {
-            withCredentials: false,
-          }
         )
         .then((res) => {
           console.log(res);
@@ -114,7 +111,7 @@ const AnswerBalance = () => {
         });
   };
   return (
-    <Layout>
+    <Layout id={id} token={token}>
       <BalCon>
         <BalQ>{content}</BalQ>
         <BalA>

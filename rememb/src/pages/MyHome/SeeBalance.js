@@ -35,9 +35,10 @@ const SeeBalance = () => {
         console.log(response.data);
         // setDoneList(response.data.ALREADY_ANSWER);
         // setDone(doneList.length);
-        setDone(2);
+        response.data.ALREADY_ANSWER!==null&&setDone(response.data.ALREADY_ANSWER.length);
+        setLeft(response.data.LeftDay);
         // console.log(response.data.QnA);
-        console.log(list);
+        // console.log(list);
         // const [check, setCheck] = useState('0');
         // console.log(response.data);
         // for (var i = 0; i < list.length; i++) {
@@ -72,7 +73,7 @@ const SeeBalance = () => {
           <Compo
             isDone={done}
             id={id}
-            left={question.id>=left}
+            secret={question.id<left}
             question_id={question.id}
             content={question.question_content}
             a1content={question.a1content}

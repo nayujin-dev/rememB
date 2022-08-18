@@ -94,7 +94,7 @@ const MylistBefore = styled.div`
   border-radius: 30px;
 `;
 
-const Compo = ({ id,isDone, token, left,question_id, a1content,a2content,content }) => {
+const Compo = ({ id,isDone, token, secret,question_id, a1content,a2content,content }) => {
   // const [user, setUser] = useState('3');
   // const [question_id, setQuestion_id] = useState('1');
   // const [answer_id, setAnswer_id] = useState('2');
@@ -161,7 +161,7 @@ const Compo = ({ id,isDone, token, left,question_id, a1content,a2content,content
           {/* {isDone(secret-question_id)} */}
         </>
       ):(
-        left? (
+        secret? (
           <>
             <Question>{content}</Question>
             <MylistAfter onClick={onClick}>
