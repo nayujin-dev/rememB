@@ -4,18 +4,16 @@ import InitialSetting from '../../components/Tutorial/InitialSetting';
 import axios from 'axios';
 
 const Setting = () => {
-  const location = useLocation();
+  const loca = useLocation();
   const [social, setSocial] = useState('');
   const [username, setUsername] = useState('');
-  const [birth, setBirth] = useState('');
   const [email, setEmail] = useState('');
 
   const kakao = () => {
     if (!window.location.href.includes('access_token')) {
-      const res = location.state.res;
-      setUsername(res.profile.kakao_account.profile.nickname);
-      setBirth(res.profile.kakao_account.birthday);
-      setEmail(res.profile.kakao_account.email);
+      const res = loca.state.res;
+      setUsername(res.kakao_account.profile.nickname);
+      setEmail(res.kakao_account.email);
       setSocial('kakao');
     }
   };
@@ -35,7 +33,6 @@ const Setting = () => {
       )
       .then((response) => {
         setUsername(response.data.response.name);
-        setBirth(response.data.response.birthday);
         setEmail(response.data.response.email);
         console.log(response);
         setSocial('naver');
@@ -66,7 +63,6 @@ const Setting = () => {
       ) : (
         <InitialSetting
           username={username}
-          birth={birth}
           email={email}
           social={social}
         />
