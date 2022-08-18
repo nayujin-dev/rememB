@@ -15,11 +15,11 @@ const SeeBalance = () => {
   const id = loca.state.id;
   const token = loca.state.token;
   // const qnalist=[];
-  const showBalance=()=>{
-    list.map((index)=>{
+  // const showBalance=()=>{
+  //   list.map((index)=>{
 
-    })
-  }
+  //   })
+  // }
   const getToken = () => {
     axios
       .get(`http://43.200.193.74:8000/balance/mylist/${id}/`, {
@@ -29,7 +29,7 @@ const SeeBalance = () => {
       })
       .then((response) => {
         setList(response.data[1]);
-        console.log(response);
+        console.log(response.data[1]);
         console.log(list);
         // const [check, setCheck] = useState('0');
         // console.log(response.data);
