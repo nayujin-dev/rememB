@@ -28,8 +28,8 @@ const SeeBalance = () => {
         },
       })
       .then((response) => {
-        setList(response.data[1]);
-        console.log(response.data[1]);
+        setList(response.data.Q&A);
+        console.log(response.data.Q&A);
         console.log(list);
         // const [check, setCheck] = useState('0');
         // console.log(response.data);
