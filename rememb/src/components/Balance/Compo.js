@@ -94,7 +94,7 @@ const MylistBefore = styled.div`
   border-radius: 30px;
 `;
 
-const Compo = ({ id, token, question_id, acontent1,acontent2,content }) => {
+const Compo = ({ id,isDone, token, question_id, a1content,a2content,content }) => {
   // const [user, setUser] = useState('3');
   // const [question_id, setQuestion_id] = useState('1');
   // const [answer_id, setAnswer_id] = useState('2');
@@ -109,6 +109,7 @@ const Compo = ({ id, token, question_id, acontent1,acontent2,content }) => {
   // const[d7,setD7]=useState([]);
   // const[d7,setD7]=useState([]);
   // const [check, setCheck] = useState('0');
+  const [secret,setSecret]=useState(isDone);
   const navigate = useNavigate();
   // axios
   //   .get(
@@ -135,14 +136,29 @@ const Compo = ({ id, token, question_id, acontent1,acontent2,content }) => {
   //   });
   const onClick1 = () => {
     navigate('');
+  };  
+  const onClick2 = () => {
+    navigate('');
   };
   return(
    <>
       <Question>{content}</Question>
-      <MylistAfter onClick={onClick1}>
-        <AnswerDid1>{acontent1}</AnswerDid1>
-        <AnswerDid2>{acontent2}</AnswerDid2>
-      </MylistAfter>
+      {isDone>=0?(
+        <>
+          <MylistAfter onClick={onClick1}>
+            <AnswerDid1>{a1content}</AnswerDid1>
+            <AnswerDid2>{a2content}</AnswerDid2>
+          </MylistAfter>
+          {setSecret(secret-question_id)}
+        </>
+      ):(
+        <MylistAfter onClick={onClick2}
+          >
+{/* //         left값 false일 때 대답 안한거 = 색 변화 없음 */}
+         <AnswerNew1 left={false}>{a1content}</AnswerNew1>
+         <AnswerNew2>{a2content}</AnswerNew2>
+       </MylistAfter>
+      )}
     </>
   );
 };

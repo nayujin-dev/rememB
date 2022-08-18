@@ -11,6 +11,7 @@ import Compo from '../../components/Balance/Compo';
 const SeeBalance = () => {
   const navigate = useNavigate();
   const [list, setList] = useState([]);
+  const [done, setDone]=useState([]);
   const loca = useLocation();
   const id = loca.state.id;
   const token = loca.state.token;
@@ -28,9 +29,9 @@ const SeeBalance = () => {
         },
       })
       .then((response) => {
-        setList(response.data);
         setList(response.data.QnA);
-        console.log(response.data.QnA);
+        setDone(response.data.ALREADY_ANSWER.length);
+        // console.log(response.data.QnA);
         console.log(list);
         // const [check, setCheck] = useState('0');
         // console.log(response.data);
@@ -64,6 +65,7 @@ const SeeBalance = () => {
       {list!==null&&
         list.map((question)=>(
           <Compo
+            isDone={done}
             id={id}
             question_id={question.id}
             content={question.question_content}
