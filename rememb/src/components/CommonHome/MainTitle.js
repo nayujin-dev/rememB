@@ -26,7 +26,7 @@ const MainTitle = ({ id, textcolor }) => {
   )
   .then((response) => {
     console.log(response.data);
-    setName(response.data.username);
+    // setName(response.data.username);
     setDday(response.data.left_birth);
   }).catch(function (error) {
     console.log(error);

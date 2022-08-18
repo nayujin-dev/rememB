@@ -71,7 +71,7 @@ const PartyRoom = ({ name, bday, textcolor, id,backgroundcolor,token }) => {
         
       }).catch(function (error) {
         console.log(error);
-      });;
+      });
   };
   
   const navi = useNavigate();
