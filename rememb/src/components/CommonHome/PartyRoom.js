@@ -31,13 +31,13 @@ const DivPre = styled.div`
   position: absolute;
   left: 0rem;
   top: 45%;
-  z-index: 99;
+  z-letter: 99;
 `;
 const Div = styled.div`
   position: absolute;
   right: 10rem;
   top: 45%;
-  z-index: 99;
+  z-letter: 99;
 `;
 const PartyRoom = ({ id,token }) => {
   const [isDday,setIsDday]=useState(false);
@@ -47,22 +47,16 @@ const PartyRoom = ({ id,token }) => {
     getParty();
   },[]);
   const getParty = () => {
-    const userData = axios
+    axios
       .get(
         `http://43.200.193.74:8000/partyroom/${id}/`,
-        // {
-        //   withCredentials: false,
-        // }
       )
       .then((response) => {
-        // console.log(userData);
-        // console.log(userData.data);
-        // console.log(userData.data.response);
         console.log(response);
-        console.log(response.data);
+        // console.log(response.data);
         setColor(response.data.background);
         setLetterId(response.data.letters);
-        // response.data.letters.map((index) => (
+        // response.data.letters.map((letter) => (
         // for (var i=0; i<letterId.length; i++){
 
         // }
@@ -84,7 +78,7 @@ const PartyRoom = ({ id,token }) => {
   // const [img,setImg]=useState();
   const onImgClick = (e) => {
     if (isDday) {
-      navi(`/lettercontent/${id}/1`, { state: { token: token, letterpk:1,id:id } });
+      navi(`/lettercontent/${id}/${e.target.value}`, { state: { token: token, letterpk:e.target.value,id:id } });
     } else{
       alert('아직 생일이 되지 않았어요! 생일 당일부터 공개됩니다.');
     }
@@ -145,11 +139,11 @@ const PartyRoom = ({ id,token }) => {
     <Slider style={{ position: 'relative' }} {...settings}>
       <>
         <BackImg backgroundcolor={color}>
-          {gift.map((index) => (
+          {letterId.map((letter) => (
             <>
-              <Each onClick={() => onImgClick(index)}>
-                <Img src={index} alt="gift" />
-                <span>유진</span>
+              <Each onClick={() => onImgClick(letter[1][0])}>
+                <Img src={"/img/emoticons/"+letter[1][2]+"/"+letter[1][1]+".png"} alt="gift" />
+                <span>{letter[1][3]}</span>
               </Each>
             </>
           ))}
@@ -157,11 +151,11 @@ const PartyRoom = ({ id,token }) => {
       </>
       <>
         <BackImg backgroundcolor={color}>
-          {gift.map((index) => (
+          {gift.map((letter) => (
             <>
-              <Each onClick={() => onImgClick(index)}>
-                <Img src={index} alt="gift" />
-                <span>유진</span>
+              <Each onClick={() => onImgClick(letter[1][0])}>
+                <Img src={"/img/emoticons/"+letter[1][2]+"/"+letter[1][1]+".png"} alt="gift" />
+                <span>{letter[1][3]}</span>
               </Each>
             </>
           ))}
@@ -169,11 +163,11 @@ const PartyRoom = ({ id,token }) => {
       </>
       <>
         <BackImg>
-          {gift.map((index) => (
+          {gift.map((letter) => (
             <>
-              <Each onClick={() => onImgClick(index)}>
-                <Img src={index} alt="gift" />
-                <span>유진</span>
+              <Each onClick={() => onImgClick(letter[1][0])}>
+              <Img src={"/img/emoticons/"+letter[1][2]+"/"+letter[1][1]+".png"} alt="gift" />
+                <span>{letter[1][3]}</span>
               </Each>
             </>
           ))}
@@ -181,11 +175,11 @@ const PartyRoom = ({ id,token }) => {
       </>
       <>
         <BackImg>
-          {gift.map((index) => (
+          {gift.map((letter) => (
             <>
-              <Each onClick={() => onImgClick(index)}>
-                <Img src={index} alt="gift" />
-                <span>유진</span>
+              <Each onClick={() => onImgClick(letter[1][0])}>
+              <Img src={"/img/emoticons/"+letter[1][2]+"/"+letter[1][1]+".png"} alt="gift" />
+                <span>{letter[1][3]}</span>
               </Each>
             </>
           ))}

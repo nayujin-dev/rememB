@@ -23,15 +23,12 @@ const MainTitle = ({ id }) => {
   useEffect(()=>{
     axios.get(
       `http://43.200.193.74:8000/partyroom/${id}/`,
-      // {
-      //   withCredentials: false,
-      // }
     )
     .then((response) => {
       console.log(response.data);
       setName(response.data.username);
       setTColor(response.data.text);
-      if (response.data.left_birth==0){
+      if (response.data.left_birth===0){
         setDday('DAY');
       }else{
         setDday(response.data.left_birth);        
