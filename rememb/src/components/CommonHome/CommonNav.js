@@ -95,11 +95,11 @@ const CommonNav = ({ id,token }) => {
     const navigate = useNavigate();
     const onClick1 = () => {
       navigate('/myParty/seeBalance', {
-        state: { id: id },
+        state: { id: id,token:token },
       });
     };
     const onClick2 = () => {
-      navigate(`/myParty/${id}`);
+      navigate(`/myParty/${id}`,{state:{token:token}});
       console.log(id);
       // undifined라고 뜨는데 왤까 ..
     };

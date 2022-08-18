@@ -26,6 +26,7 @@ const SeeBalance = () => {
       )
       .then((response) => {
         setList(response.data);
+        console.log(response);
         console.log(list);
         // const [check, setCheck] = useState('0');
         // console.log(response.data);
@@ -51,9 +52,8 @@ const SeeBalance = () => {
       });
   };
   useEffect(() => {
-    getToken();
-    console.log(token);
-  }, [token]);
+    id!==""&&getToken();
+  }, [id]);
 
   return (
     <Layout>
