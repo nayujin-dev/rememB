@@ -160,7 +160,7 @@ const CommonNav = ({ id }) => {
                           <Div2>
                             {/* 일단 대충 해놨습니다 */}
                             <NameText>김멋사{name}</NameText>
-                            <BirthText>10/16{bday}</BirthText>
+                            <BirthText>10/16{dday}</BirthText>
                           </Div2>
                         </Div1>
                       </Div0>
