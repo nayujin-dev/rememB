@@ -73,7 +73,8 @@ const SeeBalance = () => {
           <Compo
             isDone={done}
             id={id}
-            secret={question.id<left}
+            dayleft={left}
+            // secret={question.id<left}
             question_id={question.id}
             content={question.question_content}
             a1content={question.a1content}
