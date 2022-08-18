@@ -108,7 +108,7 @@ const SelectImg = () => {
       alert('일러스트를 선택하세요')
     }
     else{
-       navigate('/others/writeletter',{
+       navigate(`/others/writeletter/${id}`,{
         state:{whichimg:selectNum,id:id},
       });
     }
@@ -116,7 +116,7 @@ const SelectImg = () => {
   };
 
     return (
-      <Layout>
+      <Layout id={id}>
         <Box>
           <SelectImgContainer>
             <EachTab autoFocus onClick={()=>onTabClick(0)}>가구</EachTab>

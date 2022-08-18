@@ -88,8 +88,7 @@ const LogoImg = styled.img`
   margin-bottom: 4rem;
 `;
 
-const CommonNav = ({ id, name, bday }) => {
-  const CommonNav = ({ id }) => {
+const CommonNav = ({ id }) => {
     const [dday, setDday] = useState('');
     const [name, setName] = useState('');
 
@@ -105,7 +104,7 @@ const CommonNav = ({ id, name, bday }) => {
     };
     axios
       .get(
-        `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyroom/${id}/`
+        `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/mypage/${id}/`
         // {
         //     withCredentials:false,
         // }
@@ -161,7 +160,7 @@ const CommonNav = ({ id, name, bday }) => {
                           <Div2>
                             {/* 일단 대충 해놨습니다 */}
                             <NameText>김멋사{name}</NameText>
-                            <BirthText>10/16{bday}</BirthText>
+                            <BirthText>10/16{dday}</BirthText>
                           </Div2>
                         </Div1>
                       </Div0>
@@ -185,6 +184,6 @@ const CommonNav = ({ id, name, bday }) => {
         ))}
       </>
     );
-  };
+
 };
 export default CommonNav;

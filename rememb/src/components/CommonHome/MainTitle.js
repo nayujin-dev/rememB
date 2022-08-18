@@ -14,27 +14,31 @@ const Dday = styled.div`
   font-weight: 400;
   font-size: 6rem;
 `;
-const MainTitle = ({ id, textcolor }) => {
+const MainTitle = ({ id }) => {
   // const today=new Date();
   const [dday,setDday]=useState('');
   const [name,setName]=useState('');
-  axios.get(
-    `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyroom/${id}/`,
-    // {
-    //   withCredentials: false,
-    // }
-  )
-  .then((response) => {
-    console.log(response.data);
-    setName(response.data.username);
-    setDday(response.data.left_birth);
-  }).catch(function (error) {
-    console.log(error);
-  });
+  const [Tcolor,setTColor]=useState('#FE4179');
+  useEffect(()=>{
+    axios.get(
+      `https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/partyroom/${id}/`,
+      // {
+      //   withCredentials: false,
+      // }
+    )
+    .then((response) => {
+      console.log(response.data);
+      setName(response.data.username);
+      setTColor(response.data.text);
+      setDday(response.data.left_birth);
+    }).catch(function (error) {
+      console.log(error);
+    });
+  },[id]);
   
   return (
     <>
-      <Who textcolor={textcolor}>{name}의 생일</Who>
+      <Who textcolor={Tcolor}>{name}의 생일</Who>
       <Dday>D - {dday}</Dday>
     </>
   );

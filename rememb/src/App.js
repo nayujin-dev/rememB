@@ -28,14 +28,14 @@ function App() {
       <Route path="/myParty/:id" element={<Home />}></Route>
       <Route path="/myParty/ansBalance" element={<AnswerBalance />}></Route>
       <Route path="/myParty/seeBalance" element={<SeeBalance />}></Route>
-      <Route path="/lettercontent" element={<LetterContent />}></Route>
+      <Route path="/lettercontent/:id/:letterid" element={<LetterContent />}></Route>
       {/* 남의 페이지 볼 때 */}
       <Route path="/others/:id" element={<YourHome />}></Route>`
-      <Route path="/others/selectimg" element={<SelectImg />}></Route>
-      <Route path="/others/writeletter" element={<WriteLetter />}></Route>
+      <Route path="/others/selectimg/:id" element={<SelectImg />}></Route>
+      <Route path="/others/writeletter/:id" element={<WriteLetter />}></Route>
       <Route path="/others/sendletter" element={<Pang />}></Route>
       {/* 기타 페이지 (정보확인, 롤링페이퍼 등) */}
-      <Route path="/etc/seeRP" element={<RollingPaper />}></Route>
+      <Route path="/etc/seeRP/:id" element={<RollingPaper />}></Route>
       <Route path="/etc/sample" element={<Sample />}></Route>
       {/* 초기 페이지 */}
       <Route path="/introduce" element={<Intro />}></Route>

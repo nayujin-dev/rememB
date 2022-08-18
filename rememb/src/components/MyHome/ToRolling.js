@@ -9,16 +9,16 @@ const Btn=styled.div`
   width: 55rem;
   font-size: 5rem;
   border-radius: 80px;
-  background-color: #FFEFF3;
+  background-color: linear-gradient(90deg, rgba(243,203,228,1) 0%, rgba(253,203,198,1) 100%);
 `;
-const ToBalance = () => {
+const ToBalance = ({id,token}) => {
   const navigate=useNavigate();
   const onClick=()=>{
-    navigate('/myParty/ansBalance');
+    navigate(`/etc/seeRP/${id}`,{state:{token:token}});
   }
   return (
     <>
-      <Btn onClick={onClick}>밸런스 게임하기</Btn>
+      <Btn onClick={onClick}>롤링페이퍼 보기</Btn>
     </>
   );
 };

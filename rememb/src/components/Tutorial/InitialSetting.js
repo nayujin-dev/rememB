@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../style1.css';
 import styled from 'styled-components';
+import axios from 'axios';
 
-const InitialSetting = ({ username, birth, id, accesstoken }) => {
+const InitialSetting = ({ username, birth, email,social }) => {
+  const [id, setId] = useState('');
+  const [access, setAccess] = useState('');
   const [color, setColor] = useState('#FFEFF3');
   const [textcolor, setTextcolor] = useState('#FE4179');
+  const [servercolor, setServercolor] = useState('lp');
+  const [serverTcolor, setServerTcolor] = useState('lp');
   const [text, setText] = useState('김멋사'); // 받아온 사용자 이름
   const onChange1 = (e) => {
     setText(e.target.value);
@@ -16,22 +21,44 @@ const InitialSetting = ({ username, birth, id, accesstoken }) => {
   };
   const navigate = useNavigate();
   const setBtn = () => {
-    navigate(`/myParty/${id}`, {
-      state: {
-        name: text,
+    axios
+    .post(
+      'https://cors-anywhere.herokuapp.com/http://43.200.193.74:8000/user/signin/',
+      {
+        email: email,
+        username: text,
+        provider: social,
         birth: date,
-        backgroundcolor: color,
-        textcolor: textcolor,
-        token: accesstoken,
-        // 전달한 페이지 변수: 현재 변수
+        background: servercolor,
+        text: serverTcolor,
       },
+      {
+        withCredentials: false,
+      }
+    )
+    .then((res) => {
+      console.log(res);
+      // setId(res.data.results.id);
+      // setAccess(res.data.results.accesstoken);
+      // navigate(`/myParty/${id}`, {
+      //   state: {
+      //     id:id,
+      //     token: access,
+      //     // 전달한 페이지 변수: 현재 변수
+      //   },
+      // });
+    })
+    .catch(function (error) {
+      console.log(error);
+      console.log(id);
+      console.log(serverTcolor);
+      console.log(text);
+      console.log(social);
     });
   };
   useEffect(() => {
     setText(username);
     setDate(birth);
-    console.log(id);
-    console.log(accesstoken);
   }, [username, birth]);
   return (
     <>
@@ -82,48 +109,70 @@ const InitialSetting = ({ username, birth, id, accesstoken }) => {
             onClick={() => {
               setColor('#FFEFF3');
               setTextcolor('#FE4179');
+              setServercolor('lp');
+              setServerTcolor('lp');
             }}
           />
           <RedButton
             onClick={() => {
               setColor('#FFDDDD');
               setTextcolor('#FF6161');
+              setServercolor('p');
+              setServerTcolor('p');
             }}
           />
           <OrangeButton
             onClick={() => {
               setColor('#FFEED9');
               setTextcolor('#FE7B1D');
+              setServercolor('or');
+              setServerTcolor('or');
+
             }}
           />
           <YellowButton
             onClick={() => {
               setColor('#FFF8CC');
               setTextcolor('#6C6C6C');
+              setServercolor('y');
+              setServerTcolor('y');
+
             }}
           />
           <GreenButton
             onClick={() => {
               setColor('#DEF0EB');
               setTextcolor('#42B494');
+              setServercolor('g');
+              setServerTcolor('g');
+
             }}
           />
           <BlueButton
             onClick={() => {
               setColor('#D8EEFF');
               setTextcolor('#1786DB');
+              setServercolor('lb');
+              setServerTcolor('lb');
+
             }}
           />
           <DarkBlueButton
             onClick={() => {
               setColor('#E2E8FF');
               setTextcolor('#3753C0');
+              setServercolor('b');
+              setServerTcolor('b');
+
             }}
           />
           <PurpleButton
             onClick={() => {
               setColor('#EDE9FF');
               setTextcolor('#7341C3');
+              setServercolor('pu');
+              setServerTcolor('pu');
+
             }}
           />
         </ButtonContainer>
