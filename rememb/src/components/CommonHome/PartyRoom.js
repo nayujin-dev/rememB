@@ -12,17 +12,10 @@ const BackImg = styled.div`
     props.backgroundcolor ? props.backgroundcolor : '#FFEFF3'};
   border-radius: 30px;
   height: 50vh;
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  /* grid-template: repeat(4) / repeat(4);
-  grid-auto-flow: column;
-  grid-template-rows: 4;
-  grid-template-columns: 4;
-  grid-row-start: 1;
-  grid-column-start: 1; */
-  /* grid-template-columns: repeat(auto-fill, 15rem); */
-  grid-gap: 5vh 1rem;
+  grid-gap: 5vh 1rem; */
 
   align-items: center; /* 수직 가운데 정렬 */
   justify-content: space-between; /* 수평 가운데 정렬 */
@@ -91,7 +84,8 @@ const PartyRoom = ({ id, token }) => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 16,
+    slidesToShow: 3,
+    rows:4,
     slidesToScroll: 1,
     arrows: true,
     nextArrow: (
@@ -137,7 +131,7 @@ const PartyRoom = ({ id, token }) => {
                     }
                     alt="letterId"
                   />
-                  <span>{letter.letter_from}</span>
+                  <span style={{fontSize:'2rem'}}>{letter.letter_from}</span>
                 </Each>
               </>
             ))}
