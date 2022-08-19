@@ -89,6 +89,8 @@ const AnswerBalance = () => {
   };
   const onClick = () => {
     alert('저장되었습니다');
+    axios.defaults.xsrfCookieName='csrftoken';
+    axios.defaults.xsrfHeaderName='X-CSRFTOKEN';
     axios
       .post(
         `http://43.200.193.74:8000/balance/game/${question_id}/`,
@@ -101,7 +103,7 @@ const AnswerBalance = () => {
           user: id,
           answer_id: myA,
           question_id: question_id,
-          leftDay:dayleft,
+          // leftDay:dayleft,
         }
       )
       .then((res) => {
