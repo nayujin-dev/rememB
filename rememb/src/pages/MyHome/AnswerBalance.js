@@ -118,13 +118,13 @@ const AnswerBalance = () => {
           <Answer onClick={onLeftClick} back={left}>
             <Check src={leftCheck} />
             {/* question id가 바뀔때마다 이미지 변경 */}
-            <Img src="/img/balanceIcon/6-1 1.png" />
+            <Img src={`/img/balanceIcon/${question_id}/1.png`} />
             <br />
             {leftq}
           </Answer>
           <Answer onClick={onRightClick} back={right}>
             <Check src={rightCheck} />
-            <Img src="/img/balanceIcon/6-2 1.png" />
+            <Img src={`/img/balanceIcon/${question_id}/2.png`} />
             <br />
             {rightq}
           </Answer>
