@@ -72,7 +72,7 @@ const SeeBalance = () => {
             question.id != left ? (
               <>
                 {/* 맞았을 때 = 아직 안됐을때 */}
-                <Question>D-{8 - question.id} 공개</Question>
+                <Question>D-{question.id} 공개</Question>
                 <MylistBefore>
                   <Img src="../../../img/balanceIcon/lock.png" />
                 </MylistBefore>
