@@ -92,13 +92,17 @@ const Compo = ({
       },
     });
   };
+  console.log(dayleft);
+  console.log(typeof(dayleft));
+  console.log(typeof(question_id));
+  console.log(question_id);
   return (
     <>
       {dayleft>question_id ? (
         <>
         <Question>D-{question_id} 공개</Question>
         <MylistBefore>
-          <Img src="/img/balanceIcon/lock.png" />
+          <Img src="/img/lock.png" />
         </MylistBefore>
         </>
       ) : (
