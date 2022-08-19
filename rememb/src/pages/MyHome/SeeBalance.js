@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useState } from 'react';
 import Compo from '../../components/Balance/Compo';
+import CompoDid from '../../components/Balance/CompoDid';
 
 const Question = styled.div`
   font-size: 18px;
@@ -30,42 +31,13 @@ const MylistBefore = styled.div`
   border-radius: 30px;
 `;
 const SeeBalance = () => {
-  const navigate = useNavigate();
   const [list, setList] = useState([]);
-  const [done, setDone] = useState([]);
-  const [donelist, setDonelist]=useState([]);
   const [left, setLeft] = useState(null);
   const [already,setAlready]=useState([]);
   const loca = useLocation();
   const id = loca.state.id;
   const token = loca.state.token;
-  const [nothing,setNothing]=useState(true);
-  // const qnalist=[];
-  // const showBalance=()=>{
-  //   list.map((index)=>{
 
-  //   })
-  // }
-  const save=()=>{
-    console.log(already);
-    if(already.length> 0) {
-      // setAlready(response.data.ALREADY_ANSWER);
-      for(let i=0;i<already.length;i++){
-        console.log(already[i][1]);
-        console.log(already[1][1]);
-        setDone([already[i][1], ...done]);
-        setDonelist([already[i][2],...donelist]);
-      }
-      console.log(done);
-      console.log(already);
-
-      // console.log(response.data.ALREADY_ANSWER);
-      console.log(donelist);
-      // console.log(done.includes(7));
-    }else{
-      setNothing(false);
-    }
-  }
   const getToken = () => {
     axios
       .get(`http://43.200.193.74:8000/balance/mylist/${id}/`, {
@@ -76,11 +48,7 @@ const SeeBalance = () => {
       .then((response) => {
         setLeft(response.data.LeftDay);
         setList(response.data.QnA);
-        // setDoneList(response.data.ALREADY_ANSWER);
-        // setDone(doneList.length);
         setAlready(response.data.ALREADY_ANSWER);
-
-        save();
       });
   };
   useEffect(() => {
@@ -91,51 +59,33 @@ const SeeBalance = () => {
     <Layout id={id} token={token}>
       {already!==null&&
         already.map((question)=>(
-          <Compo
-            isDone={true}
-            id={id}
+          <CompoDid
             selectA={question.answer_id}
-            // secret={question.id<left}
             question_id={question.id}
             content={question.question_content}
             a1content={question.a1content}
             a2content={question.a2content}
-            token={token}
           />
         ))
       }
       {list !== null &&
         left !== null &&
-        list.reverse().map(
+        list.map(
           (question) =>(
-            
-            (left-question.id >= 0) ? (
-              <>
-                {/* 맞았을 때 = 아직 안됐을때 */}
-                <Question>D-{question.id} 공개</Question>
-                <MylistBefore>
-                  <Img src="../../../img/balanceIcon/lock.png" />
-                </MylistBefore>
-              </>
-            ) : (
               <>
                 <Compo
-                  isDone={nothing&&done.includes(question.id)}
+                  left={left}
                   id={id}
-                  selectA={donelist}
                   dayleft={left}
-                  // secret={question.id<left}
                   question_id={question.id}
                   content={question.question_content}
                   a1content={question.a1content}
                   a2content={question.a2content}
                   token={token}
                 />
-                {/* setDone(0); */}
               </>
-            ))
+            )
         )}
-      {/* <Compo id={id}/> */}
     </Layout>
   );
 };

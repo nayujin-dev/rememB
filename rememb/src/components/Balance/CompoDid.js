@@ -18,8 +18,8 @@ const MylistAfter = styled.div`
   border-radius: 30px;
   align-items: center;
 `;
-const Answer1 = styled.div`
-  background-color: #ffadbc;
+const AnswerDid1 = styled.div`
+  background-color: ${props=>props.select==true?"#FFADBC":"#FFEFF3"};
   width: 45rem;
   height: 100px;
   border-radius: 30px 0px 0px 30px;
@@ -28,10 +28,11 @@ const Answer1 = styled.div`
   display: inline-flex;
   justify-content: space-around;
   align-items: center;
-  border: 2px solid #828282;
+  border: ${props=>(props.select==true?"2px solid #828282":"none")};
 `;
-const Answer2 = styled.div`
-  background-color: #ffeff3;
+
+const AnswerDid2 = styled.div`
+  background-color: ${(props)=>(props.select==true?"#FFADBC":"#FFEFF3")};
   width: 45rem;
   height: 100px;
   border-radius: 0px 30px 30px 0px;
@@ -40,6 +41,7 @@ const Answer2 = styled.div`
   display: inline-flex;
   justify-content: space-around;
   align-items: center;
+  border: ${props=>(props.select==true?"2px solid #828282":"none")};
 `;
 const Line = styled.div`
   display: block;
@@ -49,35 +51,19 @@ const Line = styled.div`
 `;
 
 const CompoDid = ({
-  user,
   question_id,
-  answer_id,
-  qcontent,
-  acontent1,
-  acontent2,
+  selectA,
+  content,
+  a1content,
+  a2content,
 }) => {
-  const navigate = useNavigate();
-
-  const onClick1 = () => {
-    // D-7 밸런스게임 페이지로
-    navigate('');
-  };
   return (
     <>
-      <Question>{qcontent}</Question>
-      <MylistAfter onClick={onClick1}>
-        <Answer1>
-          {/* 실용적
-          <br />
-          이어야 한다 */}
-          {acontent1}
-        </Answer1>
-        {/* <Line /> */}
-        <Answer2>
-          {/* 예뻐야 한다 */}
-          {acontent2}
-        </Answer2>
-      </MylistAfter>
+      <Question>{content}</Question>
+          <MylistAfter>
+            <AnswerDid1 select={!question_id*2===selectA}>{a1content}</AnswerDid1>
+            <AnswerDid2 select={question_id*2===selectA}>{a2content}</AnswerDid2>
+          </MylistAfter>
     </>
   );
 };
