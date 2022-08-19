@@ -58,11 +58,6 @@ const PartyRoom = ({ id, token }) => {
         setColor(response.data.background);
         setLetterId(response.data.letters);
         setShowlist(true);
-        // response.data.letters.map((letter) => (
-        // for (var i=0; i<letterId.length; i++){
-
-        // }
-        // ))
         if (response.data.left_birth <= 0) {
           setIsDday(true);
         }
@@ -77,7 +72,9 @@ const PartyRoom = ({ id, token }) => {
   const onImgClick = (e) => {
     if (isDday) {
       navi(`/lettercontent/${id}/${e}`, { state: { token: token, letterpk:e,id:id } });
-    } else{
+    } else if (token==null){
+      alert('당사자만 확인할 수 있습니다. 로그인 후 이용해주세요.');
+    }else{
       alert('아직 생일이 되지 않았어요! 생일 당일부터 공개됩니다.');
     }
   };

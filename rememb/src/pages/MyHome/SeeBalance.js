@@ -41,9 +41,6 @@ const SeeBalance = () => {
   const getToken = () => {
     axios
       .get(`http://43.200.193.74:8000/balance/mylist/${id}/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
       })
       .then((response) => {
         setAlready(response.data.ALREADY_ANSWER);

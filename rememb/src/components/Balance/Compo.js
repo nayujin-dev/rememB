@@ -80,17 +80,22 @@ const Compo = ({
 }) => {
   const navigate = useNavigate();
   const onClick = () => {
-    navigate(`/myParty/ansBalance/${question_id}`, {
-      state: {
-        id: id,
-        token: token,
-        q: question_id,
-        content: content,
-        a1content: a1content,
-        a2content: a2content,
-        dayleft:dayleft,
-      },
-    });
+    if(token==null){
+      alert('밸런스 고르기는 당사자만 가능합니다. 생일자의 답변을 기다려주세요!');
+    }
+    else{
+      navigate(`/myParty/ansBalance/${question_id}`, {
+        state: {
+          id: id,
+          token: token,
+          q: question_id,
+          content: content,
+          a1content: a1content,
+          a2content: a2content,
+          dayleft:dayleft,
+        },
+      });
+    }
   };
   console.log(dayleft);
   console.log(typeof(dayleft));
