@@ -64,7 +64,7 @@ const SeeRP = ({background, rollingList}) => {
         {rollingList.map((index)=>(
           <>
             <Each>
-              <Img img={`/img/emoticons/${index.imgfolder_no}/${index.img_no}.png`} src={index}/>
+              <Img src={`/img/emoticons/${index.imgfolder_no}/${index.img_no}.png`} alt='이미지' />
               <Content>
                 {index.content}
                 <br/>
