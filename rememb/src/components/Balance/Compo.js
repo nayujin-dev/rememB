@@ -152,6 +152,7 @@ const Compo = ({
         content: content,
         a1content: a1content,
         a2content: a2content,
+        dayleft:dayleft,
       },
     });
   };

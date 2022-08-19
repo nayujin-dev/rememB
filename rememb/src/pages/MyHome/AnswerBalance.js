@@ -63,6 +63,7 @@ const AnswerBalance = () => {
   const content = loca.state.content;
   const leftq = loca.state.a1content;
   const rightq = loca.state.a2content;
+  const dayleft=loca.state.dayleft;
   const question_id = loca.state.q.toString();
   const navi = useNavigate();
   const [myA, setMyA] = useState();
@@ -100,6 +101,7 @@ const AnswerBalance = () => {
           user: id,
           answer_id: myA,
           question_id: question_id,
+          leftDay:dayleft,
         }
       )
       .then((res) => {

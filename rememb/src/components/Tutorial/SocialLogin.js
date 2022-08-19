@@ -62,11 +62,6 @@ const SocialLogin = () => {
         // id="kakao"
         getProfile={true}
       />
-      <NaverDiv>
-        <Naver />
-        <br />
-        <br />
-      </NaverDiv>
     </Div>
   );
 };

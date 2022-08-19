@@ -22,37 +22,7 @@ const InitialSetting = ({ username, email, social }) => {
   const setBtn = () => {
     if (date.length <= 3) {
       alert('숫자 네자리 형식으로 입력해주세요');
-    } else if (window.location.href.includes('m')){
-      axios
-      .post(
-        'http://m.43.200.193.74:8000/user/signin/',
-        {
-          email: email,
-          username: text,
-          provider: social,
-          birth: date,
-          background: servercolor,
-          text: serverTcolor,
-        },
-        {
-          withCredentials: false,
-        }
-      )
-      .then((res) => {
-        console.log(res);
-        navigate(`/myParty/${res.data.results.id}`, {
-          state: {
-            id: res.data.results.id,
-            token: res.data.results.accessToken,
-            // 전달한 페이지 변수: 현재 변수
-          },
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    }
-    else{
+    } else{
       axios
         .post(
           'http://43.200.193.74:8000/user/signin/',
