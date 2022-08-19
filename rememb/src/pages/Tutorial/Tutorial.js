@@ -22,7 +22,7 @@ const Tutorial = () => {
     <>
       <Who>멋사의 생일</Who>
       <Dday>D - 7</Dday>
-      <PartyRoom />
+      <PartyRoom id='20' token=''/>
       <MakeParty />
     </>
   );
