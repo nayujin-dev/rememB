@@ -98,13 +98,12 @@ const AnswerBalance = () => {
           },
         },
         {
+          withCredentials: false,
+        },
+        {
           user: id,
           answer_id: myA,
           question_id: question_id,
-          // leftDay:dayleft,
-        },
-        {
-          withCredentials: false,
         }
       )
       .then((res) => {
@@ -117,6 +116,7 @@ const AnswerBalance = () => {
         console.log(typeof(id));
         console.log(typeof(question_id))
         console.log(id);
+        console.log(token);
       });
   };
   return (
