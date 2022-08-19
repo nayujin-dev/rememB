@@ -30,6 +30,8 @@ const Content=styled.div`
   padding:1rem 3.7rem;
   top: 0;
   left: 0;
+  vertical-align: middle;
+  text-align: center;
   font-size: 2.5rem;
 `;
 const Img=styled.img`
