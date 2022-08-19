@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 const Who = styled.div`
   margin-top: 12rem;
   font-size: 9rem;
@@ -15,32 +17,38 @@ const Dday = styled.div`
   font-size: 6rem;
 `;
 const MainTitle = ({ id }) => {
+  const navigate = useNavigate();
+  const onClick = () => {
+    navigate(`/myParty/${id}`);
+  };
   // const today=new Date();
-  const [dday,setDday]=useState('');
-  const [name,setName]=useState('');
-  const [Tcolor,setTColor]=useState('#FE4179');
+  const [dday, setDday] = useState('');
+  const [name, setName] = useState('');
+  const [Tcolor, setTColor] = useState('#FE4179');
 
-  useEffect(()=>{
-    axios.get(
-      `http://43.200.193.74:8000/partyroom/${id}/`,
-    )
-    .then((response) => {
-      console.log(response.data);
-      setName(response.data.username);
-      setTColor(response.data.text);
-      if (response.data.left_birth===0){
-        setDday('DAY');
-      }else{
-        setDday(response.data.left_birth);        
-      }
-    }).catch(function (error) {
-      console.log(error);
-    });
-  },[id]);
-  
+  useEffect(() => {
+    axios
+      .get(`http://43.200.193.74:8000/partyroom/${id}/`)
+      .then((response) => {
+        console.log(response.data);
+        setName(response.data.username);
+        setTColor(response.data.text);
+        if (response.data.left_birth === 0) {
+          setDday('DAY');
+        } else {
+          setDday(response.data.left_birth);
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, [id]);
+
   return (
     <>
-      <Who textcolor={Tcolor}>{name}의 생일</Who>
+      <Who textcolor={Tcolor} onClick={onClick}>
+        {name}의 생일
+      </Who>
       <Dday>D - {dday}</Dday>
     </>
   );

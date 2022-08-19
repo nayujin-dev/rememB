@@ -160,8 +160,9 @@ const Compo = ({
   };
   return (
     <>
-      {question_id - isDone >= 0 ? (
+      {question_id == null ? (
         <>
+          {/* 대답 한 상황 */}
           <Question>{content}</Question>
           <MylistAfter>
             <AnswerDid1>{a1content}</AnswerDid1>
@@ -169,21 +170,16 @@ const Compo = ({
           </MylistAfter>
           {/* {isDone(secret-question_id)} */}
         </>
-      ) : dayleft - question_id <= 0 ? (
+      ) : (
         <>
+          {/* 대답 안 한 상황 */}
           <Question>{content}</Question>
           <MylistAfter onClick={onClick}>
             {/* //         left값 false일 때 대답 안한거 = 색 변화 없음 */}
             <AnswerNew1 left={false}>{a1content}</AnswerNew1>
             <AnswerNew2>{a2content}</AnswerNew2>
           </MylistAfter>
-        </>
-      ) : (
-        <>
-          <Question>D-{8 - question_id} 공개</Question>
-          <MylistBefore>
-            <Img src="../../../img/balanceIcon/lock.png" />
-          </MylistBefore>
+          {/* setDone(1); */}
         </>
       )}
     </>
