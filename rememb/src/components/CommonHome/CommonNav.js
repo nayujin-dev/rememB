@@ -112,7 +112,7 @@ const CommonNav = ({ id, token }) => {
       .then((response) => {
         console.log(response);
         setName(response.data.username);
-        setMonth(response.date.month);
+        setMonth(response.data.month);
         setDday(response.data.day);
       })
       .catch(function (error) {

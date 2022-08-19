@@ -33,7 +33,6 @@ const SeeBalance = () => {
   const navigate = useNavigate();
   const [list, setList] = useState([]);
   const [done, setDone] = useState(0);
-  const [doneList, setDoneList] = useState([]);
   const [left, setLeft] = useState(366);
   const loca = useLocation();
   const id = loca.state.id;
@@ -57,31 +56,9 @@ const SeeBalance = () => {
         // setDoneList(response.data.ALREADY_ANSWER);
         // setDone(doneList.length);
         response.data.ALREADY_ANSWER !== null &&
-          setDone(response.data.ALREADY_ANSWER);
+        setDone(response.data.ALREADY_ANSWER);
         setLeft(response.data.LeftDay);
-        // console.log(response.data.QnA);
-        // console.log(list);
-        // const [check, setCheck] = useState('0');
-        // console.log(response.data);
-        // for (var i = 0; i < list.length; i++) {
-        //   if (response.data.left_birth > 7) {
-        //     // 남은 날짜가 7일 초과면 CompoNoYet
-        //     list[i] = 0;
-        //     <CompoNotYet />;
-        //   }
-        //   if (response.data.left_birth <= 7) {
-        //     list[i] = 1;
-        //     // 답 아직이면 CompoNew에 적용
-        //     // 답 했으면 CompoDid에 적용
-        //     if (check == 0) {
-        //       <CompoNew />;
-        //       list[i] = 2;
-        //       setCheck('1');
-        //     } else {
-        //       <CompoDid />;
-        //     }
-        //   }
-        // }
+
       });
   };
   useEffect(() => {
