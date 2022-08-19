@@ -35,7 +35,7 @@ const SeeBalance = () => {
   const [done, setDone] = useState([]);
   const [donelist, setDonelist]=useState([]);
   const [left, setLeft] = useState(null);
-  const [already,setAlready]=useState();
+  const [already,setAlready]=useState([]);
   const loca = useLocation();
   const id = loca.state.id;
   const token = loca.state.token;
@@ -76,11 +76,11 @@ const SeeBalance = () => {
         },
       })
       .then((response) => {
+        setAlready([response.data.ALREADY_ANSWER,...already]);
         setLeft(response.data.LeftDay);
         setList(response.data.QnA);
         // setDoneList(response.data.ALREADY_ANSWER);
         // setDone(doneList.length);
-        setAlready(response.data.ALREADY_ANSWER);
         save();
       });
   };
