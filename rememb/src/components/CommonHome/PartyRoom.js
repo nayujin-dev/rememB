@@ -17,7 +17,7 @@ const BackImg = styled.div`
   grid-template-rows: repeat(4, 1fr);
   grid-gap: 5vh 1rem; */
 
-  align-items: center; /* 수직 가운데 정렬 */
+  /* align-items: center; 수직 가운데 정렬 */
   justify-content: space-between; /* 수평 가운데 정렬 */
 `;
 const Each = styled.div`
@@ -84,9 +84,9 @@ const PartyRoom = ({ id, token }) => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesPerRow: 3,
     rows:4,
-    slidesToScroll: 1,
+    // slidesToScroll: 1,
     arrows: true,
     nextArrow: (
       <Div>
@@ -115,28 +115,27 @@ const PartyRoom = ({ id, token }) => {
   };
   return (
     <BackImg backgroundcolor={color}>
+    {showlist &&
     <Slider style={{ position: 'relative' }} {...settings}>
-      <>
-          {showlist &&
-            letterId.map((letter) => (
-              <>
-                <Each onClick={() => onImgClick(letter.id)}>
-                  <Img
-                    src={
-                      '/img/emoticons/' +
-                      letter.imgfolder_no +
-                      '/' +
-                      letter.img_no +
-                      '.png'
-                    }
-                    alt="letterId"
-                  />
-                  <span style={{fontSize:'2rem'}}>{letter.letter_from}</span>
-                </Each>
-              </>
-            ))}
-      </>
+      {letterId.map((letter) => (
+        <>
+          <Each onClick={() => onImgClick(letter.id)}>
+            <Img
+              src={
+                '/img/emoticons/' +
+                letter.imgfolder_no +
+                '/' +
+                letter.img_no +
+                '.png'
+              }
+              alt="letterId"
+            />
+            <span style={{fontSize:'2rem'}}>{letter.letter_from}</span>
+          </Each>
+        </>
+      ))}
     </Slider>
+    }
     </BackImg>
   );
 };
