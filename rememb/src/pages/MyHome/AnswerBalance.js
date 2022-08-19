@@ -88,7 +88,7 @@ const AnswerBalance = () => {
     setRight(true);
   };
   const onClick = () => {
-    alert('저장되었습니다');
+    // alert('저장되었습니다');
     axios
       .post(
         `http://43.200.193.74:8000/balance/game/${question_id}/`,
@@ -103,7 +103,14 @@ const AnswerBalance = () => {
         }
       )
       .then((res) => {
-        console.log(res);
+        console.log(typeof(res.data));
+        const type=typeof(res.data);
+        if(type=='string'){
+          alert(res.data);
+        }
+        else{
+          alert('저장되었습니다');
+        }
         navi(`/myParty/seeBalance/${id}`, { state: { id: id, token: token } });
       })
       .catch(function (error) {

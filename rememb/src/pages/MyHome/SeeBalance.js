@@ -35,6 +35,7 @@ const SeeBalance = () => {
   const [done, setDone] = useState([]);
   const [donelist, setDonelist]=useState([]);
   const [left, setLeft] = useState(null);
+  const [already,setAlready]=useState([]);
   const loca = useLocation();
   const id = loca.state.id;
   const token = loca.state.token;
@@ -59,14 +60,16 @@ const SeeBalance = () => {
         // setDoneList(response.data.ALREADY_ANSWER);
         // setDone(doneList.length);
         if(response.data.ALREADY_ANSWER !== null) {
-          for(let i=0;i<response.data.ALREADY_ANSWER.length;i++){
-            console.log(response.data.ALREADY_ANSWER[i][1]);
-            console.log(response.data.ALREADY_ANSWER[1][1]);
-            setDone([response.data.ALREADY_ANSWER[i][1], ...done]);
-            setDonelist([response.data.ALREADY_ANSWER[i][2],...donelist]);
+          setAlready(response.data.ALREADY_ANSWER);
+          for(let i=0;i<already.length;i++){
+            console.log(already[i][1]);
+            console.log(already[1][1]);
+            setDone([already[i][1], ...done]);
+            setDonelist([already[i][2],...donelist]);
           }
           console.log(done);
           console.log(response.data.ALREADY_ANSWER);
+
           console.log(response.data.ALREADY_ANSWER.length);
           console.log(donelist);
           // console.log(done.includes(7));
