@@ -17,7 +17,7 @@ const BackImg = styled.div`
   grid-template-rows: repeat(4, 1fr);
   grid-gap: 5vh 1rem; */
 
-  align-items: center; /* 수직 가운데 정렬 */
+  /* align-items: center; 수직 가운데 정렬 */
   justify-content: space-between; /* 수평 가운데 정렬 */
 `;
 const Each = styled.div`
@@ -82,7 +82,7 @@ const PartyRoom = ({ id, token }) => {
   };
   const settings = {
     dots: false,
-    infinite: true,
+    // infinite: true,
     speed: 500,
     slidesToShow: 3,
     rows:4,
