@@ -30,7 +30,7 @@ const Content=styled.div`
   padding:1rem 3.7rem;
   top: 0;
   left: 0;
-  font-size: 1rem;
+  font-size: 2.5rem;
 `;
 const Img=styled.img`
   opacity: 50%;
@@ -64,11 +64,11 @@ const SeeRP = ({background, rollingList}) => {
         {rollingList.map((index)=>(
           <>
             <Each>
-              <Img img={"/img/emoticons/"+index.imgfolder_no+"/"+index.img_no+".png"} src={index}/>
+              <Img img={`/img/${index.imgfolder_no}/${index.img_no}.png`} src={index}/>
               <Content>
                 {index.content}
                 <br/>
-                From. {index.from}
+                From. {index.letter_from}
               </Content>
             </Each>
           </>          

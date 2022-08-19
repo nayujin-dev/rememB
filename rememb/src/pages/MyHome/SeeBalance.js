@@ -46,8 +46,6 @@ const SeeBalance = () => {
         },
       })
       .then((response) => {
-        console.log(response.data);
-        // console.log(typeof(response.data.LeftDay));
         setAlready(response.data.ALREADY_ANSWER);
         setLeft(response.data.leftDay);
         setList(response.data.QnA);
