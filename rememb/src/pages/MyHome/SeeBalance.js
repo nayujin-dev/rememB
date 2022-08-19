@@ -40,12 +40,34 @@ const SeeBalance = () => {
   const id = loca.state.id;
   const token = loca.state.token;
   const [nothing,setNothing]=useState(true);
+  const [start,setStart]=useState(false);
   // const qnalist=[];
   // const showBalance=()=>{
   //   list.map((index)=>{
 
   //   })
   // }
+  const save=()=>{
+    console.log(already);
+    if(already.length> 0) {
+      // setAlready(response.data.ALREADY_ANSWER);
+      for(let i=0;i<already.length;i++){
+        console.log(already[i][1]);
+        console.log(already[1][1]);
+        setDone([already[i][1], ...done]);
+        setDonelist([already[i][2],...donelist]);
+      }
+      console.log(done);
+      console.log(already);
+
+      // console.log(response.data.ALREADY_ANSWER);
+      console.log(donelist);
+      // console.log(done.includes(7));
+    }else{
+      setNothing(false);
+    }
+    setStart(true);
+  }
   const getToken = () => {
     axios
       .get(`http://43.200.193.74:8000/balance/mylist/${id}/`, {
@@ -59,23 +81,7 @@ const SeeBalance = () => {
         // setDoneList(response.data.ALREADY_ANSWER);
         // setDone(doneList.length);
         setAlready(response.data.ALREADY_ANSWER);
-        console.log(already);
-        if(already.length> 0) {
-          setAlready(response.data.ALREADY_ANSWER);
-          for(let i=0;i<already.length;i++){
-            console.log(already[i][1]);
-            console.log(already[1][1]);
-            setDone([already[i][1], ...done]);
-            setDonelist([already[i][2],...donelist]);
-          }
-          console.log(done);
-          console.log(response.data.ALREADY_ANSWER);
-          console.log(donelist);
-          // console.log(done.includes(7));
-        }else{
-          setNothing(false);
-        }
-        setLeft(response.data.LeftDay);
+        save();
       });
   };
   useEffect(() => {
@@ -86,6 +92,7 @@ const SeeBalance = () => {
     <Layout id={id} token={token}>
       {list !== null &&
         left !== null &&
+        start &&
         list.reverse().map(
           (question) =>(
             (left-question.id >= 0) ? (
