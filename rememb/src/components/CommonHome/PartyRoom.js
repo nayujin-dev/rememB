@@ -82,9 +82,9 @@ const PartyRoom = ({ id, token }) => {
   };
   const settings = {
     dots: false,
-    // infinite: true,
+    infinite: false,
     speed: 500,
-    slidesToShow: 3,
+    slidesPerRow: 3,
     rows:4,
     slidesToScroll: 1,
     arrows: true,
