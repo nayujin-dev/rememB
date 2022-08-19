@@ -33,7 +33,7 @@ const SeeBalance = () => {
   const navigate = useNavigate();
   const [list, setList] = useState([]);
   const [done, setDone] = useState(0);
-  const [left, setLeft] = useState(366);
+  const [left, setLeft] = useState(null);
   const loca = useLocation();
   const id = loca.state.id;
   const token = loca.state.token;
@@ -51,6 +51,7 @@ const SeeBalance = () => {
         },
       })
       .then((response) => {
+        setLeft(response.data.LeftDay);
         setList(response.data.QnA);
         console.log(response.data);
         // setDoneList(response.data.ALREADY_ANSWER);
@@ -67,13 +68,14 @@ const SeeBalance = () => {
   return (
     <Layout id={id} token={token}>
       {list !== null &&
+        left !== null &&
         list.reverse().map(
           (question) =>
             // 생일 남은 날짜 100일 <= 7일
             // 남은 날짜가 8일, 9일, 10일,, 100일 -> true여야함
             // 남은 날짜가 7일, 6일, 5일... 이면 false
             // left (100) > 7
-            left > 7 ? (
+            left != question.id ? (
               <>
                 {/* 맞았을 때 = 아직 안됐을때 */}
                 <Question>D-{question.id} 공개</Question>
