@@ -56,10 +56,11 @@ const SeeBalance = () => {
       .then((response) => {
         setLeft(response.data.LeftDay);
         setList(response.data.QnA);
-        console.log(response.data);
         // setDoneList(response.data.ALREADY_ANSWER);
         // setDone(doneList.length);
-        if(response.data.ALREADY_ANSWER !== null) {
+        setAlready(response.data.ALREADY_ANSWER);
+        console.log(already);
+        if(already.length> 0) {
           setAlready(response.data.ALREADY_ANSWER);
           for(let i=0;i<already.length;i++){
             console.log(already[i][1]);
@@ -69,11 +70,11 @@ const SeeBalance = () => {
           }
           console.log(done);
           console.log(response.data.ALREADY_ANSWER);
-
-          console.log(response.data.ALREADY_ANSWER.length);
           console.log(donelist);
           // console.log(done.includes(7));
-        }else{setNothing(false);}
+        }else{
+          setNothing(false);
+        }
         setLeft(response.data.LeftDay);
       });
   };
