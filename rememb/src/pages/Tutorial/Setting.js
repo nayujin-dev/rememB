@@ -40,7 +40,7 @@ const Setting = () => {
   };
 
   useEffect(() => {
-    window.location.href.includes('access_token') ? getToken() : kakao();
+    window.location.href.includes('access_token') ? getToken() : kakao()
   }, []);
   return (
     <>
