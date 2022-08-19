@@ -125,7 +125,7 @@ const CommonNav = ({ id, token }) => {
       });
   };
   const onClick1 = () => {
-    navigate('/myParty/seeBalance', {
+    navigate(`/myParty/seeBalance/${id}`, {
       state: { id: id, token: token },
     });
   };

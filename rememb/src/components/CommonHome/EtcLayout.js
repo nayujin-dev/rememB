@@ -5,7 +5,7 @@ import axios from "axios";
 const Today=styled.div`
   margin-top: 12rem;
   font-size: 9rem;
-  color: #FE4179;
+  color:${props=>props.color?props.color:"#FE4179"};
   font-weight: 700;
   text-align: center;
 `;
@@ -16,6 +16,7 @@ const Dday=styled.div`
   font-size: 6rem;
 `;
 const EtcLayout=(props)=>{
+  const [tcolor,setTcolor]=useState("#FE4179");
   let today=new Date();
   const [name,setName]=useState('');
   useEffect(()=>{
@@ -30,13 +31,14 @@ const EtcLayout=(props)=>{
     .then((response) => {
       console.log(response.data);
       setName(response.data.username);
+      setTcolor(response.data.text);
     }).catch(function (error) {
       console.log(error);
     });
   },[]);
     return(
         <>
-            <Today>{today.toLocaleDateString()}</Today>
+            <Today color={tcolor}>{today.toLocaleDateString()}</Today>
             <Dday id={props.id}>✨{name}의 생일✨</Dday>
             <CommonNav id={props.id} token={props.token}/>
             <main>
