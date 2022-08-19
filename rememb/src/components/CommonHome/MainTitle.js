@@ -20,7 +20,7 @@ const MainTitle = ({ id, token }) => {
   const navigate = useNavigate();
   const onClick = () => {
     if (token == '') {
-      navigate(`/others/${id}`, { state: { token: token } });
+      navigate(`/others/${id}`, { state: { id: id } });
     } else {
       navigate(`/myParty/${id}`, { state: { token: token } });
     }
