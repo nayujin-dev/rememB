@@ -13,7 +13,8 @@ const BackImg = styled.div`
   border-radius: 30px;
   height: 50vh;
   display: grid;
-  grid-template-columns: repeat(auto-fill, 15rem);
+  grid-template-columns: repeat(4,1fr);
+  grid-template-rows: repeat(4,1fr);
   grid-gap: 5vh 1rem; 
 
   align-items: center; //수직 가운데 정렬
@@ -132,7 +133,7 @@ const PartyRoom = ({ id, token }) => {
               }
               alt="letterId"
             />
-            <span style={{fontSize:'2rem'}}>{letter.letter_from}</span>
+            <span style={{fontSize:'4rem'}}>{letter.letter_from}</span>
           </Each>
         ))}
     </>
