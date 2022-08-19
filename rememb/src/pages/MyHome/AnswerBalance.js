@@ -90,7 +90,7 @@ const AnswerBalance = () => {
     alert('저장되었습니다');
     axios
       .post(
-        `http://43.200.193.74:8000/balance/game/${id}/`,
+        `http://43.200.193.74:8000/balance/game/${question_id}/`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -104,7 +104,7 @@ const AnswerBalance = () => {
       )
       .then((res) => {
         console.log(res);
-        navi(`/myParty/seeBalance/${question_id}`, { state: { id: id, token: token } });
+        navi(`/myParty/seeBalance/${id}`, { state: { id: id, token: token } });
       })
       .catch(function (error) {
         console.log(error);
