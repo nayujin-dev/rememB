@@ -82,11 +82,11 @@ const PartyRoom = ({ id, token }) => {
   };
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesPerRow: 3,
     rows:4,
-    slidesToScroll: 1,
+    // slidesToScroll: 1,
     arrows: true,
     nextArrow: (
       <Div>
@@ -115,28 +115,27 @@ const PartyRoom = ({ id, token }) => {
   };
   return (
     <BackImg backgroundcolor={color}>
+    {showlist &&
     <Slider style={{ position: 'relative' }} {...settings}>
-      <>
-          {showlist &&
-            letterId.map((letter) => (
-              <>
-                <Each onClick={() => onImgClick(letter.id)}>
-                  <Img
-                    src={
-                      '/img/emoticons/' +
-                      letter.imgfolder_no +
-                      '/' +
-                      letter.img_no +
-                      '.png'
-                    }
-                    alt="letterId"
-                  />
-                  <span style={{fontSize:'2rem'}}>{letter.letter_from}</span>
-                </Each>
-              </>
-            ))}
-      </>
+      {letterId.map((letter) => (
+        <>
+          <Each onClick={() => onImgClick(letter.id)}>
+            <Img
+              src={
+                '/img/emoticons/' +
+                letter.imgfolder_no +
+                '/' +
+                letter.img_no +
+                '.png'
+              }
+              alt="letterId"
+            />
+            <span style={{fontSize:'2rem'}}>{letter.letter_from}</span>
+          </Each>
+        </>
+      ))}
     </Slider>
+    }
     </BackImg>
   );
 };
