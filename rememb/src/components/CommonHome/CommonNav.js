@@ -132,7 +132,6 @@ const CommonNav = ({ id, token }) => {
   const onClick2 = () => {
     navigate(`/myParty/${id}`, { state: { token: token } });
     console.log(id);
-    // undifined라고 뜨는데 왤까 ..
   };
   useEffect(() => {
     isLogin();

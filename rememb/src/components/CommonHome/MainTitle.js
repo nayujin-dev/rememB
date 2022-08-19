@@ -20,9 +20,9 @@ const MainTitle = ({ id, token }) => {
   const navigate = useNavigate();
   const onClick = () => {
     if (token == '') {
-      navigate(`/others/${id}`, { state: { id: id } });
+      navigate(`/others/${id}`, { state: { token: token } });
     } else {
-      navigate(`/myParty/${id}`, { state: { id: id, token: token } });
+      navigate(`/myParty/${id}`, { state: { token: token } });
     }
   };
   // const today=new Date();
