@@ -56,9 +56,8 @@ const SeeBalance = () => {
         // setDoneList(response.data.ALREADY_ANSWER);
         // setDone(doneList.length);
         response.data.ALREADY_ANSWER !== null &&
-        setDone(response.data.ALREADY_ANSWER);
+          setDone(response.data.ALREADY_ANSWER);
         setLeft(response.data.LeftDay);
-
       });
   };
   useEffect(() => {
@@ -68,17 +67,19 @@ const SeeBalance = () => {
   return (
     <Layout id={id} token={token}>
       {list !== null &&
-        list.map(
+        list.reverse().map(
           (question) =>
-            question.id == left ? (
+            question.id != left ? (
               <>
-                <Question>D-{8 - question.id} 공개</Question>
+                {/* 맞았을 때 = 아직 안됐을때 */}
+                <Question>D-{question.id} 공개</Question>
                 <MylistBefore>
                   <Img src="../../../img/balanceIcon/lock.png" />
                 </MylistBefore>
               </>
             ) : (
               <>
+                {/* 틀렸을 때 = 해당하는 컴포넌트 판별 */}
                 <Compo
                   isDone={done}
                   id={id}
