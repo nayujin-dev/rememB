@@ -79,6 +79,8 @@ const SeeBalance = () => {
           (question) =>(
             (left-question.id >= 0) ? (
               <>
+                {console.log(typeof(question.id))}
+                {console.log(typeof(left))}
                 {/* 맞았을 때 = 아직 안됐을때 */}
                 <Question>D-{question.id} 공개</Question>
                 <MylistBefore>

@@ -104,11 +104,13 @@ const AnswerBalance = () => {
       )
       .then((res) => {
         console.log(res);
-        navi(`/myParty/seeBalance/${id}`, { state: { id: id, token: token } });
+        navi(`/myParty/seeBalance/${question_id}`, { state: { id: id, token: token } });
       })
       .catch(function (error) {
         console.log(error);
-        console.log(typeof(myA));
+        console.log(typeof(myA))
+        console.log(typeof(id));
+        console.log(typeof(question_id))
         console.log(id);
       });
   };
