@@ -82,7 +82,7 @@ const AnswerBalance = () => {
     // setMyA(2);
     setLeftCheck('/img/check.png');
     setRightCheck('/img/pinkcheck.png');
-    setMyA((question_id * 2).toString());
+    setMyA((question_id * 2));
     setLeft(false);
     setRight(true);
   };
@@ -97,9 +97,9 @@ const AnswerBalance = () => {
           },
         },
         {
-          user: id,
-          answer_id: myA,
-          question_id: question_id,
+          user: id+"",
+          answer_id: myA+"",
+          question_id: question_id+"",
         }
       )
       .then((res) => {
@@ -108,6 +108,7 @@ const AnswerBalance = () => {
       })
       .catch(function (error) {
         console.log(error);
+        console.log(typeof(myA));
         console.log(id);
       });
   };
