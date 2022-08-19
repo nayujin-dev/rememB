@@ -41,6 +41,7 @@ const SeeBalance = () => {
   const token = loca.state.token;
   const [nothing,setNothing]=useState(true);
   const [start,setStart]=useState(false);
+  const [qn,setQn]=useState("");
   // const qnalist=[];
   // const showBalance=()=>{
   //   list.map((index)=>{
@@ -48,10 +49,9 @@ const SeeBalance = () => {
   //   })
   // }
   const save=()=>{
-    console.log(already);
-    if(already.length> 0) {
+    if(qn> 0) {
       // setAlready(response.data.ALREADY_ANSWER);
-      for(let i=0;i<already.length;i++){
+      for(let i=0;i<qn;i++){
         console.log(already[i][1]);
         console.log(already[1][1]);
         setDone([already[i][1], ...done]);
@@ -76,17 +76,19 @@ const SeeBalance = () => {
         },
       })
       .then((response) => {
-        setAlready([response.data.ALREADY_ANSWER,...already]);
+        setAlready(response.data.ALREADY_ANSWER);
         setLeft(response.data.LeftDay);
         setList(response.data.QnA);
-        // setDoneList(response.data.ALREADY_ANSWER);
-        // setDone(doneList.length);
-        save();
+        setQn(response.data.ALREADY_ANSWER.length);
       });
   };
   useEffect(() => {
     id !== '' && getToken();
   }, [id]);
+  useEffect(() => {
+    save();
+    console.log(already);
+  }, [already,qn]);
 
   return (
     <Layout id={id} token={token}>
@@ -97,8 +99,6 @@ const SeeBalance = () => {
           (question) =>(
             (left-question.id >= 0) ? (
               <>
-                {console.log(typeof(question.id))}
-                {console.log(typeof(left))}
                 {/* 맞았을 때 = 아직 안됐을때 */}
                 <Question>D-{question.id} 공개</Question>
                 <MylistBefore>
