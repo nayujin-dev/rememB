@@ -38,6 +38,7 @@ const SeeBalance = () => {
   const loca = useLocation();
   const id = loca.state.id;
   const token = loca.state.token;
+  const [nothing,setNothing]=useState(true);
   // const qnalist=[];
   // const showBalance=()=>{
   //   list.map((index)=>{
@@ -61,9 +62,11 @@ const SeeBalance = () => {
           for(var i=0;i<response.data.ALREADY_ANSWER.length;i++){
             setDone([response.data.ALREADY_ANSWER[i][1], ...done]);
             setDonelist([response.data.ALREADY_ANSWER[i][2],...donelist]);
-
           }
-        }
+          console.log(done);
+          console.log(donelist);
+          console.log(done.includes(7));
+        }else{setNothing(false);}
         setLeft(response.data.LeftDay);
       });
   };
@@ -90,7 +93,7 @@ const SeeBalance = () => {
             ) : (
               <>
                 <Compo
-                  isDone={done.includes(question.id)}
+                  isDone={nothing&&done.includes(question.id)}
                   id={id}
                   selectA={donelist}
                   dayleft={left}
