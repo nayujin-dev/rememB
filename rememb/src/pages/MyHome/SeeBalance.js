@@ -59,8 +59,8 @@ const SeeBalance = () => {
         // setDone(doneList.length);
         if(response.data.ALREADY_ANSWER !== null) {
           for(var i=0;i<response.data.ALREADY_ANSWER.length;i++){
-            setDone(response.data.ALREADY_ANSWER[i][1], ...done);
-            setDonelist(response.data.ALREADY_ANSWER[i][2],...donelist);
+            setDone([response.data.ALREADY_ANSWER[i][1], ...done]);
+            setDonelist([response.data.ALREADY_ANSWER[i][2],...donelist]);
 
           }
         }

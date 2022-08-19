@@ -96,13 +96,11 @@ const AnswerBalance = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
+        
           user: id,
           answer_id: myA,
           question_id: question_id,
-        },
-        {
-          withCredentials: false,
-        },
+        }
       )
       .then((res) => {
         console.log(res);
