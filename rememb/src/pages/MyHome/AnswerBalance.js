@@ -102,6 +102,9 @@ const AnswerBalance = () => {
           answer_id: myA,
           question_id: question_id,
           // leftDay:dayleft,
+        },
+        {
+          withCredentials: false,
         }
       )
       .then((res) => {
