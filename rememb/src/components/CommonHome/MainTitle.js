@@ -19,19 +19,14 @@ const Dday = styled.div`
 const MainTitle = ({ id, token }) => {
   const navigate = useNavigate();
   const onClick = () => {
-    if (token == '') {
+    if (token === ""||token==="no") {
       // 뭔가 안됨 .. others에서 클릭해도 myparty로 이동함 ^^
       navigate(`/others/${id}`, { state: { id: id } });
     } else {
       navigate(`/myParty/${id}`, { state: { token: token } });
     }
   };
-  // const today=new Date();
-  const [dday, setDday] = useState('');
-  const [name, setName] = useState('');
-  const [Tcolor, setTColor] = useState('#FE4179');
-
-  useEffect(() => {
+  const getme=()=>{
     axios
       .get(`http://43.200.193.74:8000/partyroom/${id}/`)
       .then((response) => {
@@ -47,6 +42,14 @@ const MainTitle = ({ id, token }) => {
       .catch(function (error) {
         console.log(error);
       });
+  };
+  // const today=new Date();
+  const [dday, setDday] = useState('');
+  const [name, setName] = useState('');
+  const [Tcolor, setTColor] = useState('#FE4179');
+
+  useEffect(() => {
+    getme();
   }, [id]);
 
   return (
