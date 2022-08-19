@@ -91,7 +91,7 @@ const PartyRoom = ({ id, token }) => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 16,
     slidesToScroll: 1,
     arrows: true,
     nextArrow: (
@@ -120,9 +120,9 @@ const PartyRoom = ({ id, token }) => {
     ),
   };
   return (
+    <BackImg backgroundcolor={color}>
     <Slider style={{ position: 'relative' }} {...settings}>
       <>
-        <BackImg backgroundcolor={color}>
           {showlist &&
             letterId.map((letter) => (
               <>
@@ -141,75 +141,9 @@ const PartyRoom = ({ id, token }) => {
                 </Each>
               </>
             ))}
-        </BackImg>
-      </>
-      <>
-        <BackImg backgroundcolor={color}>
-          {showlist &&
-            letterId.map((letter) => (
-              <>
-                <Each onClick={() => onImgClick(letter.id)}>
-                  <Img
-                    src={
-                      '/img/emoticons/' +
-                      letter.imgfolder_no +
-                      '/' +
-                      letter.img_no +
-                      '.png'
-                    }
-                    alt="letterId"
-                  />
-                  <span>{letter.letter_from}</span>
-                </Each>
-              </>
-            ))}
-        </BackImg>
-      </>
-      <>
-        <BackImg backgroundcolor={color}>
-          {showlist &&
-            letterId.map((letter) => (
-              <>
-                <Each onClick={() => onImgClick(letter.id)}>
-                  <Img
-                    src={
-                      '/img/emoticons/' +
-                      letter.imgfolder_no +
-                      '/' +
-                      letter.img_no +
-                      '.png'
-                    }
-                    alt="letterId"
-                  />
-                  <span>{letter.letter_from}</span>
-                </Each>
-              </>
-            ))}
-        </BackImg>
-      </>
-      <>
-        <BackImg backgroundcolor={color}>
-          {showlist &&
-            letterId.map((letter) => (
-              <>
-                <Each onClick={() => onImgClick(letter.id)}>
-                  <Img
-                    src={
-                      '/img/emoticons/' +
-                      letter.imgfolder_no +
-                      '/' +
-                      letter.img_no +
-                      '.png'
-                    }
-                    alt="letterId"
-                  />
-                  <span>{letter.letter_from}</span>
-                </Each>
-              </>
-            ))}
-        </BackImg>
       </>
     </Slider>
+    </BackImg>
   );
 };
 

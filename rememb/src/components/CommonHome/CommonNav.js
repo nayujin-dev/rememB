@@ -175,7 +175,7 @@ const CommonNav = ({ id, token }) => {
                           <Div2>
                             {/* 일단 대충 해놨습니다 */}
                             <NameText>{name}</NameText>
-                            <BirthText>/{dday}</BirthText>
+                            <BirthText>{month}/{dday}</BirthText>
                           </Div2>
                         </Div1>
                       </Div0>
