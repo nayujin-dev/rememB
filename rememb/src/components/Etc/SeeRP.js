@@ -68,7 +68,7 @@ const SeeRP = ({background, rollingList}) => {
               <Content>
                 {index.content}
                 <br/>
-                Frpm. {index.from}
+                From. {index.from}
               </Content>
             </Each>
           </>          
