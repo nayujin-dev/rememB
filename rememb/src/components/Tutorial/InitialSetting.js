@@ -50,10 +50,6 @@ const InitialSetting = ({ username, email, social }) => {
         })
         .catch(function (error) {
           console.log(error);
-          console.log(date);
-          console.log(text);
-          console.log(email);
-          console.log(social);
         });
     }
   };
