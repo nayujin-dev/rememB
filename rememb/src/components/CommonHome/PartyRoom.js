@@ -23,7 +23,7 @@ const BackImg = styled.div`
 const Each = styled.div`
   width: 15rem;
   height: 15rem;
-  margin: 3rem;
+  margin: 3.5rem;
 `;
 const Img = styled.img`
   width: 15rem;
@@ -86,9 +86,9 @@ const PartyRoom = ({ id, token }) => {
     infinite: true,
     centerMode: true, 
     speed: 500,
-    slidesPerRow: 3,
-    rows:3,
-    slidesToShow: 3,
+    slidesPerRow: 3, 
+    rows: 2,
+    // slidesToShow: 3,
     // slidesToScroll: 1,
     arrows: true,
     nextArrow: (
@@ -120,8 +120,8 @@ const PartyRoom = ({ id, token }) => {
     <BackImg backgroundcolor={color}>
     {showlist &&
     <Slider style={{ position: 'relative' }} {...settings}>
-      {letterId.map((letter) => (
         <>
+          {letterId.map((letter) => (
           <Each onClick={() => onImgClick(letter.id)}>
             <Img
               src={
@@ -135,8 +135,8 @@ const PartyRoom = ({ id, token }) => {
             />
             <span style={{fontSize:'2rem'}}>{letter.letter_from}</span>
           </Each>
-        </>
-      ))}
+        ))}
+    </>
     </Slider>
     }
     </BackImg>
