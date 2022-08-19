@@ -40,8 +40,6 @@ const SeeBalance = () => {
   const id = loca.state.id;
   const token = loca.state.token;
   const [nothing,setNothing]=useState(true);
-  const [start,setStart]=useState(false);
-  const [qn,setQn]=useState("");
   // const qnalist=[];
   // const showBalance=()=>{
   //   list.map((index)=>{
@@ -49,9 +47,10 @@ const SeeBalance = () => {
   //   })
   // }
   const save=()=>{
-    if(qn> 0) {
+    console.log(already);
+    if(already.length> 0) {
       // setAlready(response.data.ALREADY_ANSWER);
-      for(let i=0;i<qn;i++){
+      for(let i=0;i<already.length;i++){
         console.log(already[i][1]);
         console.log(already[1][1]);
         setDone([already[i][1], ...done]);
@@ -66,7 +65,6 @@ const SeeBalance = () => {
     }else{
       setNothing(false);
     }
-    setStart(true);
   }
   const getToken = () => {
     axios
@@ -76,27 +74,41 @@ const SeeBalance = () => {
         },
       })
       .then((response) => {
-        setAlready(response.data.ALREADY_ANSWER);
         setLeft(response.data.LeftDay);
         setList(response.data.QnA);
-        setQn(response.data.ALREADY_ANSWER.length);
+        // setDoneList(response.data.ALREADY_ANSWER);
+        // setDone(doneList.length);
+        setAlready(response.data.ALREADY_ANSWER);
+
+        save();
       });
   };
   useEffect(() => {
     id !== '' && getToken();
   }, [id]);
-  useEffect(() => {
-    save();
-    console.log(already);
-  }, [already,qn]);
 
   return (
     <Layout id={id} token={token}>
+      {already!==null&&
+        already.map((question)=>(
+          <Compo
+            isDone={true}
+            id={id}
+            selectA={question.answer_id}
+            // secret={question.id<left}
+            question_id={question.id}
+            content={question.question_content}
+            a1content={question.a1content}
+            a2content={question.a2content}
+            token={token}
+          />
+        ))
+      }
       {list !== null &&
         left !== null &&
-        start &&
         list.reverse().map(
           (question) =>(
+            
             (left-question.id >= 0) ? (
               <>
                 {/* 맞았을 때 = 아직 안됐을때 */}
