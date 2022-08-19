@@ -61,11 +61,11 @@ const SeeBalance = () => {
         already!==null&&
         already.map((question)=>(
           <CompoDid
-            selectA={(question.answer_id)%(question.id)}
-            question_id={question.id}
-            content={question.question_content}
-            a1content={question.a1content}
-            a2content={question.a2content}
+            selectA={(question.answer_id)%(question.question_id)}
+            question_id={question.question_id}
+            content={question.qcontent}
+            a1content={question.acontent1}
+            a2content={question.acontent2}
           />
         ))
       }
