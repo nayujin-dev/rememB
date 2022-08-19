@@ -70,15 +70,15 @@ const SeeBalance = () => {
       {list !== null &&
         list.map(
           (question) =>
-            question.id >= left ? (
-              <div key={question.id}>
+            question.id == left ? (
+              <>
                 <Question>D-{8 - question.id} 공개</Question>
                 <MylistBefore>
                   <Img src="../../../img/balanceIcon/lock.png" />
                 </MylistBefore>
-              </div>
+              </>
             ) : (
-              <div key={question.id}>
+              <>
                 <Compo
                   isDone={done}
                   id={id}
@@ -91,7 +91,7 @@ const SeeBalance = () => {
                   token={token}
                 />
                 {/* setDone(0); */}
-              </div>
+              </>
             )
           // <Compo
           //   isDone={done}

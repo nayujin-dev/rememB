@@ -20,6 +20,7 @@ const MainTitle = ({ id, token }) => {
   const navigate = useNavigate();
   const onClick = () => {
     if (token == '') {
+      // 뭔가 안됨 .. others에서 클릭해도 myparty로 이동함 ^^
       navigate(`/others/${id}`, { state: { id: id } });
     } else {
       navigate(`/myParty/${id}`, { state: { token: token } });
