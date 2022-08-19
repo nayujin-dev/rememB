@@ -90,6 +90,7 @@ const LogoImg = styled.img`
 
 const CommonNav = ({ id, token }) => {
   const [dday, setDday] = useState('');
+  const [month, setMonth] = useState('');
   const [name, setName] = useState('');
   const [isLoggedin, setIsLoggedin] = useState(false);
   const navigate = useNavigate();
@@ -111,14 +112,8 @@ const CommonNav = ({ id, token }) => {
       .then((response) => {
         console.log(response);
         setName(response.data.username);
-        setDday(response.data.birth);
-        // var workList= data.split('.');
-        // var workList= (data||'').split('.');
-        const mam = dday.split('-')[1] + '/' + dday.split('-')[2];
-        // const dad = (dday || '/').split('-');
-        // const waw = dad.substr(4, 7);
-        const wow = mam.substr(4, 7);
-        setDday(mam);
+        setMonth(response.date.month);
+        setDday(response.data.day);
       })
       .catch(function (error) {
         console.log(error);
@@ -181,7 +176,7 @@ const CommonNav = ({ id, token }) => {
                           <Div2>
                             {/* 일단 대충 해놨습니다 */}
                             <NameText>{name}</NameText>
-                            <BirthText>{dday}</BirthText>
+                            <BirthText>{month}/{dday}</BirthText>
                           </Div2>
                         </Div1>
                       </Div0>
