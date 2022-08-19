@@ -56,9 +56,8 @@ const SeeBalance = () => {
         // setDoneList(response.data.ALREADY_ANSWER);
         // setDone(doneList.length);
         response.data.ALREADY_ANSWER !== null &&
-        setDone(response.data.ALREADY_ANSWER);
+          setDone(response.data.ALREADY_ANSWER);
         setLeft(response.data.LeftDay);
-
       });
   };
   useEffect(() => {
@@ -70,7 +69,7 @@ const SeeBalance = () => {
       {list !== null &&
         list.map(
           (question) =>
-            question.id == left ? (
+            question.id != left ? (
               <>
                 <Question>D-{8 - question.id} 공개</Question>
                 <MylistBefore>
