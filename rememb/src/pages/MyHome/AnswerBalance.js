@@ -96,15 +96,13 @@ const AnswerBalance = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
+          user: id,
+          answer_id: myA,
+          question_id: question_id,
         },
         {
           withCredentials: false,
         },
-        {
-          user: id,
-          answer_id: myA,
-          question_id: question_id,
-        }
       )
       .then((res) => {
         console.log(res);
@@ -113,8 +111,10 @@ const AnswerBalance = () => {
       .catch(function (error) {
         console.log(error);
         console.log(typeof(myA))
+        console.log(myA)
         console.log(typeof(id));
         console.log(typeof(question_id))
+        console.log(question_id);
         console.log(id);
         console.log(token);
       });
