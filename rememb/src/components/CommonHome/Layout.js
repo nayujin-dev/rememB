@@ -6,7 +6,7 @@ const Layout=(props)=>{
     return(
         <>
             <CommonNav id={props.id} token={props.token}/>
-            <MainTitle id={props.id}/>
+            <MainTitle id={props.id} token={props.token}/>
             <main>
                 {props.children}
             </main>

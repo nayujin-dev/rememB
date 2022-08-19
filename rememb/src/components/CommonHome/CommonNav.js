@@ -95,7 +95,7 @@ const CommonNav = ({ id, token }) => {
   const [isLoggedin, setIsLoggedin] = useState(false);
   const navigate = useNavigate();
   const isLogin = () => {
-    if (token === '') {
+    if (token === '' || token===null) {
       setIsLoggedin(false);
     } else {
       getUser();

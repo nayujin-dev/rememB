@@ -11,8 +11,8 @@ const YourHome = () => {
   // const token = window.location.href.split('=')[1].split('&')[0];
 
   return (
-    <Layout id={id} token='' >
-      <PartyRoom id={id} />
+    <Layout id={id} token={null} >
+      <PartyRoom id={id} token={null} />
       <ToCeleb id={id} />
       <WatchBalance who={'멋사'}/>
     </Layout>
