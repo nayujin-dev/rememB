@@ -23,6 +23,7 @@ const BackImg = styled.div`
 const Each = styled.div`
   width: 15rem;
   height: 15rem;
+  margin: 3rem;
 `;
 const Img = styled.img`
   width: 15rem;
@@ -83,9 +84,11 @@ const PartyRoom = ({ id, token }) => {
   const settings = {
     dots: false,
     infinite: true,
+    centerMode: true, 
     speed: 500,
     slidesPerRow: 3,
-    rows:4,
+    rows:3,
+    slidesToShow: 3,
     // slidesToScroll: 1,
     arrows: true,
     nextArrow: (
