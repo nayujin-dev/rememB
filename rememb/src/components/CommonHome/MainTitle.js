@@ -16,10 +16,14 @@ const Dday = styled.div`
   font-weight: 400;
   font-size: 6rem;
 `;
-const MainTitle = ({ id }) => {
+const MainTitle = ({ id, token }) => {
   const navigate = useNavigate();
   const onClick = () => {
-    navigate(`/myParty/${id}`);
+    if (token == '') {
+      navigate(`/others/${id}`, { state: { id: id } });
+    } else {
+      navigate(`/myParty/${id}`, { state: { id: id, token: token } });
+    }
   };
   // const today=new Date();
   const [dday, setDday] = useState('');
