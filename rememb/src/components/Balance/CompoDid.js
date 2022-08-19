@@ -61,8 +61,8 @@ const CompoDid = ({
     <>
       <Question>{content}</Question>
           <MylistAfter>
-            <AnswerDid1 select={!question_id*2===selectA}>{a1content}</AnswerDid1>
-            <AnswerDid2 select={question_id*2===selectA}>{a2content}</AnswerDid2>
+            <AnswerDid1 select={selectA===1}>{a1content}</AnswerDid1>
+            <AnswerDid2 select={selectA===0}>{a2content}</AnswerDid2>
           </MylistAfter>
     </>
   );

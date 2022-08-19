@@ -46,9 +46,9 @@ const SeeBalance = () => {
         },
       })
       .then((response) => {
+        setAlready(response.data.ALREADY_ANSWER);
         setLeft(response.data.LeftDay);
         setList(response.data.QnA);
-        setAlready(response.data.ALREADY_ANSWER);
       });
   };
   useEffect(() => {
@@ -58,6 +58,7 @@ const SeeBalance = () => {
   return (
     <Layout id={id} token={token}>
       {already!==null&&
+        left !== null &&
         already.map((question)=>(
           <CompoDid
             selectA={question.answer_id}
