@@ -13,7 +13,7 @@ const BackImg = styled.div`
   border-radius: 30px;
   height: 50vh;
   display: grid;
-  grid-template-columns: repeat(auto-fill,1fr);
+  grid-template-columns: repeat(3,1fr);
   grid-template-rows: repeat(4,1fr);
   grid-gap: 5vh 1rem; 
 
