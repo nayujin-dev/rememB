@@ -92,14 +92,14 @@ const AnswerBalance = () => {
     axios
       .post(
         `http://43.200.193.74:8000/balance/game/${question_id}/`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        
+        {        
           user: id,
           answer_id: myA,
           question_id: question_id,
+        },{
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       )
       .then((res) => {
