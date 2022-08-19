@@ -32,7 +32,7 @@ const MylistBefore = styled.div`
 `;
 const SeeBalance = () => {
   const [list, setList] = useState([]);
-  const [left, setLeft] = useState(null);
+  const [left, setLeft] = useState(366);
   const [already,setAlready]=useState([]);
   const loca = useLocation();
   const id = loca.state.id;
@@ -46,8 +46,10 @@ const SeeBalance = () => {
         },
       })
       .then((response) => {
+        console.log(response.data);
+        // console.log(typeof(response.data.LeftDay));
         setAlready(response.data.ALREADY_ANSWER);
-        setLeft(response.data.LeftDay);
+        setLeft(response.data.leftDay);
         setList(response.data.QnA);
       });
   };
@@ -75,7 +77,6 @@ const SeeBalance = () => {
           (question) =>(
               <>
                 <Compo
-                  left={left}
                   id={id}
                   dayleft={left}
                   question_id={question.id}
