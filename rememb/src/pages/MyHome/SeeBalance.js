@@ -59,7 +59,9 @@ const SeeBalance = () => {
         // setDoneList(response.data.ALREADY_ANSWER);
         // setDone(doneList.length);
         if(response.data.ALREADY_ANSWER !== null) {
-          for(var i=0;i<response.data.ALREADY_ANSWER.length;i++){
+          for(let i=0;i<response.data.ALREADY_ANSWER.length;i++){
+            console.log(response.data.ALREADY_ANSWER[i][1]);
+            console.log(response.data.ALREADY_ANSWER[1][1]);
             setDone([response.data.ALREADY_ANSWER[i][1], ...done]);
             setDonelist([response.data.ALREADY_ANSWER[i][2],...donelist]);
           }
@@ -67,7 +69,7 @@ const SeeBalance = () => {
           console.log(response.data.ALREADY_ANSWER);
           console.log(response.data.ALREADY_ANSWER.length);
           console.log(donelist);
-          console.log(done.includes(7));
+          // console.log(done.includes(7));
         }else{setNothing(false);}
         setLeft(response.data.LeftDay);
       });
