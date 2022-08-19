@@ -58,12 +58,12 @@ const Warn = styled.div`
 `;
 const AnswerBalance = () => {
   const loca = useLocation();
-  const id = loca.state.id;
+  const id = loca.state.id.toString();
   const token = loca.state.token;
   const content = loca.state.content;
   const leftq = loca.state.a1content;
   const rightq = loca.state.a2content;
-  const question_id = loca.state.q;
+  const question_id = loca.state.q.toString();
   const navi = useNavigate();
   const [myA, setMyA] = useState();
   const [left, setLeft] = useState(false);
@@ -71,18 +71,18 @@ const AnswerBalance = () => {
   const [leftCheck, setLeftCheck] = useState('/img/check.png');
   const [rightCheck, setRightCheck] = useState('/img/check.png');
   const onLeftClick = () => {
-    setMyA(1);
+    // setMyA(1);
     setLeftCheck('/img/pinkcheck.png');
     setRightCheck('/img/check.png');
-    setMyA(question_id * 2 - 1);
+    setMyA((question_id * 2 - 1).toString());
     setLeft(true);
     setRight(false);
   };
   const onRightClick = () => {
-    setMyA(2);
+    // setMyA(2);
     setLeftCheck('/img/check.png');
     setRightCheck('/img/pinkcheck.png');
-    setMyA(question_id * 2);
+    setMyA((question_id * 2).toString());
     setLeft(false);
     setRight(true);
   };
@@ -108,6 +108,7 @@ const AnswerBalance = () => {
       })
       .catch(function (error) {
         console.log(error);
+        console.log(id);
       });
   };
   return (
