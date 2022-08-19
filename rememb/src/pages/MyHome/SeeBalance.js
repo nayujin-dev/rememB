@@ -75,7 +75,8 @@ const SeeBalance = () => {
             // 남은 날짜가 8일, 9일, 10일,, 100일 -> true여야함
             // 남은 날짜가 7일, 6일, 5일... 이면 false
             // left (100) > 7
-            left != question.id ? (
+            // 50일 남았고 qi는 7이야.
+            left >= question.id ? (
               <>
                 {/* 맞았을 때 = 아직 안됐을때 */}
                 <Question>D-{question.id} 공개</Question>
