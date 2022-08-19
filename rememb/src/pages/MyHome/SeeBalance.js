@@ -64,6 +64,8 @@ const SeeBalance = () => {
             setDonelist([response.data.ALREADY_ANSWER[i][2],...donelist]);
           }
           console.log(done);
+          console.log(response.data.ALREADY_ANSWER);
+          console.log(response.data.ALREADY_ANSWER.length);
           console.log(donelist);
           console.log(done.includes(7));
         }else{setNothing(false);}
