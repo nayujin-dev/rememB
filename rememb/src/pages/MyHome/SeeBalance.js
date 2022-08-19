@@ -32,7 +32,8 @@ const MylistBefore = styled.div`
 const SeeBalance = () => {
   const navigate = useNavigate();
   const [list, setList] = useState([]);
-  const [done, setDone] = useState(0);
+  const [done, setDone] = useState([]);
+  const [donelist, setDonelist]=useState([]);
   const [left, setLeft] = useState(null);
   const loca = useLocation();
   const id = loca.state.id;
@@ -56,8 +57,13 @@ const SeeBalance = () => {
         console.log(response.data);
         // setDoneList(response.data.ALREADY_ANSWER);
         // setDone(doneList.length);
-        response.data.ALREADY_ANSWER !== null &&
-          setDone(response.data.ALREADY_ANSWER);
+        if(response.data.ALREADY_ANSWER !== null) {
+          for(var i=0;i<response.data.ALREADY_ANSWER.length;i++){
+            setDone(response.data.ALREADY_ANSWER[i][1], ...done);
+            setDonelist(response.data.ALREADY_ANSWER[i][2],...donelist);
+
+          }
+        }
         setLeft(response.data.LeftDay);
       });
   };
@@ -70,13 +76,8 @@ const SeeBalance = () => {
       {list !== null &&
         left !== null &&
         list.reverse().map(
-          (question) =>
-            // 생일 남은 날짜 100일 <= 7일
-            // 남은 날짜가 8일, 9일, 10일,, 100일 -> true여야함
-            // 남은 날짜가 7일, 6일, 5일... 이면 false
-            // left (100) > 7
-            // 50일 남았고 qi는 7이야.
-            left >= question.id ? (
+          (question) =>(
+            (left-question.id >= 0) ? (
               <>
                 {/* 맞았을 때 = 아직 안됐을때 */}
                 <Question>D-{question.id} 공개</Question>
@@ -86,10 +87,10 @@ const SeeBalance = () => {
               </>
             ) : (
               <>
-                {/* 틀렸을 때 = 해당하는 컴포넌트 판별 */}
                 <Compo
-                  isDone={done}
+                  isDone={done.includes(question.id)}
                   id={id}
+                  selectA={donelist}
                   dayleft={left}
                   // secret={question.id<left}
                   question_id={question.id}
@@ -100,18 +101,7 @@ const SeeBalance = () => {
                 />
                 {/* setDone(0); */}
               </>
-            )
-          // <Compo
-          //   isDone={done}
-          //   id={id}
-          //   dayleft={left}
-          //   // secret={question.id<left}
-          //   question_id={question.id}
-          //   content={question.question_content}
-          //   a1content={question.a1content}
-          //   a2content={question.a2content}
-          //   token={token}
-          // />
+            ))
         )}
       {/* <Compo id={id}/> */}
     </Layout>

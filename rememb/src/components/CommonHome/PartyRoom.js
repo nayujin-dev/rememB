@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 const BackImg = styled.div`
   margin: 7rem 10rem;
-  padding: 7rem;
+  padding: 4rem;
   background-color: ${(props) =>
     props.backgroundcolor ? props.backgroundcolor : '#FFEFF3'};
   border-radius: 30px;
@@ -15,7 +15,7 @@ const BackImg = styled.div`
   display: grid;
   grid-template-columns: repeat(3,1fr);
   grid-template-rows: repeat(4,1fr);
-  grid-gap: 5vh 1rem; 
+  grid-gap: 2vh 1rem; 
 
   align-items: center; //수직 가운데 정렬
   justify-content: space-between; /* 수평 가운데 정렬 */

@@ -21,7 +21,7 @@ const MylistAfter = styled.div`
   align-items: center;
 `;
 const AnswerDid1 = styled.div`
-  background-color: #ffadbc;
+  background-color: ${props=>props.select==true?"#FFADBC":"#FFEFF3"};
   width: 45rem;
   height: 100px;
   border-radius: 30px 0px 0px 30px;
@@ -30,10 +30,23 @@ const AnswerDid1 = styled.div`
   display: inline-flex;
   justify-content: space-around;
   align-items: center;
-  border: 2px solid #828282;
+  border: ${props=>(props.select==true?"2px solid #828282":"none")};
+`;
+
+const AnswerDid2 = styled.div`
+  background-color: ${(props)=>(props.select==true?"#FFADBC":"#FFEFF3")};
+  width: 45rem;
+  height: 100px;
+  border-radius: 0px 30px 30px 0px;
+  font-size: 18px;
+  font-weight: 500;
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+  border: ${props=>(props.select==true?"2px solid #828282":"none")};
 `;
 const AnswerNew1 = styled.div`
-  background-color: ${(props) => (props.left ? '#ffadbc' : '#ffeff3')};
+  background-color: #FFEFF3;
   width: 45.5rem;
   height: 100px;
   border-right-width: 0.5px;
@@ -48,20 +61,8 @@ const AnswerNew1 = styled.div`
   border: ${(props) => props.left && '2px solid #828282'};
   /* border: 2px solid #828282; */
 `;
-
-const AnswerDid2 = styled.div`
-  background-color: #ffeff3;
-  width: 45rem;
-  height: 100px;
-  border-radius: 0px 30px 30px 0px;
-  font-size: 18px;
-  font-weight: 500;
-  display: inline-flex;
-  justify-content: space-around;
-  align-items: center;
-`;
 const AnswerNew2 = styled.div`
-  background-color: #ffeff3;
+  background-color: #FFEFF3;
   border-left-width: 0.5px;
   width: 45.5rem;
   height: 100px;
@@ -98,18 +99,14 @@ const Compo = ({
   id,
   isDone,
   token,
+  selectA,
   dayleft,
   question_id,
   a1content,
   a2content,
   content,
 }) => {
-  // const [user, setUser] = useState('3');
-  // const [question_id, setQuestion_id] = useState('1');
-  // const [answer_id, setAnswer_id] = useState('2');
-  // const [qcontent, setQcontent] = useState('될까용?');
-  // const [acontent1, setAcontent1] = useState('돼용');
-  // const [acontent2, setAcontent2] = useState('안돼용');
+
   // const[d7,setD7]=useState([]);
   // const[d7,setD7]=useState([]);
   // const[d7,setD7]=useState([]);
@@ -160,13 +157,13 @@ const Compo = ({
   };
   return (
     <>
-      {question_id == null ? (
+      {isDone ? (
         <>
           {/* 대답 한 상황 */}
           <Question>{content}</Question>
           <MylistAfter>
-            <AnswerDid1>{a1content}</AnswerDid1>
-            <AnswerDid2>{a2content}</AnswerDid2>
+            <AnswerDid1 select={!question_id*2===selectA}>{a1content}</AnswerDid1>
+            <AnswerDid2 select={question_id*2===selectA}>{a2content}</AnswerDid2>
           </MylistAfter>
           {/* {isDone(secret-question_id)} */}
         </>
