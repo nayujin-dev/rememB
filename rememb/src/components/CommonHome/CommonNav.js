@@ -150,7 +150,7 @@ const CommonNav = ({ id, token }) => {
                 backgroundColor: '#FFC1CC',
               }}
             >
-              <Container fluid style={{ color: '#black' }}>
+              <Container fluid style={{ color: '#black', '--my-css-width':'70%' }}>
                 <Navbar.Brand href="#"></Navbar.Brand>
                 <Navbar.Toggle
                   aria-controls={`offcanvasNavbar-expand-${expand}`}
