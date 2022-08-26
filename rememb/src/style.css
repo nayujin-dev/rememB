@@ -20,3 +20,6 @@ html{
         margin: auto;        
     }
 }
+:root {
+    --offcanvas-width: 70%;
+}
