@@ -58,10 +58,12 @@ function App() {
     {init&&(
       isLoggedIn ? (
         <>
+            <Route exact path="/" element={<Setting userObj={userObj}/>} />
+
             {/* 튜토리얼 */}
             <Route exact path="/tutorial" element={<Tutorial />}/>
             <Route exact path="/login" element={<Login />}/>
-            <Route exact path="/setting" element={<Setting userObj={userObj}/>}/>
+            {/* <Route exact path="/setting" element={<Setting userObj={userObj}/>}/> */}
             {/* 내 페이지 볼 때 */}
             <Route exact path="/myParty/:id" element={<MyHome  isLoggedIn={isLoggedIn}/>}/>
             <Route exact path="/myParty/ansBalance/:qid" element={<AnswerBalance />}/>
