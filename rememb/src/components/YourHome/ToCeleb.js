@@ -12,9 +12,10 @@ const Btn = styled.div`
   background: linear-gradient(to right, #f3d6ea, #fcd5d0);
 `;
 const ToCeleb = ({ id }) => {
+  
   const navigate = useNavigate();
   const onClick = () => {
-    navigate(`/others/selectimg/${id}`, { state: { id: id } });
+    navigate(`/others/selectimg/1`, { state: { id: id } });
   };
   return (
     <>

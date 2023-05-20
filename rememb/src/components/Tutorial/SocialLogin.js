@@ -32,16 +32,16 @@ const NaverDiv = styled.div`
 
 const SocialLogin = () => {
   const navigate = useNavigate();
-  const socialLoginSuccess = (res) => {
-    navigate('/setting', {
-      state: { res: res.profile },
-    });
-    console.log(res);
-  };
-  const socialLoginFail = (res) => {
-    console.log('소셜 로그인 실패');
-    console.log(res);
-  };
+  // const socialLoginSuccess = (res) => {
+  //   navigate('/setting', {
+  //     state: { res: res.profile },
+  //   });
+  //   console.log(res);
+  // };
+  // const socialLoginFail = (res) => {
+  //   console.log('소셜 로그인 실패');
+  //   console.log(res);
+  // };
 
   return (
     <Div>
@@ -50,7 +50,7 @@ const SocialLogin = () => {
       </Header>
       <InfoText>로그인 후 이용 가능합니다.</InfoText>
 
-      <KaKaoLogin
+      {/* <KaKaoLogin
         kakao_auth_url="https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code"
         token={'60176c9773f08d1a5ad7286c25a1b6d2'}
         scope="profile_nickname, account_email, birthday"
@@ -61,7 +61,7 @@ const SocialLogin = () => {
         className="KakaoLogin"
         // id="kakao"
         getProfile={true}
-      />
+      /> */}
     </Div>
   );
 };

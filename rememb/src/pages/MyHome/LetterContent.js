@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Btn,BtnImg } from "../../components/CommonHome/CircleBtn";
 import axios from "axios";
+import { dbService } from "../../fbase";
 
 const Letterback=styled.div`
   margin: 7rem 10rem;
@@ -52,45 +53,66 @@ const LetterContent=()=>{
         setImg("/img/emoticons/"+imgfolder+'/'+imgN+'.png');
     },[imgfolder,imgN]);
     const onBtnClick=()=>{
-        navi(`/myParty/${id}`);
+        navi(`/myParty/1`);
     }
-    useEffect(()=>{
-        axios.get(
-          `http://43.200.193.74:8000/letter/${letterpk}/`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
-        .then((response) => {
-          console.log(response.data);
-          setContent(response.data.content);
-          setImgfolder(response.data.imgfolder_no);
-          setImgN(response.data.img_no);
-          setFrom(response.data.letter_from);
-        //   setTColor(response.data.text);
-        //   setDday(response.data.left_birth);
-        }).catch(function (error) {
-          console.log(error);
-        });
+    useEffect(()=>{    
+      dbService
+      .doc(`letter/${letterpk}`)
+      // .where("username", "==", props.id)
+      .get()
+      .then((doc) => {
+        // querySnapshot.forEach((doc) => {
+          setContent(doc.data().content);
+          setImgfolder(doc.data().imgfolder_no);
+          setImgN(doc.data().img_no);
+          setFrom(doc.data().letter_from);
+        // });
+      });
+
+        // axios.get(
+        //   `http://43.200.193.74:8000/letter/${letterpk}/`,
+        //   {
+        //     headers: {
+        //       Authorization: `Bearer ${token}`,
+        //     },
+        //   }
+        // )
+        // .then((response) => {
+        //   console.log(response.data);
+        //   setContent(response.data.content);
+        //   setImgfolder(response.data.imgfolder_no);
+        //   setImgN(response.data.img_no);
+        //   setFrom(response.data.letter_from);
+        // //   setTColor(response.data.text);
+        // //   setDday(response.data.left_birth);
+        // }).catch(function (error) {
+        //   console.log(error);
+        // });
       },[]);
       useEffect(()=>{
-        axios.get(
-          `http://43.200.193.74:8000/partyroom/${id}/`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        )
-        .then((response) => {
-          // setName(response.data.username);
-          setColor(response.data.background);
-        //   setDday(response.data.left_birth);
-        }).catch(function (error) {
-          console.log(error);
+        dbService
+        .collection(`userobj`)
+        .where("username", "==", id.username)
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            setColor(doc.data().background);
+          });
         });
+        // axios.get(
+        //   `http://43.200.193.74:8000/partyroom/${id}/`,
+        //   {
+        //     headers: {
+        //       Authorization: `Bearer ${token}`,
+        //     },
+        //   }
+        // )
+        // .then((response) => {
+        //   // setName(response.data.username);
+        // //   setDday(response.data.left_birth);
+        // }).catch(function (error) {
+        //   console.log(error);
+        // });
       },[id]);
 
     return(

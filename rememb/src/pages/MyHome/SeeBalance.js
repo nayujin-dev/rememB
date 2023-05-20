@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import Compo from '../../components/Balance/Compo';
 import CompoDid from '../../components/Balance/CompoDid';
+import { dbService } from '../../fbase';
 
 const Question = styled.div`
   font-size: 18px;
@@ -39,14 +40,30 @@ const SeeBalance = () => {
   const token = loca.state.token;
 
   const getToken = () => {
-    axios
-      .get(`http://43.200.193.74:8000/balance/mylist/${id}/`, {
-      })
-      .then((response) => {
-        setAlready(response.data.ALREADY_ANSWER);
-        setLeft(response.data.leftDay);
-        setList(response.data.QnA);
-      });
+    console.log(id);
+    var today=new Date();
+    var bday=new Date(today.getFullYear(),parseInt(id.birth*1 / 100)-1,id.birth%100);
+    var gap=bday.getTime()-today.getTime();
+    var result=Math.ceil(gap/(1000*60*60*24));
+    dbService.doc(`balance/ZEQthKbeXom2gZ1S3dBu`)
+    // .where("who", "==", 1)
+    .get()
+    .then((doc) => {
+      // console.log(doc.data());
+      // querySnapshot.forEach((doc) => {
+      setAlready(doc.data().ALREADY_ANSWER);
+      setLeft(doc.data().QnA);
+      setList(doc.data().QnA);
+    
+    })
+    // axios
+    //   .get(`http://43.200.193.74:8000/balance/mylist/${id}/`, {
+    //   })
+    //   .then((response) => {
+    //     setAlready(response.data.ALREADY_ANSWER);
+    //     setLeft(response.data.leftDay);
+    //     setList(response.data.QnA);
+    //   });
   };
   useEffect(() => {
     id !== '' && getToken();

@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Layout from '../../../components/CommonHome/Layout';
 import axios from 'axios';
+import { dbService } from '../../../fbase';
 
 const Letterback = styled.div`
   margin: 7rem 10rem;
@@ -131,28 +132,38 @@ const WriteLetter = () => {
     }
   };
   const onBtnClick = () => {
-    axios
-    .post(
-      `http://43.200.193.74:8000/letter/${id}/send/`,
-      {
+    dbService.collection("letter").add({
         content: newValue,
         imgfolder_no: whichimg[0],
         img_no: whichimg[1],
         position_x: 1,
         position_y: 4,
         letter_from:from,
-      },
-      {
-        withCredentials: false,
-      }
-    )
-    .then((res) => {
-      console.log('post 성공');
-      console.log(res);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+        who:1,
+      });
+
+    // axios
+    // .post(
+    //   `http://43.200.193.74:8000/letter/${id}/send/`,
+    //   {
+    //     content: newValue,
+    //     imgfolder_no: whichimg[0],
+    //     img_no: whichimg[1],
+    //     position_x: 1,
+    //     position_y: 4,
+    //     letter_from:from,
+    //   },
+    //   {
+    //     withCredentials: false,
+    //   }
+    // )
+    // .then((res) => {
+    //   console.log('post 성공');
+    //   console.log(res);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
     navigate('/others/sendletter', {
       // state:{from:from, content:letter},
       state: { img: img,id:id },

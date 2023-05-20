@@ -60,11 +60,12 @@ const Pang = () => {
   const id = location.state.id;
   const navi = useNavigate();
   const whichimg = location.state.img;
-  // useEffect(() => {
-  //     setTimeout(()=>navi('/others'),2500);
-  //   }, []);
+  useEffect(() => {
+    console.log(id);
+      // setTimeout(()=>navi('/others'),2500);
+    }, []);
   const onBtnClick = () => {
-    navi(`/others/${id}`);
+    navi(`/others/1`);
   };
   return (
     <>
@@ -82,9 +83,9 @@ const Pang = () => {
         <Info>
           편지가 전송됐어요!
           <br />
-          멋사님의 생일이 되면
+          {id.username}님의 생일이 되면
           <br />
-          멋사님께 공개될 예정이에요!
+          {id.username}님께 공개될 예정이에요!
         </Info>
         <Btn onClick={onBtnClick} style={{ top: '52vh', left: '70rem' }}>
           <BtnImg src="/img/home.png" alt="homeBtn" />

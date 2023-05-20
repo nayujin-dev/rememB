@@ -94,30 +94,30 @@ const CommonNav = ({ id, token }) => {
   const [name, setName] = useState('');
   const [isLoggedin, setIsLoggedin] = useState(false);
   const navigate = useNavigate();
-  const isLogin = () => {
-    if (token === '' || token===null||token==='no') {
-      setIsLoggedin(false);
-    } else {
-      getUser();
-      setIsLoggedin(true);
-    }
-  };
+  // const isLogin = () => {
+  //   if (token === '' || token===null||token==='no') {
+  //     setIsLoggedin(false);
+  //   } else {
+  //     getUser();
+  //     setIsLoggedin(true);
+  //   }
+  // };
   const getUser = () => {
-    axios
-      .get(`http://43.200.193.74:8000/user/mypage/${id}/`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        console.log(response);
-        setName(response.data.username);
-        setMonth(response.data.month);
-        setDday(response.data.day);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    // axios
+    //   .get(`http://43.200.193.74:8000/user/mypage/${id}/`, {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //   })
+    //   .then((response) => {
+    //     console.log(response);
+    //     setName(response.data.username);
+    //     setMonth(response.data.month);
+    //     setDday(response.data.day);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
   };
   const onClick1 = () => {
     navigate(`/myParty/seeBalance/${id}`, {
@@ -125,11 +125,11 @@ const CommonNav = ({ id, token }) => {
     });
   };
   const onClick2 = () => {
-    navigate(`/myParty/${id}`, { state: { token: token } });
+    navigate(`/myParty/1`, { state: { token: token } });
     console.log(id);
   };
   useEffect(() => {
-    isLogin();
+    // isLogin();
   }, []);
   return (
     <>

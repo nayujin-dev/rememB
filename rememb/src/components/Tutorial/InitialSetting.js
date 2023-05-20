@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../../style1.css';
 import styled from 'styled-components';
 import axios from 'axios';
+import { dbService } from '../../fbase';
 
 const InitialSetting = ({ username, email, social }) => {
   const [color, setColor] = useState('#FFEFF3');
@@ -23,35 +24,53 @@ const InitialSetting = ({ username, email, social }) => {
     if (date.length <= 3) {
       alert('숫자 네자리 형식으로 입력해주세요');
     } else {
-      axios
-        .post(
-          'http://43.200.193.74:8000/user/signin/',
-          {
-            email: email,
-            username: text,
-            provider: social,
-            birth: date,
-            background: servercolor,
-            text: serverTcolor,
-          },
-          {
-            withCredentials: false,
-          }
-        )
-        .then((res) => {
-          console.log(res);
-          navigate(`/myParty/${res.data.results.id}`, {
-            state: {
-              id: res.data.results.id,
-              token: res.data.results.accessToken,
-              // 전달한 페이지 변수: 현재 변수
-            },
-          });
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
+      dbService
+      .doc(`userobj/1`)
+      .set({
+        email: email,
+        username: text,
+        provider: social,
+        birth: date,
+        background: color,
+        text: textcolor,
+      });
+      navigate(`/myParty/1`, {
+        state: {
+          id: 1,
+          token: 'hi',
+          // 전달한 페이지 변수: 현재 변수
+        },
+      });
+      }
+    //   axios
+    //     .post(
+    //       'http://43.200.193.74:8000/user/signin/',
+    //       {
+    //         email: email,
+    //         username: text,
+    //         provider: social,
+    //         birth: date,
+    //         background: servercolor,
+    //         text: serverTcolor,
+    //       },
+    //       {
+    //         withCredentials: false,
+    //       }
+    //     )
+    //     .then((res) => {
+    //       console.log(res);
+    //       navigate(`/myParty/${res.data.results.id}`, {
+    //         state: {
+    //           id: res.data.results.id,
+    //           token: res.data.results.accessToken,
+    //           // 전달한 페이지 변수: 현재 변수
+    //         },
+    //       });
+    //     })
+    //     .catch(function (error) {
+    //       console.log(error);
+    //     });
+    // }
   };
   useEffect(() => {
     setText(username);

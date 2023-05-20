@@ -3,44 +3,48 @@ import { useLocation } from 'react-router-dom';
 import InitialSetting from '../../components/Tutorial/InitialSetting';
 import axios from 'axios';
 
-const Setting = () => {
+const Setting = ({userObj}) => {
   const loca = useLocation();
   const [social, setSocial] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
 
-  const kakao = () => {
-    if (!window.location.href.includes('access_token')) {
-      const res = loca.state.res;
-      setUsername(res.kakao_account.profile.nickname);
-      setEmail(res.kakao_account.email);
-      setSocial('kakao');
-    }
-  };
+  // const kakao = () => {
+  //   if (!window.location.href.includes('access_token')) {
+  //     const res = loca.state.res;
+  //     setUsername(res.kakao_account.profile.nickname);
+  //     setEmail(res.kakao_account.email);
+  //     setSocial('kakao');
+  //   }
+  // };
+  useEffect(()=>{
+    console.log(userObj);
+    setUsername(userObj.displayName);
+  },[]);
 
   const getToken = () => {
-    const token = window.location.href.split('=')[1].split('&')[0];
-    axios
-      .get(
-        'https://openapi.naver.com/v1/nid/me',
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Access-Control-Allow-Origin': `${window.location.href}`,
-            'Access-Control-Allow-Credentials': true,
-          },
-        }
-      )
-      .then((response) => {
-        setUsername(response.data.response.name);
-        setEmail(response.data.response.email);
-        console.log(response);
-        setSocial('naver');
-      });
+    // const token = window.location.href.split('=')[1].split('&')[0];
+    // axios
+    //   .get(
+    //     'https://openapi.naver.com/v1/nid/me',
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //         'Access-Control-Allow-Origin': `${window.location.href}`,
+    //         'Access-Control-Allow-Credentials': true,
+    //       },
+    //     }
+    //   )
+    //   .then((response) => {
+    //     setUsername(response.data.response.name);
+    //     setEmail(response.data.response.email);
+    //     console.log(response);
+    //     setSocial('naver');
+    //   });
   };
 
   useEffect(() => {
-    window.location.href.includes('access_token') ? getToken() : kakao()
+    // window.location.href.includes('access_token') ? getToken() : kakao()
   }, []);
   return (
     <>

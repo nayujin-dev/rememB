@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { dbService } from '../../fbase';
 const BackImg = styled.div`
   margin: 7rem 10rem;
   padding: 4rem;
@@ -50,31 +51,55 @@ const PartyRoom = ({ id, token }) => {
     getParty();
   }, []);
   const getParty = () => {
-    axios
-      .get(`http://43.200.193.74:8000/partyroom/${id}/`)
-      .then((response) => {
-        console.log(response.data.letters);
-        // console.log(response.data);
-        setColor(response.data.background);
-        setLetterId(response.data.letters);
-        setShowlist(true);
-        if (response.data.left_birth <= 0) {
-          setIsDday(true);
+    dbService
+    .collection(`letter`)
+    .where("who", "==", 1)
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        var thisletter={
+          id:doc.id,
+          ...doc.data(),
         }
-        
-      }).catch(function (error) {
-        console.log(error);
+        setLetterId((d)=>[...d,thisletter]);
+        // setIsSet(true);
       });
+    });
+    setShowlist(true);
+    var today=new Date();
+    var bday=new Date(today.getFullYear(),parseInt(id.birth*1 / 100)-1,id.birth%100);
+    var gap=bday.getTime()-today.getTime();
+    var result=Math.ceil(gap/(1000*60*60*24));
+    // setDday(result);
+    if (result <= 0) {
+      setIsDday(true);
+    }
+    // axios
+    //   .get(`http://43.200.193.74:8000/partyroom/${id}/`)
+    //   .then((response) => {
+    //     console.log(response.data.letters);
+    //     // console.log(response.data);
+    //     setColor(response.data.background);
+    //     setLetterId(response.data.letters);
+    //     setShowlist(true);
+    //     if (response.data.left_birth <= 0) {
+    //       setIsDday(true);
+    //     }
+        
+    //   }).catch(function (error) {
+    //     console.log(error);
+    //   });
   };
 
   const navi = useNavigate();
   // const [img,setImg]=useState();
   const onImgClick = (e) => {
-    if (isDday) {
-      navi(`/lettercontent/${id}/${e}`, { state: { token: token, letterpk:e,id:id } });
-    } else if (token==null){
+    if (token!=true) {
       alert('당사자만 확인할 수 있습니다. 로그인 후 이용해주세요.');
+    } else if (isDday){
+      navi(`/lettercontent/1/${e}`, { state: { token: token, letterpk:e,id:id } });
     }else{
+      console.log(e)
       alert('아직 생일이 되지 않았어요! 생일 당일부터 공개됩니다.');
     }
   };
