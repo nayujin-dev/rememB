@@ -56,9 +56,12 @@ function App() {
   return (
     <Routes>
     {init&&(
-      isLoggedIn ? (
+      <>
+      
+      <Route exact path="/" element={<Setting userObj={userObj}/>} />
+
+      {isLoggedIn ? (
         <>
-            <Route exact path="/" element={<Setting userObj={userObj}/>} />
 
             {/* 튜토리얼 */}
             <Route exact path="/tutorial" element={<Tutorial />}/>
@@ -92,7 +95,8 @@ function App() {
             <Route exact path="/others/writeletter/:id" element={<WriteLetter />}/>
             <Route exact path="/others/sendletter" element={<Pang />}/>
         </>
-    )
+    )}
+    </>
     )}
     </Routes>
     
